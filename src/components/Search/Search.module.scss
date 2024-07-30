@@ -1,0 +1,33 @@
+.root {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  background-color: #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  padding-left: 15px;
+  font-size: 15px;
+  margin-bottom: 7%;
+
+  &:focus {
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+}
+
+.cancel {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  opacity: 0.5;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}

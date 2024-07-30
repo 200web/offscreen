@@ -1,0 +1,39 @@
+.section {
+  height: 100vh;
+  z-index: 10;
+  background-color: #000000;
+  overflow: hidden;
+  color: white;
+  font-family: "Inter";
+  font-weight: bold;
+
+  .contentBox {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+
+    .description {
+      z-index: 7;
+
+      label {
+        font-size: 200px;
+      }
+
+      span {
+        font-size: 80px;
+      }
+      p {
+        color: #d4e408;
+        font-size: 45px;
+      }
+    }
+
+    .image {
+      width: 40%;
+      scale: 1.5;
+      transform: translateX(-30%);
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@font-face {
+  font-family: MersadRegular;
+  src: url("Mersad Regular.otf");
+}
+
+* {
+  position: relative;
+  padding: 0;
+  margin: 0;
+}
+
+.bodyFooter {
+  width: 100%;
+}
+
+.containerFooter {
+  padding: 56px 0 40px 0;
+  background-color: #1e1e1e;
+}
+
+.contentFooter {
+  width: 90%;
+  margin: 0 auto;
+  font-family: "Inter";
+
+  span {
+    color: #ffffff;
+    font-size: clamp(18px, 4vw, 31px);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+
+    span {
+      cursor: pointer;
+    }
+  }
+}

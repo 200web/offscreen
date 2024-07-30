@@ -1,0 +1,208 @@
+import React from "react";
+import appStyles from "../scss/app.module.scss";
+import Search from "../components/Search/Search";
+import picture from "../assets/img/picture.webp";
+import telegram from "../assets/img/telega.webp";
+import facebook from "../assets/img/Face.webp";
+import instagram from "../assets/img/inst.webp";
+import whatsapp from "../assets/img/whatsapp.webp";
+import mail from "../assets/img/mail.webp";
+import { setIsLoaded } from "../Redux/introSlice";
+import { useDispatch } from "react-redux";
+
+const FooterContact = () => {
+  const fileInputRef = React.useRef(null);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 1000);
+  const [selectedFiles, setSelectedFiles] = React.useState([]);
+  const dispatch = useDispatch();
+
+  const deleteFiles = (index) => {
+    setSelectedFiles((prevFiles) => {
+      const updatedFiles = prevFiles.filter((file, idx) => idx !== index);
+      return updatedFiles;
+    });
+  };
+
+  const handleFileChange = (event) => {
+    const files = Array.from(event.target.files);
+
+    setSelectedFiles((prevFiles) => {
+      const remainingSlots = 5 - prevFiles.length;
+
+      const newFiles = files.slice(0, remainingSlots);
+
+      return [...prevFiles, ...newFiles];
+    });
+  };
+
+  const handleImageClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1000);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return (
+    <div className={appStyles.contactBlock}>
+      <div className={appStyles.container__contact}>
+        <h1 id="Contacts">Contacts</h1>
+      </div>
+      <div className={appStyles.cardGrid}>
+        {!isMobile && (
+          <>
+            <div className={appStyles.socialContainer}>
+              <div>
+                <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                  <div className={appStyles.image}>
+                    <img src={facebook} width={50} height={50} alt="facebook" />
+                  </div>
+                </div>
+                <div className={appStyles.title}>Facebook</div>
+              </div>
+              <div>
+                <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                  <div className={appStyles.image}>
+                    <img src={telegram} width={70} height={70} alt="facebook" />
+                  </div>
+                </div>
+                <div className={appStyles.title}>Telegram</div>
+              </div>
+              <div>
+                <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                  <div className={appStyles.image}>
+                    <img
+                      src={instagram}
+                      width={70}
+                      height={70}
+                      alt="facebook"
+                    />
+                  </div>
+                </div>
+                <div className={appStyles.title}>Instagram</div>
+              </div>
+              <div>
+                <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                  <div className={appStyles.image}>
+                    <img src={whatsapp} width={70} height={70} alt="facebook" />
+                  </div>
+                </div>
+                <div className={appStyles.title}>WhatsApp</div>
+              </div>
+            </div>
+            <div className={appStyles.sideMail}>
+              <div className={appStyles.socialCard}>
+                <div className={appStyles.mailBlank}>
+                  <div className={appStyles.mailTile}>Mail</div>
+                  <div className={appStyles.mailInf}>
+                    Astap.dedign@gmail.com
+                  </div>
+                  <div className={appStyles.title}>
+                    If you have a general or project enquiry, please drop me an
+                    email or fill the form — available now.
+                  </div>
+                </div>
+                <div className={appStyles.fieldBox}>
+                  <div className={appStyles.fieldElem}>
+                    <Search placeholder="Name" />
+                  </div>
+                  <div className={appStyles.fieldElem}>
+                    <Search placeholder="Email address" />
+                  </div>
+                  <div className={appStyles.fieldElem}>
+                    <Search placeholder="Budget range" />
+                  </div>
+                  <div className={appStyles.fieldElem}>
+                    <Search placeholder="Website link" />
+                  </div>
+                  <div className={appStyles.fieldElem}>
+                    <textarea
+                      placeholder="Project details"
+                      className={appStyles.textArea}
+                    />
+                    <div className={appStyles.image} onClick={handleImageClick}>
+                      <img draggable="false" src={picture} alt="data" />
+                    </div>
+                    <input
+                      type="file"
+                      ref={fileInputRef}
+                      style={{ display: "none" }}
+                      accept=".png,.jpg,.jpeg,.mp4,.mov"
+                      onChange={handleFileChange}
+                    />
+                    {selectedFiles.length > 0 && (
+                      <div className={appStyles.selectedFiles}>
+                        {selectedFiles.map((file, index) => (
+                          <div className={appStyles.fileName}>
+                            <label key={index}>{file.name}</label>
+                            <div
+                              className={appStyles.cancelButton}
+                              onClick={() => deleteFiles(index)}
+                            >
+                              <span className={appStyles.cancel}></span>
+                              <span className={appStyles.cancel}></span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <div className={appStyles.button}>
+                    <p>Send Message</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+        {isMobile && (
+          <div className={appStyles.cardGridMobile}>
+            <div className={appStyles.socialContainerMobile}>
+              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                <div className={appStyles.image}>
+                  <img src={facebook} width={50} height={50} alt="facebook" />
+                </div>
+                <div className={appStyles.title}>Facebook</div>
+              </div>
+              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                <div className={appStyles.image}>
+                  <img src={telegram} width={70} height={70} alt="facebook" />
+                </div>
+                <div className={appStyles.title}>Telegram</div>
+              </div>
+              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                <div className={appStyles.image}>
+                  <img src={instagram} width={70} height={70} alt="facebook" />
+                </div>
+                <div className={appStyles.title}>Instagram</div>
+              </div>
+              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                <div className={appStyles.image}>
+                  <img src={whatsapp} width={70} height={70} alt="facebook" />
+                </div>
+                <div className={appStyles.title}>WhatsApp</div>
+              </div>
+              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+                <div className={appStyles.image}>
+                  <img src={mail} width={70} height={70} alt="facebook" />
+                </div>
+                <div className={appStyles.title}>mail</div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default FooterContact;

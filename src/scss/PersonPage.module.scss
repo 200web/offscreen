@@ -1,0 +1,117 @@
+.section {
+  width: 90%;
+  min-height: 100vh;
+  max-height: max-content;
+  z-index: 10;
+  margin: 0 auto;
+  background-color: #121212;
+
+  .content {
+    display: flex;
+    width: 100%;
+    min-height: 80vh;
+    margin: 5rem 0 0 0;
+
+    .teamDescription {
+      width: 50%;
+      color: white;
+
+      .header {
+        padding: 0 1.5rem 2rem 1.5rem;
+        font-size: 60px;
+        font-family: "Inter";
+      }
+
+      .textContent {
+        padding: 1rem;
+        font-family: "Inter";
+        height: 80%;
+
+        .profession {
+          padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+          font-size: 22px;
+        }
+
+        .name {
+          padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+          font-size: 45px;
+          font-weight: 500;
+        }
+
+        .addInf {
+          width: 85%;
+
+          padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+          font-size: 22px;
+          opacity: 0.65;
+
+          p {
+            margin-top: 0.9rem;
+          }
+        }
+
+        &.fadeIn {
+          opacity: 1;
+          transition: opacity 0.5s ease-in;
+        }
+
+        &.fadeOut {
+          opacity: 0;
+          transition: opacity 0.5s ease-out;
+        }
+      }
+
+      .button {
+        display: flex;
+        width: 70%;
+        margin-top: 2rem;
+        margin-left: 2.5rem;
+        font-family: "Inter";
+
+        .contactButton {
+          text-decoration: none;
+          color: white;
+
+          span {
+            padding-left: 5rem;
+          }
+
+          img {
+            position: absolute;
+            z-index: 7;
+            scale: 0.6;
+            top: 7%;
+            left: 13%;
+            transform: translate(-50%, -50%);
+          }
+        }
+
+        span {
+          background-color: #232323;
+          padding: 1rem 3rem 1rem 3rem;
+          border-radius: 6px;
+          transition: 0.2s;
+        }
+      }
+    }
+
+    .portrait {
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      margin-right: 0.5rem;
+      box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      width: 50%;
+      margin-bottom: 6%;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 1s;
+      }
+    }
+  }
+}
