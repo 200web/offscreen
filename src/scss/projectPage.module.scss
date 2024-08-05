@@ -13,73 +13,236 @@
   margin: 0;
 }
 
-.main {
-  height: 100%;
-  z-index: 10;
-  background-color: #f0f0f0;
-}
+// .main {
+//   height: 100%;
+//   z-index: 10;
+//   background-color: #f0f0f0;
+// }
 
 .layout {
   @include noselect();
-  position: fixed;
   width: 100%;
+  max-width: 2200px;
   margin: 0 auto;
-  padding-top: 0.5rem;
   z-index: 12;
   transition: 0.4s;
-  background-color: transparent;
-  //   text-wrap: nowrap;
-  //   overflow: hidden;
-  color: white;
-  text-transform: uppercase;
+  background-color: #f0f0f0;
 
-  &.active {
-    background-color: transparent;
-    box-shadow: 0 0 0 1px black;
-    .headerContent .buttonSide .h_but_s {
-      opacity: 1;
-    }
-  }
-
-  .headerContent {
-    display: flex;
+  .Headerlayout {
+    @include noselect();
+    position: fixed;
+    width: 100%;
+    max-width: 2200px;
     margin: 0 auto;
+    z-index: 12;
+    transition: 0.4s;
+    background-color: transparent;
+    //   text-wrap: nowrap;
+    //   overflow: hidden;
+    color: white;
+    text-transform: uppercase;
 
-    .titleSide {
-      flex: 1 1;
-      padding: 0.6rem 0.7rem 0.5rem 1rem;
-      font-size: 16px;
-      font-family: "Inter";
-      color: black;
+    &.active {
+      .headerContent .buttonSide .h_but_s {
+        opacity: 1;
+      }
     }
-    .buttonSide {
+
+    .headerContent {
       display: flex;
-      justify-content: end;
-      gap: 0.4rem;
-      padding-right: 1rem;
-      padding-bottom: 0.7rem;
+      width: 100%;
+      position: fixed;
+      margin: 0 auto;
+      z-index: 999;
 
-      .h_but_s {
-        font-size: 12px;
-        padding: 0.6rem 1rem;
-        background-color: #232323;
-        border-radius: 6px;
-        transition: 0.2s;
-        cursor: pointer;
+      .menuButton {
+        position: absolute;
+        right: 2%;
+        width: 50px;
+        height: 50px;
+        z-index: -1;
         opacity: 0;
-        font-family: "Inter";
-        text-decoration: none;
+        transition: 0.5s;
 
-        &:last-child {
-          background-color: #d3e400;
-          color: #121212;
-          cursor: pointer;
-          opacity: 1;
-          font-weight: 500;
+        .toggle {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 25px;
+          height: 3px;
+          background-color: rgb(0, 0, 0);
+          border-radius: 4px;
+          transition: 0.5s;
+          margin-top: 0.5rem;
+
+          &:nth-child(1) {
+            top: 35%;
+          }
+
+          &:nth-child(2) {
+            top: 50%;
+          }
+
+          &:nth-child(3) {
+            width: 15px;
+            left: calc(50% - 5px);
+            top: 65%;
+          }
         }
 
-        &:hover {
-          box-shadow: 0 0 0 1px white;
+        &.visible {
+          opacity: 1;
+          z-index: 999;
+        }
+
+        &.active {
+          transform: translateX(-25%);
+          .toggle {
+            &:nth-child(1) {
+              top: 50%;
+              transform: rotate(135deg);
+            }
+
+            &:nth-child(2) {
+              opacity: 0;
+              transform: translate(0, 0) rotate(0);
+            }
+
+            &:nth-child(3) {
+              top: 50%;
+              left: 50%;
+              width: 25px;
+              transform: rotate(-135deg);
+            }
+          }
+        }
+      }
+
+      .titleSide {
+        flex: 1 1;
+        margin-top: 0.5rem;
+        padding: 0.6rem 0.7rem 0.5rem 1rem;
+        font-size: 16px;
+        font-family: "Inter";
+        font-weight: 800;
+        color: black;
+        z-index: 99;
+
+        @media (max-width: 690px) {
+          position: absolute;
+          padding: 1rem 0.7rem 0.5rem 1rem;
+        }
+      }
+      .h_but_s_Mobile {
+        position: absolute;
+        right: 4rem;
+        margin-top: 1rem;
+        padding: 0.6rem 0.7rem 0.5rem 1rem;
+        text-decoration: none;
+        font-family: "Inter";
+        background-color: #d3e400;
+        color: #121212;
+        font-weight: 500;
+        border-radius: 6px;
+        font-size: 12px;
+      }
+      .buttonSide {
+        margin-top: 0.5rem;
+        &.mobile {
+          width: 100%;
+          height: 0;
+          border-radius: 0 0 15px 15px;
+          top: 23.5%;
+          display: flex;
+          justify-content: center;
+          box-shadow: none;
+          transition: 1s;
+          margin-top: 0;
+          overflow: hidden;
+
+          ul {
+            width: 90%;
+            margin-top: 0 !important;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            height: max-content;
+            transition: 1s;
+
+            li {
+              width: 100%;
+            }
+
+            .h_but_s {
+              font-family: "Inter";
+              background-color: transparent;
+              color: #121212;
+              font-weight: 800;
+              border-radius: 0;
+              font-size: 12px;
+              opacity: 1;
+              border-bottom: 1px solid black;
+
+              &:last-child {
+                background-color: transparent;
+                color: #121212;
+                opacity: 1;
+                font-weight: 800;
+              }
+            }
+
+            .underline {
+              width: 65%;
+              height: 20%;
+            }
+          }
+
+          &.active {
+            backdrop-filter: blur(50px);
+            filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+            height: 30rem;
+            box-shadow: 0 4px 7px 1px rgb(0, 0, 0);
+
+            ul {
+              margin-top: 10rem !important;
+              opacity: 1;
+            }
+          }
+        }
+
+        ul {
+          list-style: none;
+          display: flex;
+          justify-content: end;
+          gap: 0.4rem;
+          padding-right: 1rem;
+          padding-bottom: 0.7rem;
+          color: white;
+
+          .h_but_s {
+            font-size: 12px;
+            padding: 0.6rem 1rem;
+            background-color: #232323;
+            border-radius: 6px;
+            transition: 0.2s;
+            cursor: pointer;
+            opacity: 0;
+            font-family: "Inter";
+            text-decoration: none;
+
+            &:last-child {
+              background-color: #d3e400;
+              color: #121212;
+              cursor: pointer;
+              opacity: 1;
+              font-weight: 500;
+            }
+
+            &:hover {
+              box-shadow: 0 0 0 1px white;
+            }
+          }
         }
       }
     }
@@ -142,11 +305,152 @@
     }
   }
 
+  .cardGridMobile {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 2.5em;
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+    }
+
+    &::after {
+      top: auto;
+      bottom: 1.5%;
+      left: 0;
+      width: 1px;
+      height: 95%;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2)
+      );
+    }
+
+    &::before {
+      left: auto;
+      bottom: 1.5%;
+      right: 0;
+      width: 1px;
+      height: 95%;
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2)
+      );
+    }
+
+    .socialContainerMobile {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0.2em 0.2em 0 0.2em;
+      width: 100%;
+      height: 950px;
+
+      @media (max-width: 660px) {
+        height: 800px;
+      }
+
+      @media (max-width: 540px) {
+        height: 700px;
+      }
+
+      @media (max-width: 440px) {
+        height: 650px;
+      }
+
+      :nth-child(5) {
+        width: 100% !important;
+      }
+
+      .socialCard {
+        position: relative;
+        width: 49%;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        margin: 0.5%;
+        border-radius: 35px;
+        transition: 0.15s;
+        transition: background-color 0.6s;
+
+        img,
+        .title {
+          transform: scale(0.8);
+          transition: transform 0.7s;
+
+          @media (max-width: 660px) {
+            transform: scale(0.7);
+          }
+
+          @media (max-width: 440px) {
+            transform: scale(0.6);
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          background-color: #292929;
+
+          img {
+            transform: scale(1);
+            filter: sepia(100%) saturate(2%) hue-rotate(129deg) brightness(107%)
+              contrast(101%) !important;
+          }
+          .title {
+            transform: translate(-50%, -100%);
+            color: white;
+
+            @media (max-width: 660px) {
+              transform: translate(-50%, -100%);
+            }
+
+            @media (max-width: 440px) {
+              transform: translate(-50%, -100%);
+            }
+          }
+        }
+
+        .image {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+
+          img {
+            max-width: 100%;
+            height: auto;
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
+              brightness(100%) contrast(104%);
+          }
+        }
+
+        .title {
+          position: absolute;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-transform: uppercase;
+          font-size: clamp(10px, 2vw, 20px);
+          font-weight: 800;
+          bottom: 10%;
+          color: black;
+          font-family: "Inter";
+        }
+      }
+    }
+  }
+
   .cardGrid {
     width: 100%;
     margin: 0 auto;
     margin-top: 7em;
     padding-bottom: 2.5em;
+
+    @media (max-width: 1000px) {
+      margin-top: 0;
+    }
 
     .socialContainer {
       position: relative;
@@ -265,6 +569,7 @@
 
         .fieldElem {
           width: 49%;
+          margin-top: 0.5rem;
 
           input {
             background-color: #f0f0f0;
@@ -391,14 +696,23 @@
   margin: 0 auto 8rem auto;
   padding-top: 3.5rem;
 
-  label {
-    font-size: 200px;
-    font-family: "Inter";
+  .row {
+    width: 100%;
+    label {
+      font-size: clamp(80px, 12vw, 200px);
+      font-family: "Inter";
+    }
   }
 
   .image {
     display: flex;
-    justify-content: end;
+    width: 100%;
+
+    img {
+      width: clamp(270px, 70vw, 80rem);
+      height: clamp(205px, 50vw, 60rem);
+      margin-left: auto;
+    }
 
     .arrow {
       position: absolute;
@@ -409,6 +723,29 @@
       height: 40px;
       z-index: 7;
       cursor: pointer;
+
+      @media (max-width: 820px) {
+        scale: 0.9;
+        right: 3.5%;
+        bottom: -13%;
+      }
+
+      @media (max-width: 710px) {
+        scale: 0.8;
+        right: 4.5%;
+        bottom: -14%;
+      }
+
+      @media (max-width: 600px) {
+        scale: 0.7;
+        right: 5.5%;
+        bottom: -16%;
+        right: 2.4%;
+      }
+
+      @media (max-width: 515px) {
+        display: none;
+      }
     }
 
     &::before {
@@ -422,6 +759,26 @@
       border-radius: 50%;
       z-index: 7;
       cursor: pointer;
+
+      @media (max-width: 820px) {
+        scale: 0.8;
+        bottom: -14%;
+      }
+
+      @media (max-width: 710px) {
+        scale: 0.6;
+        bottom: -17%;
+      }
+
+      @media (max-width: 600px) {
+        scale: 0.5;
+        bottom: -21%;
+        right: 0;
+      }
+
+      @media (max-width: 515px) {
+        display: none;
+      }
     }
   }
 
@@ -429,44 +786,66 @@
     font-family: "Inter";
     text-transform: uppercase;
     font-weight: 300;
-    font-size: 45px;
+    font-size: clamp(22px, 4vw, 45px);
     width: 90%;
-    text-indent: 33.5rem;
+    text-indent: calc(111% - clamp(270px, 70vw, 80rem));
   }
 }
 
 .descriptionSection {
   width: 98%;
-  margin: 12rem auto 2rem auto;
+  margin: 6rem auto 2rem auto;
 
   label {
-    font-size: 105px;
+    font-size: clamp(50px, 10vw, 105px);
     font-family: "Inter";
   }
   span {
-    font-size: 50px;
+    font-size: clamp(35px, 6vw, 50px);
     font-family: "Inter";
   }
 
   .details {
     display: flex;
     justify-content: space-around;
-    font-size: 22px;
+    font-size: clamp(16px, 2vw, 22px);
     font-family: "Inter";
-    margin-top: 12rem;
+    margin-top: 6rem;
     margin-bottom: 8rem;
 
+    .listFlex {
+      width: 50%;
+      display: flex;
+      gap: 10rem;
+
+      @media (max-width: 830px) {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+
     article {
-      width: 37%;
+      width: 30%;
       text-align: end;
+
+      @media (max-width: 830px) {
+        text-align: start;
+      }
     }
     p {
-      width: 19%;
+      text-transform: none;
+      width: 30%;
+
+      @media (max-width: 830px) {
+        width: 100%;
+      }
     }
   }
 
   .gifRow {
+    width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 
     img {
@@ -474,15 +853,21 @@
     }
 
     :first-of-type {
-      width: 100%;
+      width: 50%;
       height: 100%;
       object-fit: contain;
       border-radius: 10px;
     }
 
     :last-of-type {
-      width: 100%;
+      width: 50%;
       height: 20%;
+      object-fit: cover;
+
+      @media (max-width: 600px) {
+        width: 80%;
+        margin-left: 20%;
+      }
     }
   }
 
@@ -499,6 +884,18 @@
 .headerVideo {
   height: 700px;
   margin: 4rem auto 0 auto;
+
+  @media (max-width: 900px) {
+    height: 600px;
+  }
+
+  @media (max-width: 700px) {
+    height: 500px;
+  }
+
+  @media (max-width: 500px) {
+    height: 400px;
+  }
 
   img {
     width: 100%;
@@ -529,6 +926,18 @@
     filter: blur(0.5px);
     backdrop-filter: blur(15px);
     opacity: 1;
+
+    @media (max-width: 900px) {
+      transform: translate(-50%, -50%) scale(0.8);
+    }
+
+    @media (max-width: 700px) {
+      transform: translate(-50%, -50%) scale(0.6);
+    }
+
+    @media (max-width: 500px) {
+      transform: translate(-50%, -50%) scale(0.45);
+    }
 
     .buttonNext {
       position: absolute;

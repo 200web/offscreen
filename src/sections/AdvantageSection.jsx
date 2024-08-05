@@ -10,6 +10,43 @@ import baby from "../assets/img/baby.webp";
 import { Link } from "react-router-dom";
 
 const AdvantageSection = () => {
+  const myRef = React.useRef();
+  const [isVisible, setIsVisible] = React.useState(false);
+  const [boxVisible, setBoxVisible] = React.useState([
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.4 }
+    );
+    observer.observe(myRef.current);
+  }, []);
+
+  React.useEffect(() => {
+    if (isVisible) {
+      boxVisible.forEach((_, index) => {
+        setTimeout(() => {
+          setBoxVisible((prev) => {
+            const newVisibility = [...prev];
+            newVisibility[index] = true;
+            return newVisibility;
+          });
+        }, 200 * index);
+      });
+    }
+  }, [isVisible]);
+
   return (
     <section className={appStyles.section}>
       <div className={appStyles.Row}>
@@ -17,14 +54,21 @@ const AdvantageSection = () => {
           <h1>OFFSCREEN</h1>
         </div>
       </div>
-      <div className={appStyles.content}>
+      <div
+        className={`${appStyles.content} ${isVisible ? appStyles.active : ""}`}
+        ref={myRef}
+      >
         <div className={appStyles.introCard}>
           <div className={appStyles.headerContent}>
             <div className={appStyles.imgBox}>
               <img draggable="false" src={packa} alt="pointer" />
             </div>
           </div>
-          <div className={appStyles.textContent}>
+          <div
+            className={`${appStyles.textContent} ${
+              boxVisible[0] && appStyles.active
+            }`}
+          >
             <span>
               We believe in the power of stories that inspire, educate, and
               entertain.
@@ -37,7 +81,11 @@ const AdvantageSection = () => {
               <img draggable="false" src={tick} alt="pointer" />
             </div>
           </div>
-          <div className={appStyles.textContent}>
+          <div
+            className={`${appStyles.textContent} ${
+              boxVisible[1] && appStyles.active
+            }`}
+          >
             <span>
               At <b>offscreen</b> every project starts with a unique idea,
               transforming into a captivating visual narrative that can impact
@@ -46,7 +94,11 @@ const AdvantageSection = () => {
           </div>
         </div>
         <div className={appStyles.activeCard}>
-          <div className={appStyles.cardImage}>
+          <div
+            className={`${appStyles.cardImage} ${
+              boxVisible[2] && appStyles.active
+            }`}
+          >
             <img draggable="false" src={caset} alt="pointer" />
           </div>
           <Link to={`/Contact`} className={appStyles.contactButton}>
@@ -90,7 +142,11 @@ const AdvantageSection = () => {
               </div>
             </div>
           </div>
-          <div className={appStyles.advantageCard}>
+          <div
+            className={`${appStyles.advantageCard} ${
+              boxVisible[2] && appStyles.active
+            }`}
+          >
             <div className={appStyles.cardImageSpecial2}>
               <img src={security} alt="pointer" />
             </div>

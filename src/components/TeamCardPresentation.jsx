@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 
 const TeamCardPresentation = ({ images }) => {
   const [isAnimating, setIsAnimating] = React.useState(images.map(() => false));
+  const [isPortraitClicked, setIsPortraitClicked] = React.useState(false);
   const [isTextChanging, setIsTextChanging] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 1200);
   const [currentImages, setCurrentImages] = React.useState(
@@ -104,6 +105,47 @@ const TeamCardPresentation = ({ images }) => {
     }
   };
 
+  const handleMouseEnterMobile = (id) => {
+    setIsPortraitClicked(true);
+    clearInterval(animationTimeIntervale.current);
+    clearTimeout(animationTimeouts2.current);
+    if (isAnimating.some((anim) => anim === true)) {
+      return;
+    }
+    if (currentImages.some((img) => img !== anonim)) {
+      const activeIds = currentImages
+        .map((img, index) => (img !== anonim ? index : -1))
+        .filter((index) => index !== -1);
+      currentImages[activeIds] = anonim;
+      setCurrentImages(currentImages);
+    }
+    if (isAnimating) {
+      const newAnimating = [...isAnimating];
+      newAnimating[id] = true;
+      setIsAnimating(newAnimating);
+      setIsTextChanging(true);
+
+      const newImages = [...currentImages];
+      newImages[id] = TeamHead;
+      setCurrentImages(newImages);
+
+      const updatedImages = [...currentImages];
+      updatedImages[id] = images[id];
+      setCurrentImages(updatedImages);
+
+      const cartItem = cards.find((obj) => id === obj.id);
+      setCurrentCard(cartItem);
+
+      const resetAnimating = newAnimating.map(() => false);
+      setIsAnimating(resetAnimating);
+      setIsTextChanging(false);
+      if (currentImages[id] === images[id]) {
+        const firstUpdatedImages = currentImages.map(() => anonim);
+        setCurrentImages(firstUpdatedImages);
+      }
+    }
+  };
+
   const automatAnimateEnd = (id) => {
     if (isAnimating.some((anim) => anim === true)) {
       if (animationTimeouts.current[id]) {
@@ -128,6 +170,7 @@ const TeamCardPresentation = ({ images }) => {
   };
 
   const handleMouseLeave = (id) => {
+    setIsPortraitClicked(false);
     if (isAnimating.some((anim) => anim === true)) {
       if (animationTimeouts.current[id]) {
         clearTimeout(animationTimeouts.current[id]);
@@ -234,23 +277,24 @@ const TeamCardPresentation = ({ images }) => {
           ))}
         {isMobile &&
           images.map((photo, id) => (
-            <Link to={`/team/${currentCard.id}`} key={id}>
+            <div key={id}>
               <div
                 className={appStyles.portrait}
-                onMouseEnter={() => handleMouseEnter(id)}
+                onClick={() => handleMouseEnterMobile(id)}
                 onMouseLeave={() => handleMouseLeave(id)}
               >
-                <img
-                  id={`video-${id}`}
-                  src={currentImages[id]}
-                  alt={`portrait-${id}`}
-                  className={
-                    isAnimating[id] ? appStyles.fadeOut : appStyles.fadeIn
-                  }
-                />
+                <div className={appStyles.image}>
+                  <img
+                    id={`video-${id}`}
+                    src={currentImages[id]}
+                    alt={`portrait-${id}`}
+                  />
+                </div>
                 <span
                   className={
-                    currentImages[id] === anonim
+                    isPortraitClicked
+                      ? ""
+                      : currentImages[id] === anonim
                       ? ""
                       : isAnimating[id]
                       ? ""
@@ -259,8 +303,69 @@ const TeamCardPresentation = ({ images }) => {
                 >
                   CEO - Director
                 </span>
+                <div className={appStyles.descriptionBox}>
+                  <div
+                    className={`${appStyles.profession} ${
+                      isPortraitClicked
+                        ? currentImages[id] === anonim
+                          ? ""
+                          : isAnimating[id]
+                          ? ""
+                          : appStyles.fadeIn
+                        : ""
+                    }`}
+                  >
+                    {currentCard.profession}
+                  </div>
+                  <div
+                    className={`${appStyles.name} ${
+                      isPortraitClicked
+                        ? currentImages[id] === anonim
+                          ? ""
+                          : isAnimating[id]
+                          ? ""
+                          : appStyles.fadeIn
+                        : ""
+                    }`}
+                  >
+                    {currentCard.name}
+                  </div>
+                  <div
+                    className={`${appStyles.addInf} ${
+                      isPortraitClicked
+                        ? currentImages[id] === anonim
+                          ? ""
+                          : isAnimating[id]
+                          ? ""
+                          : appStyles.fadeIn
+                        : ""
+                    }`}
+                  >
+                    {currentCard.description}
+                  </div>
+                  <div
+                    className={`${appStyles.button} ${
+                      isPortraitClicked
+                        ? currentImages[id] === anonim
+                          ? ""
+                          : isAnimating[id]
+                          ? ""
+                          : appStyles.fadeIn
+                        : ""
+                    }`}
+                  >
+                    {currentCard.description !== "" && (
+                      <Link
+                        to={`/team/${currentCard.id}`}
+                        className={appStyles.contactButton}
+                      >
+                        <span>SEE MORE</span>
+                      </Link>
+                    )}
+                  </div>
+                </div>
               </div>
-            </Link>
+            </div>
           ))}
       </div>
     </>

@@ -9,6 +9,7 @@ import whatsapp from "../assets/img/whatsapp.webp";
 import mail from "../assets/img/mail.webp";
 import { setIsLoaded } from "../Redux/introSlice";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 const FooterContact = () => {
   const fileInputRef = React.useRef(null);
@@ -191,12 +192,15 @@ const FooterContact = () => {
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
               </div>
-              <div className={`${appStyles.socialCard} ${appStyles.active}`}>
+              <Link
+                to={`/Contact`}
+                className={`${appStyles.socialCard} ${appStyles.active}`}
+              >
                 <div className={appStyles.image}>
                   <img src={mail} width={70} height={70} alt="facebook" />
                 </div>
                 <div className={appStyles.title}>mail</div>
-              </div>
+              </Link>
             </div>
           </div>
         )}

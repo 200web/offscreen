@@ -112,7 +112,17 @@ const ContactCard = ({
             }`}
           >
             {currentCard > 1 ? (
-              <img src={images[currentCard - 2]} alt="image" />
+              <img
+                src={images[currentCard - 2]}
+                alt="image"
+                className={
+                  images[currentCard - 2] === images[1]
+                    ? contactStyles.dollar
+                    : images[currentCard - 2] === images[2]
+                    ? contactStyles.clock
+                    : ""
+                }
+              />
             ) : (
               <span>
                 Help us understand the results you want to achieve through our

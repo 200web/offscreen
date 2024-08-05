@@ -31,14 +31,6 @@ const PersonPage = () => {
               ))}
             </div>
           </div>
-          <div className={personStyle.button}>
-            {cards[id].description !== "" && (
-              <Link to={`/`} className={personStyle.contactButton}>
-                <img draggable="false" src={arrow} alt="arrow" />
-                <span>BACK TO TEAM</span>
-              </Link>
-            )}
-          </div>
         </div>
         <div key={id} className={personStyle.portrait}>
           <img
@@ -46,6 +38,14 @@ const PersonPage = () => {
             src={cards[id].image}
             alt={`portrait-${id}`}
           />
+        </div>
+        <div className={personStyle.button}>
+          {cards[id].description !== "" && (
+            <Link to={`/`} className={personStyle.contactButton}>
+              <img draggable="false" src={arrow} alt="arrow" />
+              <span>BACK TO TEAM</span>
+            </Link>
+          )}
         </div>
       </div>
     </section>

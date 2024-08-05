@@ -70,9 +70,13 @@ section {
 }
 
 .advantageContent {
-  @media (max-width: 1210px) {
+  @media (max-width: 1200px) {
     flex-direction: column;
     align-items: center;
+  }
+
+  @media (max-width: 450px) {
+    gap: 0;
   }
 }
 
@@ -145,6 +149,14 @@ section {
       margin: 0 auto 0 2rem;
       font-size: clamp(16px, 4vw, 22px);
       font-family: "Inter";
+      opacity: 0;
+      transition: 0.5s;
+      transform: translateY(20px);
+
+      &.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     &:nth-child(2) .textContent {
@@ -162,7 +174,14 @@ section {
       z-index: 7;
       top: 50%;
       left: 39%;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, calc(-50% + 20px));
+      opacity: 0;
+      transition: 0.5s;
+
+      &.active {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+      }
     }
 
     .imgBox,
@@ -190,7 +209,6 @@ section {
       width: 30%;
 
       .textContent {
-        opacity: 1;
         font-weight: 500;
       }
     }
@@ -211,8 +229,18 @@ section {
     position: relative;
     transition: 0.5s;
 
-    @media (max-width: 1210px) {
+    @media (max-width: 1200px) {
       width: clamp(25rem, 50vw, 28rem);
+    }
+
+    @media (max-width: 450px) {
+      transform: scale(0.9);
+      margin-top: -2rem;
+    }
+
+    @media (max-width: 390px) {
+      transform: scale(0.8);
+      margin-top: -4rem;
     }
 
     .headerContent {
@@ -238,7 +266,7 @@ section {
           scale: 0.9;
         }
 
-        @media (max-width: 1210px) {
+        @media (max-width: 1200px) {
           scale: 1;
         }
       }
@@ -303,8 +331,16 @@ section {
       background-color: #d3e400;
       color: black;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         transform: translateY(0);
+      }
+
+      @media (max-width: 450px) {
+        transform: translateY(0) scale(0.9);
+      }
+
+      @media (max-width: 390px) {
+        transform: translateY(0) scale(0.8);
       }
 
       .blurBlock {
@@ -321,8 +357,16 @@ section {
       background-color: #ededed;
       color: black;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         transform: translateY(0);
+      }
+
+      @media (max-width: 450px) {
+        transform: translateY(0) scale(0.9);
+      }
+
+      @media (max-width: 390px) {
+        transform: translateY(0) scale(0.8);
       }
 
       .blurBlock {
@@ -345,7 +389,7 @@ section {
     &:nth-child(1) {
       animation: fly-down 4s ease-in-out infinite;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         animation: none;
       }
     }
@@ -353,7 +397,7 @@ section {
     &:nth-child(2) {
       animation: fly-up 4s ease-in-out infinite;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         animation: none;
       }
     }
@@ -361,7 +405,7 @@ section {
     &:nth-child(3) {
       animation: fly-down2 4s ease-in-out infinite;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         animation: none;
       }
     }
@@ -369,7 +413,7 @@ section {
     &:nth-child(4) {
       animation: fly-up2 4s ease-in-out infinite;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         animation: none;
       }
     }
@@ -384,7 +428,7 @@ section {
   margin-top: 15rem;
   margin-bottom: 10rem;
 
-  @media (max-width: 1210px) {
+  @media (max-width: 1200px) {
     margin-top: 6rem;
   }
 }
@@ -403,7 +447,11 @@ section {
   .title,
   .centralTitle {
     width: 98%;
-    margin: 14rem auto 0 auto;
+    margin: 8rem auto 0 auto;
+
+    @media (max-width: 600px) {
+      margin: 0 auto;
+    }
 
     span {
       letter-spacing: 0.2rem;
@@ -421,7 +469,7 @@ section {
     font-size: 42px;
     transform: translateY(100%);
 
-    @media (max-width: 1210px) {
+    @media (max-width: 1200px) {
       transform: translateY(0);
     }
 
@@ -430,7 +478,7 @@ section {
       height: 170vh;
       transition: 0.5s;
 
-      @media (max-width: 1210px) {
+      @media (max-width: 1200px) {
         height: 140vh;
         transform: translateY(calc(80rem - (var(--scrollTop) * 0.2)));
       }
@@ -449,7 +497,7 @@ section {
         font-size: calc(45rem - (var(--scrollTop) / 5));
         transition: 0.5s;
 
-        @media (max-width: 1210px) {
+        @media (max-width: 1200px) {
           font-size: calc(45rem - (var(--scrollTop) / 7.6));
         }
 
@@ -464,9 +512,21 @@ section {
     }
 
     &.scrollingStop {
-      transform: translateY(calc(22.6rem - var(--TempscrollTop)));
+      transform: translateY(calc(30rem - var(--TempscrollTop)));
       height: 170vh;
       transition: 0.5s;
+
+      @media (max-width: 1210px) {
+        transform: translateY(calc(0rem - var(--TempscrollTop)));
+      }
+
+      @media (max-width: 900px) {
+        transform: translateY(calc(0rem - var(--TempscrollTop)));
+      }
+
+      @media (max-width: 500px) {
+        transform: translateY(calc(0rem - var(--TempscrollTop)));
+      }
 
       span {
         font-size: 7.6rem;
@@ -483,9 +543,9 @@ section {
     white-space: nowrap;
     text-align: center;
 
-    // @media (max-width: 1470px) {
-    //   white-space: normal;
-    // }
+    @media (max-width: 750px) {
+      white-space: normal;
+    }
 
     div {
       overflow: hidden;
@@ -501,6 +561,10 @@ section {
       height: 202px;
       border-radius: 0% 100% 100% 0% / 100% 50% 50% 0%;
       background-color: #121212;
+
+      @media (max-width: 750px) {
+        display: none;
+      }
     }
 
     div:first-of-type::before {
@@ -513,6 +577,10 @@ section {
       height: 202px;
       border-radius: 100% 0% 0% 100% / 50% 0% 100% 50%;
       background-color: #121212;
+
+      @media (max-width: 750px) {
+        display: none;
+      }
     }
 
     &.active {
@@ -527,8 +595,36 @@ section {
     h1 {
       color: #d3e400;
       letter-spacing: 0;
-      font-size: clamp(100px, 18vw, 260px);
+      font-size: clamp(100px, 17vw, 260px);
       font-family: MersadRegular;
+
+      @media (max-width: 1260px) {
+        font-size: clamp(100px, 16vw, 260px);
+      }
+
+      @media (max-width: 1050px) {
+        font-size: clamp(100px, 15vw, 260px);
+      }
+
+      @media (max-width: 450px) {
+        font-size: clamp(90px, 15vw, 260px);
+      }
+
+      @media (max-width: 400px) {
+        font-size: clamp(89px, 15vw, 260px);
+      }
+
+      @media (max-width: 380px) {
+        font-size: clamp(85px, 15vw, 260px);
+      }
+
+      @media (max-width: 360px) {
+        font-size: clamp(80px, 15vw, 260px);
+      }
+
+      @media (max-width: 335px) {
+        font-size: clamp(73px, 15vw, 260px);
+      }
     }
 
     .startWord {
@@ -544,17 +640,38 @@ section {
       margin-left: 7rem;
       font-family: MersadExtraBold;
       transform: translateX(-880px);
+
+      @media (max-width: 750px) {
+        margin-left: 0;
+      }
     }
 
     img {
       position: absolute;
-      height: 215px;
+      height: 75%;
       z-index: 10;
-      // left: 35%;
-      transform: translateX(-100%);
+      left: 28%;
+      transform: translate(-50%, -50);
       object-fit: contain;
       filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%)
         contrast(101%);
+
+      @media (max-width: 1260px) {
+        left: 29%;
+      }
+
+      @media (max-width: 1050px) {
+        left: 31%;
+      }
+
+      @media (max-width: 605px) {
+        height: 40%;
+        left: 35%;
+      }
+
+      @media (max-width: 400px) {
+        left: 36%;
+      }
     }
   }
 
@@ -743,7 +860,7 @@ section {
       .buttonHeader {
         display: flex;
         width: 100%;
-        font-size: 30px;
+        font-size: clamp(18px, 4vw, 22px);
         padding: 2rem;
         font-family: "Inter";
 
@@ -764,7 +881,7 @@ section {
         img {
           position: absolute;
           top: 15%;
-          left: 9%;
+          left: 5%;
           transform: translate(-50%, -50%);
           transition: transform 500ms;
           transform: rotate(180deg);
@@ -776,8 +893,12 @@ section {
         font-family: "Inter";
         width: 80%;
         padding: 1rem 2rem 2rem 2rem;
-        font-size: 22px;
+        font-size: clamp(14px, 3.6vw, 22px);
         opacity: 0.75;
+
+        @media (max-width: 800px) {
+          padding: 0 2rem 2rem 2rem;
+        }
       }
 
       &:hover {
@@ -1037,7 +1158,7 @@ section {
     grid-row-gap: 10px;
     margin-right: 2rem;
 
-    @media (max-width: 1210px) {
+    @media (max-width: 1200px) {
       width: 100%;
       margin-right: 0;
       grid-template-columns: repeat(2, 1fr);
@@ -1057,7 +1178,114 @@ section {
 
     @media (max-width: 1200px) {
       width: 100%;
-      height: 250px;
+      height: 450px;
+
+      .image {
+        height: 100%;
+        width: 100%;
+        z-index: 50;
+      }
+
+      .descriptionBox {
+        width: 100%;
+        height: 100%;
+        transform: translateY(-101%);
+        border-radius: 10px;
+        z-index: 45;
+
+        .profession {
+          position: absolute;
+          top: 15%;
+          left: 5%;
+          font-size: clamp(15px, 4vw, 25px);
+          opacity: 0;
+
+          &.fadeIn {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+          }
+        }
+
+        .name {
+          position: absolute;
+          top: 25%;
+          left: 5%;
+          font-size: clamp(30px, 4vw, 45px);
+          opacity: 0;
+
+          &.fadeIn {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+          }
+        }
+
+        .addInf {
+          position: absolute;
+          width: 80%;
+          top: 40%;
+          left: 5%;
+          font-size: clamp(15px, 4vw, 21px);
+          opacity: 0;
+
+          @media (max-width: 500px) {
+            width: 60%;
+          }
+
+          &.fadeIn {
+            opacity: 0.65;
+            transition: opacity 0.5s ease-in;
+          }
+        }
+
+        .button {
+          height: 10%;
+          position: relative;
+          top: 80%;
+          opacity: 0;
+
+          &.fadeIn {
+            opacity: 1;
+            transition: opacity 0.5s ease-in;
+          }
+
+          .contactButton {
+            display: flex;
+            justify-content: center;
+            width: 80%;
+            height: 100%;
+            margin: 0 auto;
+            color: white;
+            background-color: #232323;
+            border-radius: 6px;
+
+            span {
+              width: max-content;
+              opacity: 1;
+              font-size: 12px;
+              right: none;
+              left: 50%;
+              top: 55%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+
+      &:hover {
+        img {
+          width: 80px;
+          height: 80px;
+          border-radius: 50%;
+          left: 47%;
+          top: 12%;
+          transform: translate(-50%, -50%);
+          border: 1px solid white;
+
+          @media (max-width: 500px) {
+            top: 15%;
+          }
+        }
+      }
     }
 
     @media (max-width: 500px) {
@@ -1068,7 +1296,6 @@ section {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: 1s;
 
       &:hover {
         cursor: pointer;
@@ -1555,26 +1782,26 @@ section {
 
     &::after {
       top: auto;
-      bottom: 1%;
+      bottom: 1.5%;
       left: 0;
       width: 1px;
       height: 95%;
       background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2),
         rgba(0, 0, 0, 0.2)
       );
     }
 
     &::before {
       left: auto;
-      bottom: 1%;
+      bottom: 1.5%;
       right: 0;
       width: 1px;
       height: 95%;
       background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.4),
+        rgba(255, 255, 255, 0.2),
         rgba(0, 0, 0, 0.2)
       );
     }
@@ -1790,15 +2017,16 @@ section {
 
         .fieldElem {
           width: 49%;
+          margin-bottom: 0.5rem;
 
           .image {
             position: absolute;
-            top: 0%;
-            right: 0%;
+            top: 7%;
+            right: 2%;
             padding: 0.2rem;
             border-radius: 8px;
             cursor: pointer;
-            transform: translate(-20%, -200%);
+            transform: translate(-50%, -50);
             width: 33px;
             height: 30px;
             background-color: #313131;
