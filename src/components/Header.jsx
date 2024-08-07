@@ -19,6 +19,45 @@ const Header = () => {
     setMenuVisible(!menuVisible);
   };
 
+  const handleActiveButton = (id) => {
+    if (isMobile) {
+      setMenuVisible(!menuVisible);
+    }
+    switch (id) {
+      case 0: {
+        const element = document.getElementById("about us");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        break;
+      }
+
+      case 1: {
+        const element = document.getElementById("services");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        break;
+      }
+
+      case 2: {
+        const element = document.getElementById("our works");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        break;
+      }
+
+      case 3: {
+        const element = document.getElementById("Team");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+        break;
+      }
+    }
+  };
+
   React.useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 690);
@@ -51,16 +90,28 @@ const Header = () => {
           } ${menuVisible && isMobile ? headerStyle.active : ""}`}
         >
           <ul>
-            <li className={headerStyle.h_but_s}>
+            <li
+              className={headerStyle.h_but_s}
+              onClick={() => handleActiveButton(0)}
+            >
               <span>About Us</span>
             </li>
-            <li className={headerStyle.h_but_s}>
+            <li
+              className={headerStyle.h_but_s}
+              onClick={() => handleActiveButton(1)}
+            >
               <span>Services</span>
             </li>
-            <li className={headerStyle.h_but_s}>
+            <li
+              className={headerStyle.h_but_s}
+              onClick={() => handleActiveButton(2)}
+            >
               <span>our works</span>
             </li>
-            <li className={headerStyle.h_but_s}>
+            <li
+              className={headerStyle.h_but_s}
+              onClick={() => handleActiveButton(3)}
+            >
               <span>our team</span>
             </li>
             {!isMobile && (

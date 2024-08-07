@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import contactStyles from "../scss/contactPage.module.scss";
+import arrowRight from "../assets/img/arrow Right.png";
+import arrowLeft from "../assets/img/arrow Left.png";
 import { Link, useNavigate } from "react-router-dom";
 import Search from "../components/Search/Search";
 import { useDispatch, useSelector } from "react-redux";
@@ -146,14 +148,16 @@ const ContactCard = ({
               className={contactStyles.buttonPrev}
               onClick={handlePrevClick}
             >
-              <span>&#129168;</span>
+              <img draggable="false" src={arrowLeft} />
             </button>
           )}
           <button
             className={contactStyles.buttonNext}
             onClick={handleNextClick}
           >
-            <span>&#129170;</span>
+            <span>
+              <img draggable="false" src={arrowRight} />
+            </span>
           </button>
         </div>
       </div>

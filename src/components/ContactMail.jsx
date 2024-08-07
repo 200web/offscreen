@@ -3,6 +3,7 @@ import contactStyles from "../scss/contactPage.module.scss";
 import Search from "../components/Search/Search";
 import picture from "../assets/img/picture.webp";
 import loaded from "../assets/img/accessLoaded.png";
+import arrowLeft from "../assets/img/arrow Left.png";
 import { Link } from "react-router-dom";
 
 const ContactMail = ({ isClicked, setIsClicked }) => {
@@ -133,7 +134,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
             <div className={contactStyles.pagination} onClick={handlePrevClick}>
               <div className={contactStyles.prevLayout}>
                 <button className={contactStyles.buttonPrev}>
-                  <span>&#129168;</span>
+                  <img draggable="false" src={arrowLeft} />
                 </button>
                 <label>Back</label>
               </div>

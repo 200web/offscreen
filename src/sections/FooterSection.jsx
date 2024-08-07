@@ -47,8 +47,30 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
       />
     </div>,
   ];
-
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
+  const [activeCard, setIsActiveCard] = React.useState(0);
   const teamPhotos = [dima, chel, dima, chel, dima, chel, dima, chel, dima];
+
+  const handleMoveOver = (id) => {
+    if (id === activeCard) {
+      setIsActiveCard(null);
+    } else setIsActiveCard(id);
+  };
+
+  const handleMoveLeave = () => {
+    setIsActiveCard(null);
+  };
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 860);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <section className={appStyles.section}>
@@ -64,7 +86,18 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
           alt="light"
         />
         <div className={appStyles.fagButtons}>
-          <div className={appStyles.button}>
+          <div
+            className={`${appStyles.button} ${
+              activeCard === 1 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleMoveOver(1);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(1) })}
+          >
             <div className={appStyles.buttonHeader}>
               <span>What is an estimate?</span>
               <div>
@@ -78,7 +111,18 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
               music into captivating art.
             </div>
           </div>
-          <div className={appStyles.button}>
+          <div
+            className={`${appStyles.button} ${
+              activeCard === 2 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleMoveOver(2);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(2) })}
+          >
             <div className={appStyles.buttonHeader}>
               <span>What deadlines depend on?</span>
               <div>
@@ -92,7 +136,18 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
               expertise in turning ideas into memorable visual narratives.
             </div>
           </div>
-          <div className={appStyles.button}>
+          <div
+            className={`${appStyles.button} ${
+              activeCard === 3 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleMoveOver(3);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(3) })}
+          >
             <div className={appStyles.buttonHeader}>
               <span>What the budget depends on?</span>
               <div>
@@ -106,7 +161,18 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
               educate, and entertain.
             </div>
           </div>
-          <div className={appStyles.button}>
+          <div
+            className={`${appStyles.button} ${
+              activeCard === 4 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleMoveOver(4);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(4) })}
+          >
             <div className={appStyles.buttonHeader}>
               <span>What contracts?</span>
               <div>

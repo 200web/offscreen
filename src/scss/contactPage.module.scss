@@ -286,11 +286,17 @@
         }
       }
 
-      .buttonPrev span {
-        left: 42%;
+      .buttonPrev img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-60%, -45%) scale(0.5);
       }
-      .buttonNext span {
-        right: 18%;
+      .buttonNext img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -30%) scale(0.5);
       }
     }
 
@@ -566,11 +572,17 @@
         }
       }
 
-      .buttonPrev span {
-        left: 42%;
+      .buttonPrev img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-60%, -45%) scale(0.5);
       }
-      .buttonNext span {
-        right: 18%;
+      .buttonNext img {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.8);
       }
     }
 

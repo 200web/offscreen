@@ -64,7 +64,7 @@ const WorkCardElement = () => {
   }, [isHovered]);
 
   return (
-    <div className={appStyles.workBlock}>
+    <div className={appStyles.workBlock} id="our works">
       {images.map((photo, id) => (
         <Link to={`/project/${id}`} key={id}>
           <div

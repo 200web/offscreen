@@ -17,6 +17,7 @@ const WorksSection = () => {
   const [isAnimating, setIsAnimating] = React.useState(false);
   const [scrollTop, setScrollTop] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
+  const [activeCard, setIsActiveCard] = React.useState(0);
   const myRef = React.useRef();
   const [isVisible, setIsVisible] = React.useState(false);
 
@@ -26,6 +27,16 @@ const WorksSection = () => {
       setCurrentPhoto(photos[index]);
       setIsAnimating(false);
     }, 300);
+  };
+
+  const handleMoveOver = (id) => {
+    if (id === activeCard) {
+      setIsActiveCard(null);
+    } else setIsActiveCard(id);
+  };
+
+  const handleMoveLeave = () => {
+    setIsActiveCard(null);
   };
 
   React.useEffect(() => {
@@ -77,7 +88,7 @@ const WorksSection = () => {
         </div>
       </div>
       <WorkCardElement />
-      <div className={appStyles.Row}>
+      <div className={appStyles.Row} id="services">
         <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
             <span>Services</span>
@@ -138,8 +149,17 @@ const WorksSection = () => {
       <div className={appStyles.infoBlock}>
         <div className={appStyles.infoButtons}>
           <div
-            className={appStyles.button}
-            onMouseEnter={() => handleChangeImage(1)}
+            className={`${appStyles.button} ${
+              activeCard === 1 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleChangeImage(1);
+                handleMoveOver(1);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(1) })}
           >
             <div className={appStyles.buttonHeader}>
               <span>Music Videos</span>
@@ -154,8 +174,17 @@ const WorksSection = () => {
             </div>
           </div>
           <div
-            className={appStyles.button}
-            onMouseEnter={() => handleChangeImage(0)}
+            className={`${appStyles.button} ${
+              activeCard === 2 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleChangeImage(0);
+                handleMoveOver(2);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(2) })}
           >
             <div className={appStyles.buttonHeader}>
               <span>Commercials</span>
@@ -170,8 +199,17 @@ const WorksSection = () => {
             </div>
           </div>
           <div
-            className={appStyles.button}
-            onMouseEnter={() => handleChangeImage(2)}
+            className={`${appStyles.button} ${
+              activeCard === 3 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleChangeImage(2);
+                handleMoveOver(3);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(3) })}
           >
             <div className={appStyles.buttonHeader}>
               <span>Event Videos</span>
@@ -186,8 +224,17 @@ const WorksSection = () => {
             </div>
           </div>
           <div
-            className={appStyles.button}
-            onMouseEnter={() => handleChangeImage(3)}
+            className={`${appStyles.button} ${
+              activeCard === 4 ? appStyles.active : ""
+            }`}
+            {...(!isMobile && {
+              onMouseEnter: () => {
+                handleChangeImage(3);
+                handleMoveOver(4);
+              },
+            })}
+            {...(!isMobile && { onMouseLeave: handleMoveLeave })}
+            {...(isMobile && { onClick: () => handleMoveOver(4) })}
           >
             <div className={appStyles.buttonHeader}>
               <span>Product Videos</span>
@@ -308,61 +355,61 @@ const WorksSection = () => {
           </div>
         </div>
       </div>
-      <div className={appStyles.Row}>
+      <div className={appStyles.Row} id="Team">
         <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
           </div>
           <div className={appStyles.text}>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
-            <span>Services</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
+            <span>Team</span>
           </div>
         </div>
       </div>

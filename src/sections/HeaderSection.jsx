@@ -64,6 +64,7 @@ const HeaderSection = () => {
               : `${appStyles.smileRow} ${appStyles.active}`
           }
           ref={myRef}
+          id="about us"
         >
           <div>
             <h1 className={appStyles.startWord}>AB</h1>

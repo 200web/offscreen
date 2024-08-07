@@ -1,5 +1,7 @@
 import React from "react";
 import appStyles from "../scss/app.module.scss";
+import arrowLeft from "../assets/img/arrow Left.png";
+import arrowRight from "../assets/img/arrow Right.png";
 
 const CardCarousel = ({ cards }) => {
   const [currentIndex, setCurrentIndex] = React.useState(0);
@@ -42,10 +44,10 @@ const CardCarousel = ({ cards }) => {
       </div>
       <div className={appStyles.reviewNav}>
         <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
-          <span>&#129168;</span>
+          <img draggable="false" src={arrowLeft} />
         </button>
         <button className={appStyles.buttonNext} onClick={handleNextClick}>
-          <span>&#129170;</span>
+          <img draggable="false" src={arrowRight} />
         </button>
       </div>
     </>

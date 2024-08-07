@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import HVideo from "../assets/img/HVideo.MP4";
 import fullscreen from "../assets/img/fullscreen.png";
 import videoStyles from "../scss/components/video.module.scss";
+import arrowRight from "../assets/img/arrow Right.png";
 import { useSelector } from "react-redux";
 
 const VideoPlayer = () => {
@@ -132,7 +133,9 @@ const VideoPlayer = () => {
         }
         onClick={togglePlay}
       >
-        <span className={videoStyles.buttonNext}>&#129170;</span>
+        <span className={videoStyles.buttonNext}>
+          <img draggable="false" src={arrowRight} />
+        </span>
       </div>
       <video
         id="video"
