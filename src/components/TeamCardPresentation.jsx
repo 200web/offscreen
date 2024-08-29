@@ -16,7 +16,7 @@ const TeamCardPresentation = ({ images }) => {
   const [currentCard, setCurrentCard] = React.useState({
     profession: "Move and stand your mouse on portrait",
     name: "To see our team",
-    description: "",
+    description: [""],
   });
   const animationTimeouts = React.useRef(images.map(() => null));
   const animationTimeIntervale = React.useRef(null);
@@ -160,7 +160,7 @@ const TeamCardPresentation = ({ images }) => {
       setCurrentCard({
         profession: "Move and stand your mouse on portrait",
         name: "To see our team",
-        description: "",
+        description: [""],
       });
       return;
     }
@@ -184,7 +184,7 @@ const TeamCardPresentation = ({ images }) => {
       setCurrentCard({
         profession: "Move and stand your mouse on portrait",
         name: "To see our team",
-        description: "",
+        description: [""],
       });
       return;
     }
@@ -242,10 +242,16 @@ const TeamCardPresentation = ({ images }) => {
         >
           <div className={appStyles.profession}>{currentCard.profession}</div>
           <div className={appStyles.name}>{currentCard.name}</div>
-          <div className={appStyles.addInf}>{currentCard.description}</div>
+          <div className={appStyles.addInf}>
+            {currentCard.description.map((text) => (
+              <div>
+                <p>{text}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className={appStyles.button}>
-          {currentCard.description !== "" && (
+          {currentCard.description[0] !== "" && (
             <Link
               to={`/team/${currentCard.id}`}
               className={appStyles.contactButton}
@@ -258,7 +264,7 @@ const TeamCardPresentation = ({ images }) => {
       <div className={appStyles.teamPresentation}>
         {!isMobile &&
           images.map((photo, id) => (
-            <Link to={`/team/${currentCard.id}`} key={id}>
+            <Link to={!isAnimating[id] && `/team/${currentCard.id}`} key={id}>
               <div
                 className={appStyles.portrait}
                 onMouseEnter={() => handleMouseEnter(id)}
@@ -341,7 +347,11 @@ const TeamCardPresentation = ({ images }) => {
                         : ""
                     }`}
                   >
-                    {currentCard.description}
+                    {currentCard.description.map((text) => (
+                      <div>
+                        <p>{text}</p>
+                      </div>
+                    ))}
                   </div>
                   <div
                     className={`${appStyles.button} ${
@@ -354,12 +364,12 @@ const TeamCardPresentation = ({ images }) => {
                         : ""
                     }`}
                   >
-                    {currentCard.description !== "" && (
+                    {currentCard.description[0] !== "" && (
                       <Link
-                        to={`/team/${currentCard.id}`}
+                        to={`/project/1`}
                         className={appStyles.contactButton}
                       >
-                        <span>SEE MORE</span>
+                        <span>View projects</span>
                       </Link>
                     )}
                   </div>

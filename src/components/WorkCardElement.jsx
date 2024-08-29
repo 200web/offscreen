@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 const WorkCardElement = () => {
   const images = [timing, workHead, workHead, timing, timing];
   const [isAnimating, setIsAnimating] = useState(images.map(() => false));
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 900);
+
   const [isHovered, setIsHovered] = useState(null);
 
   const animationTimeouts = React.useRef();
@@ -42,6 +44,17 @@ const WorkCardElement = () => {
     setIsHovered(null);
   };
 
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 900);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     if (isHovered !== null) {
       clearInterval(animationTimeouts.current);
@@ -61,7 +74,7 @@ const WorkCardElement = () => {
         }, 3000);
       }, 3000);
     }
-  }, [isHovered]);
+  }, [isHovered, isMobile]);
 
   return (
     <div className={appStyles.workBlock} id="our works">
@@ -76,7 +89,13 @@ const WorkCardElement = () => {
               draggable="false"
               src={images[id]}
               alt={`project-${id}`}
-              className={isAnimating[id] ? appStyles.fadeIn : appStyles.fadeOut}
+              className={`${
+                isMobile
+                  ? appStyles.fadeIn
+                  : isAnimating[id]
+                  ? appStyles.fadeIn
+                  : appStyles.fadeOut
+              }`}
             />
             <div className={appStyles.textContent}>
               <div>
