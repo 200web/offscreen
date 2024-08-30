@@ -53,7 +53,7 @@ section {
       width: 100% !important;
 
       .textContent {
-        width: 50% !important;
+        width: 60% !important;
       }
     }
 
@@ -95,6 +95,14 @@ section {
     border-radius: 15px;
     height: 320px;
     color: white;
+
+    @media (max-width: 900px) {
+      height: 240px;
+    }
+
+    @media (max-width: 450px) {
+      height: 230px;
+    }
 
     .contactButton {
       position: absolute;
@@ -178,9 +186,17 @@ section {
       opacity: 0;
       transition: 0.5s;
 
+      @media (max-width: 900px) {
+        transform: translate(-50%, calc(-40% + 20px));
+      }
+
       &.active {
         opacity: 1;
         transform: translate(-50%, -50%);
+
+        @media (max-width: 900px) {
+          transform: translate(-50%, -40%);
+        }
       }
     }
 
@@ -190,11 +206,19 @@ section {
       background-color: #2f2f2f;
       border-radius: 6px;
 
+      @media (max-width: 900px) {
+        width: 62px;
+      }
+
       img {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
+
+        @media (max-width: 900px) {
+          transform: translate(-50%, -50%) scale(0.8);
+        }
       }
     }
 
@@ -202,6 +226,10 @@ section {
       img {
         top: 30%;
         left: 70%;
+
+        @media (max-width: 900px) {
+          left: 70%;
+        }
       }
     }
 
@@ -430,11 +458,20 @@ section {
 
   @media (max-width: 1200px) {
     margin-top: 6rem;
+    margin-bottom: 2rem;
   }
 }
 
 .Row {
   width: 100%;
+
+  .workTitle {
+    margin-top: 3rem;
+    text-align: center;
+    font-family: "Inter";
+    color: white;
+    font-size: clamp(32px, 4vw, 45px);
+  }
 
   @media (max-width: 720px) {
     margin-top: 3rem;
@@ -448,6 +485,15 @@ section {
   .centralTitle {
     width: 98%;
     margin: 8rem auto 0 auto;
+
+    .labelTitle {
+      font-size: clamp(36px, 3vw, 40px);
+    }
+
+    .advTitle {
+      font-size: clamp(31px, 3vw, 55px);
+      margin-bottom: 10rem;
+    }
 
     @media (max-width: 610px) {
       margin: 0 auto;
@@ -469,12 +515,11 @@ section {
     font-size: clamp(22px, 5vw, 42px);
     transform: translateY(100%);
 
-    @media (max-width: 610px) {
-      margin: 0 auto;
-    }
-
     @media (max-width: 1200px) {
       transform: translateY(0);
+    }
+    @media (max-width: 610px) {
+      margin: 10rem auto 10rem auto;
     }
 
     @media (width > 610px) {
@@ -551,6 +596,10 @@ section {
 
     @media (max-width: 750px) {
       white-space: normal;
+    }
+
+    @media (max-width: 610px) {
+      display: none;
     }
 
     div {
@@ -939,7 +988,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 95%;
-  margin: 8rem auto 8rem auto;
+  margin: 0 auto;
   color: black;
   animation: shake-top 5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite both;
   animation-delay: 1s;
@@ -1240,6 +1289,8 @@ section {
           display: -webkit-box;
           -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
+          line-height: 1.2;
+          height: calc(1.2em * 5);
 
           @media (max-width: 600px) {
             width: 60%;
@@ -1385,6 +1436,11 @@ section {
     height: 1350px;
     z-index: 8;
 
+    @media (max-width: 600px) {
+      width: 94%;
+      margin: 0 auto 6rem auto;
+    }
+
     .button {
       display: block;
       margin-bottom: 0.5rem;
@@ -1395,16 +1451,20 @@ section {
       max-height: 90px;
 
       @media (max-width: 600px) {
-        max-height: 80px;
+        max-height: 90px;
       }
 
       .buttonHeader {
         display: flex;
         width: 100%;
-        font-size: clamp(14px, 1.9vw, 24px);
+        font-size: clamp(15px, 1.9vw, 24px);
         padding: 2rem calc(2rem + 7%) 2rem 2rem;
         font-family: "Inter";
         font-weight: 500;
+
+        @media (max-width: 600px) {
+          padding: 2rem calc(2rem + 7%) 1rem 1rem;
+        }
 
         div {
           position: absolute;
@@ -1452,10 +1512,6 @@ section {
         padding: 2rem;
         font-size: clamp(14px, 3vw, 22px);
         opacity: 0.75;
-
-        @media (max-width: 1300px) {
-          padding: 1rem 2rem 2rem 2rem;
-        }
 
         @media (max-width: 1000px) {
           width: 100%;
@@ -1525,10 +1581,15 @@ section {
     text-align: center;
     color: white;
 
+    @media (max-width: 600px) {
+      margin: 9rem auto 0 auto;
+    }
+
     h3 {
       font-size: clamp(32px, 5.5vw, 50px);
       font-family: "Inter";
       font-weight: 500;
+      margin-bottom: 0.3rem;
     }
     .headerSpan {
       font-size: clamp(18px, 4vw, 30px);
@@ -1557,7 +1618,7 @@ section {
 
   .reviewCardsCarousel {
     display: flex;
-    margin: 6rem 0 35rem 0.5rem;
+    margin: 6rem 0 39rem 0.5rem;
 
     .cardsContainer {
       display: flex;
@@ -1576,7 +1637,6 @@ section {
 
       @media (max-width: 520px) {
         width: 380px;
-        height: 520px;
       }
 
       @media (max-width: 400px) {
@@ -1664,9 +1724,11 @@ section {
     }
   }
   .reviewNav {
+    position: absolute;
+    top: 51rem;
+    width: 100%;
     display: flex;
     justify-content: center;
-    margin-top: 20px;
 
     button {
       background-color: #2a2a2a;
@@ -1775,6 +1837,10 @@ section {
         font-weight: 500;
         color: white;
         font-size: 32px;
+
+        @media (max-width: 1000px) {
+          margin: 4rem auto 0 auto;
+        }
       }
     }
   }

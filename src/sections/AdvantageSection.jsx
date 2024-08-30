@@ -51,7 +51,7 @@ const AdvantageSection = () => {
     <section className={appStyles.section}>
       <div className={appStyles.Row}>
         <div className={appStyles.title}>
-          <h1>OFFSCREEN</h1>
+          <h1 className={appStyles.labelTitle}>OFFSCREEN</h1>
         </div>
       </div>
       <div
@@ -109,7 +109,7 @@ const AdvantageSection = () => {
       </div>
       <div className={appStyles.Row}>
         <div className={appStyles.centralTitle}>
-          <h1>Our Key Advantages</h1>
+          <h1 className={appStyles.advTitle}>Our Key Advantages</h1>
         </div>
       </div>
       <div className={appStyles.advantageRow}>

@@ -17,6 +17,9 @@ const WorksSection = () => {
   const [isAnimating, setIsAnimating] = React.useState(false);
   const [scrollTop, setScrollTop] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
+  const [isWorkChanged, setIsWorkChanged] = React.useState(
+    window.innerWidth <= 1200
+  );
   const [activeCard, setIsActiveCard] = React.useState(0);
   const myRef = React.useRef();
   const [isVisible, setIsVisible] = React.useState(false);
@@ -42,6 +45,7 @@ const WorksSection = () => {
   React.useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 860);
+      setIsWorkChanged(window.innerWidth <= 1200);
     };
     const handleScroll = () => {
       setScrollTop(window.scrollY);
@@ -258,7 +262,7 @@ const WorksSection = () => {
           />
         </div>
       </div>
-      <div className={appStyles.Row}>
+      {/* <div className={appStyles.Row}>
         <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
             <span>Services</span>
@@ -315,7 +319,7 @@ const WorksSection = () => {
             <span>Services</span>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className={appStyles.adCardBlock} ref={myRef}>
         <div
           className={`${appStyles.adCardContent} ${
@@ -356,7 +360,7 @@ const WorksSection = () => {
         </div>
       </div>
       <div className={appStyles.Row} id="Team">
-        <div className={appStyles.scrolling_text}>
+        {/* <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
             <span>Team</span>
             <span>Team</span>
@@ -411,7 +415,12 @@ const WorksSection = () => {
             <span>Team</span>
             <span>Team</span>
           </div>
-        </div>
+        </div> */}
+        {isWorkChanged && (
+          <div className={appStyles.workTitle}>
+            <span>Our Team</span>
+          </div>
+        )}
       </div>
     </section>
   );
