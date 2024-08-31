@@ -1284,16 +1284,15 @@ section {
           left: 5%;
           font-size: clamp(15px, 4vw, 21px);
           opacity: 0;
-          max-height: 140px;
           overflow: hidden;
           display: -webkit-box;
-          -webkit-line-clamp: 5;
+          -webkit-line-clamp: 7;
           -webkit-box-orient: vertical;
           line-height: 1.2;
-          height: calc(1.2em * 5);
+          height: calc(1.2em * 7);
 
           @media (max-width: 600px) {
-            width: 60%;
+            width: 90%;
           }
 
           &.fadeIn {

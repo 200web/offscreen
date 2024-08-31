@@ -353,7 +353,7 @@ const TeamCardPresentation = ({ images }) => {
                       </div>
                     ))}
                   </div>
-                  <div
+                  {/* <div
                     className={`${appStyles.button} ${
                       isPortraitClicked
                         ? currentImages[id] === anonim
@@ -372,7 +372,7 @@ const TeamCardPresentation = ({ images }) => {
                         <span>View projects</span>
                       </Link>
                     )}
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>
