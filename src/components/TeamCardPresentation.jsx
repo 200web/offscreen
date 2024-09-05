@@ -285,9 +285,12 @@ const TeamCardPresentation = ({ images }) => {
           images.map((photo, id) => (
             <div key={id}>
               <div
-                className={appStyles.portrait}
+                className={`${appStyles.portrait} ${
+                  isPortraitClicked &&
+                  currentImages[id] !== anonim &&
+                  appStyles.active
+                }`}
                 onClick={() => handleMouseEnterMobile(id)}
-                onMouseLeave={() => handleMouseLeave(id)}
               >
                 <div className={appStyles.image}>
                   <img

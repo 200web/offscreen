@@ -98,6 +98,10 @@
     margin-bottom: 1rem;
   }
 
+  &.hidden {
+    display: none;
+  }
+
   &.active {
     .progress_container {
       &:hover {

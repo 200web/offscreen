@@ -9,14 +9,13 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 const WorkCardElement = () => {
-  const images = [
+  const [images, setImages] = useState([
     { gif: timingGif, static: timingStatic },
     { gif: workHeadGif, static: workHeadStatic },
     { gif: workHeadGif, static: workHeadStatic },
     { gif: timingGif, static: timingStatic },
     { gif: timingGif, static: timingStatic },
-  ];
-
+  ]);
   const [isAnimating, setIsAnimating] = useState(images.map(() => false));
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
   const [cardsData, setCardsData] = useState([]);

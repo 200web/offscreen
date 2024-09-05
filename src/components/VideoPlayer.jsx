@@ -149,7 +149,11 @@ const VideoPlayer = () => {
         <source src={HVideo} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-      <div className={videoStyles.video_controls}>
+      <div
+        className={`${videoStyles.video_controls} ${
+          isFullscreen && videoStyles.hidden
+        }`}
+      >
         <div className={videoStyles.video_header}>
           <div className={videoStyles.video_title}>
             Watch the showreel
