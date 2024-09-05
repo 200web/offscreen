@@ -33,6 +33,7 @@ section {
   flex-direction: column;
   align-items: center;
   width: 100%;
+  height: max-content;
   z-index: 10;
   margin: 0 auto;
   background-color: #121212;
@@ -758,13 +759,7 @@ section {
       border: 1px solid white;
       border-radius: 100px;
       transition: 0.2s;
-      cursor: pointer;
       font-family: "Inter";
-
-      &:hover {
-        background-color: rgba(#ffffff, 0.1);
-        box-shadow: 0 0 0 1px white;
-      }
     }
   }
 
@@ -962,10 +957,6 @@ section {
         @media (max-width: 500px) {
           height: 240px;
         }
-
-        .buttonHeader div img {
-          transform: rotate(270deg);
-        }
       }
     }
   }
@@ -988,7 +979,7 @@ section {
   justify-content: center;
   align-items: center;
   width: 95%;
-  margin: 0 auto;
+  margin: 0 auto 2rem auto;
   color: black;
   animation: shake-top 5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite both;
   animation-delay: 1s;
@@ -1565,7 +1556,7 @@ section {
     transform: translateY(-25%);
     z-index: 7;
     width: 100%;
-    height: 100%;
+    height: 40%;
     background-color: #121212;
     mix-blend-mode: lighten;
   }
@@ -1705,7 +1696,7 @@ section {
       &:hover {
         opacity: 1;
         color: black;
-        background-color: #d6dcdc;
+        background-color: #d3e400;
 
         .name {
           border-color: black;
@@ -2167,10 +2158,12 @@ section {
 
             label {
               width: 90%;
-              padding: 0.3rem;
+              padding: 0.3rem 0.3rem 0.3rem 0.8rem;
               text-overflow: ellipsis;
               overflow: hidden;
               white-space: nowrap;
+              font-size: 14px;
+              font-family: "Inter";
             }
 
             b {

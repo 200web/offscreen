@@ -34,11 +34,9 @@ const VideoPlayer = () => {
     if (isLoaded === true) {
       video.play();
     } else {
-      setTimeout(() => {
-        if (video) {
-          video.play();
-        }
-      }, 3200);
+      if (video) {
+        video.play();
+      }
     }
   }, []);
 

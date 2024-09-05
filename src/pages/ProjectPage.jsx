@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import project from "../scss/projectPage.module.scss";
 import footer from "../scss/components/footer.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Search from "../components/Search/Search";
 import picture from "../assets/img/picture.webp";
 import telegram from "../assets/img/telega.webp";
@@ -16,11 +16,15 @@ import mouth from "../assets/img/mouth.png";
 import { setIsLoaded } from "../Redux/introSlice";
 import { useDispatch } from "react-redux";
 import HVideo from "../assets/img/HVideo.MP4";
+import axios from "axios";
 
 const ProjectPage = () => {
+  const navigate = useNavigate();
+  const { id } = useParams();
   const [isGifPlaying, setIsGifPlaying] = React.useState(false);
   const fileInputRef = React.useRef(null);
   const [selectedFiles, setSelectedFiles] = React.useState([]);
+  const [projectData, setProjectData] = React.useState([]);
   const [menuVisible, setMenuVisible] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [isMobileContact, setIsMobileContact] = React.useState(
@@ -30,6 +34,21 @@ const ProjectPage = () => {
   const videoRef = useRef(null);
 
   const dispatch = useDispatch();
+
+  React.useEffect(() => {
+    async function fetchCards() {
+      try {
+        const { data } = await axios.get(
+          `https://66d60cecf5859a7042683b4d.mockapi.io/PagesContent/?id=` + id
+        );
+        setProjectData(data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    fetchCards();
+  }, []);
 
   const handleMenuVisible = () => {
     setMenuVisible(!menuVisible);
@@ -43,45 +62,6 @@ const ProjectPage = () => {
       video.play();
     }
     setIsGifPlaying(!isGifPlaying);
-  };
-
-  const handleActiveButton = (id) => {
-    if (isMobile) {
-      setMenuVisible(!menuVisible);
-    }
-    switch (id) {
-      case 0: {
-        const element = document.getElementById("Услуги");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 1: {
-        const element = document.getElementById("Этапы");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 2: {
-        const element = document.getElementById("Портфолио");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 3: {
-        const element = document.getElementById("Контакты");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-    }
   };
 
   const handleMouseEnter = () => {
@@ -152,18 +132,6 @@ const ProjectPage = () => {
             } ${menuVisible && isMobile ? project.active : ""}`}
           >
             <ul>
-              <li className={project.h_but_s}>
-                <span>About Us</span>
-              </li>
-              <li className={project.h_but_s}>
-                <span>Services</span>
-              </li>
-              <li className={project.h_but_s}>
-                <span>our works</span>
-              </li>
-              <li className={project.h_but_s}>
-                <span>our team</span>
-              </li>
               {!isMobile && (
                 <Link to={`/Contact`} className={project.h_but_s}>
                   <span>get in touch</span>
@@ -188,46 +156,28 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
+      <div className={project.backBut} onClick={() => navigate("/")}></div>
       <div className={project.headerSection}>
         <div className={project.row}>
-          <label>SPACE_</label>
+          <label>{projectData.headerText_1}</label>
         </div>
         <div className={project.image}>
           <img draggable="false" src={maneken} alt="maneken" />
-          <img
-            className={project.arrow}
-            draggable="false"
-            src={arrow}
-            alt="arrow"
-          />
         </div>
         <div className={project.span}>
-          <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa
-            mi. Aliquam in hendrerit urna.
-          </span>
+          <span>{projectData.text_1}</span>
         </div>
       </div>
       <div className={project.descriptionSection}>
         <div>
-          <label>SPACE_</label>
-          <span>THE DETAILS</span>
+          <label>{projectData.headerText_2_bigger}</label>
+          <span>{projectData.headerText_2_smaller}</span>
         </div>
         <div className={project.details}>
-          <article>Details #1</article>
+          <article>{projectData.articleOfList}</article>
           <div className={project.listFlex}>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse et
-              totam repellendus voluptate deleniti pariatur! Aperiam quidem
-              dolor vel doloremque? Temporibus odio est minima magni eum placeat
-              autem facere qui.
-            </p>
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse et
-              totam repellendus voluptate deleniti pariatur! Aperiam quidem
-              dolor vel doloremque? Temporibus odio est minima magni eum placeat
-              autem facere qui.
-            </p>
+            <p>{projectData.textOfList_1}</p>
+            <p>{projectData.textOfList_2}</p>
           </div>
         </div>
         <div className={project.gifRow}>
