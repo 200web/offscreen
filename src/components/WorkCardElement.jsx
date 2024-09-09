@@ -1,35 +1,29 @@
 import React, { useEffect, useState } from "react";
 import appStyles from "../scss/app.module.scss";
-import timingGif from "../assets/img/timing.gif";
-import timingStatic from "../assets/img/timingStatic.webp";
 import workHeadGif from "../assets/img/workHead.gif";
-import workHeadStatic from "../assets/img/head.png";
 import moreArrow from "../assets/img/moreArrow.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const WorkCardElement = () => {
-  const [images, setImages] = useState([
-    { gif: timingGif, static: timingStatic },
-    { gif: workHeadGif, static: workHeadStatic },
-    { gif: workHeadGif, static: workHeadStatic },
-    { gif: timingGif, static: timingStatic },
-    { gif: timingGif, static: timingStatic },
-  ]);
-  const [isAnimating, setIsAnimating] = useState(images.map(() => false));
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
-  const [cardsData, setCardsData] = useState([]);
   const [isHovered, setIsHovered] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isShort, setIsShort] = React.useState(true);
   const animationTimeouts = React.useRef();
   const animationTimeouts2 = React.useRef();
+  const [cardsData, setCardsData] = useState([]);
+  const [isAnimating, setIsAnimating] = useState(cardsData?.map(() => false));
 
   useEffect(() => {
     async function fetchCards() {
       try {
+        setIsLoading(true);
         const { data } = await axios.get(
           `https://66d60cecf5859a7042683b4d.mockapi.io/Cards`
         );
         setCardsData(data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -71,7 +65,11 @@ const WorkCardElement = () => {
     if (isHovered !== null) {
       clearInterval(animationTimeouts.current);
       clearTimeout(animationTimeouts2.current);
-      animate([0, 1, 2, 3, 4], false);
+
+      animate(
+        Array.from({ length: cardsData.length }, (_, index) => index),
+        false
+      );
       setIsAnimating((prevAnimating) =>
         prevAnimating.map((_, index) => index === isHovered)
       );
@@ -79,69 +77,81 @@ const WorkCardElement = () => {
       setIsAnimating((prevAnimating) =>
         prevAnimating.map((_, index) => index === isHovered)
       );
+
       animationTimeouts.current = setInterval(() => {
-        animate([0, 3, 4], true);
+        const firstSetIndices = Array.from(
+          { length: Math.ceil(cardsData.length / 2) },
+          (_, i) => i * 2
+        ).filter((index) => index < cardsData.length);
+
+        const secondSetIndices = Array.from(
+          { length: Math.floor(cardsData.length / 2) },
+          (_, i) => i * 2 + 1
+        ).filter((index) => index < cardsData.length);
+
+        animate(firstSetIndices, true);
         animationTimeouts2.current = setTimeout(() => {
-          animate([1, 2], true);
+          animate(secondSetIndices, true);
         }, 3000);
       }, 3000);
     }
-  }, [isHovered, isMobile]);
+  }, [isHovered, isMobile, cardsData]);
+
+  // Определение отображаемых данных на основе состояния "isShort"
+  const displayedCards = isShort ? cardsData.slice(0, 5) : cardsData;
 
   return (
     <div className={appStyles.workBlock} id="our works">
-      {images.map((photo, id) => (
-        <Link to={`/project/${id}`} key={id}>
-          <div
-            className={appStyles.workCard}
-            onMouseEnter={() => handleMouseEnter(id)}
-            onMouseLeave={handleMouseLeave}
-            style={{
-              backgroundImage: `url(${photo.static})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
-            <img
-              draggable="false"
-              src={photo.gif}
-              alt={`project-${id}`}
-              className={`${
-                isMobile
-                  ? appStyles.fadeIn
-                  : isAnimating[id]
-                  ? appStyles.fadeIn
-                  : appStyles.fadeOut
-              }`}
-            />
-            {cardsData[id] && (
-              <div className={appStyles.textContent}>
-                <div>
-                  <h4>{cardsData[id].label}</h4>
+      {!isLoading &&
+        displayedCards.length > 0 &&
+        displayedCards.map((card, id) => (
+          <Link to={`/project/${id}`} key={id}>
+            <div
+              className={appStyles.workCard}
+              onMouseEnter={() => handleMouseEnter(id)}
+              onMouseLeave={handleMouseLeave}
+              style={{
+                backgroundImage: `url(${card.staticPhoto})`,
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            >
+              <img
+                draggable="false"
+                src={card.gif}
+                alt={`project-${id}`}
+                className={`${
+                  isMobile
+                    ? appStyles.fadeIn
+                    : isAnimating[id]
+                    ? appStyles.fadeIn
+                    : appStyles.fadeOut
+                }`}
+              />
+              {card && (
+                <div className={appStyles.textContent}>
+                  <div>
+                    <h4>{card.label}</h4>
+                  </div>
+                  <div>
+                    <span className={appStyles.description}>{card.text}</span>
+                  </div>
                 </div>
-                <div>
-                  <span className={appStyles.description}>
-                    {cardsData[id].text}
-                  </span>
-                </div>
-              </div>
-            )}
-          </div>
-        </Link>
-      ))}
-      <div className={appStyles.workCard}>
-        <Link to={`/portfolio`}>
-          <img draggable="false" src={workHeadGif} alt="logo" />
-          <div className={appStyles.textContent}>
-            <div>
-              <label>Go to the portfolio</label>
+              )}
             </div>
+          </Link>
+        ))}
+      <div className={appStyles.workCard} onClick={() => setIsShort(false)}>
+        <img draggable="false" src={workHeadGif} alt="logo" />
+        <div className={appStyles.textContent}>
+          <div>
+            <label>Show more</label>
           </div>
-          <div className={appStyles.button}>
-            <img draggable="false" src={moreArrow} alt="arrow" />
-          </div>
-        </Link>
+        </div>
+        <div className={appStyles.button}>
+          <img draggable="false" src={moreArrow} alt="arrow" />
+        </div>
       </div>
     </div>
   );

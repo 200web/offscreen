@@ -125,11 +125,11 @@ section {
       border-radius: 6px;
       transition: 0.2s;
       cursor: pointer;
+      font-family: "Inter";
     }
 
     .hiddenButton {
       position: absolute;
-      z-index: 5;
       bottom: 5%;
       right: 5%;
       font-size: 12px;
@@ -139,6 +139,7 @@ section {
       text-transform: uppercase;
       border-radius: 6px;
       transition: 0.2s;
+      font-family: "Inter";
       cursor: pointer;
     }
 
@@ -465,6 +466,7 @@ section {
 
 .Row {
   width: 100%;
+  margin-top: 3rem;
 
   .workTitle {
     margin-top: 3rem;
@@ -472,10 +474,6 @@ section {
     font-family: "Inter";
     color: white;
     font-size: clamp(32px, 4vw, 45px);
-  }
-
-  @media (max-width: 720px) {
-    margin-top: 3rem;
   }
 
   .title {
@@ -496,7 +494,7 @@ section {
       margin-bottom: 10rem;
     }
 
-    @media (max-width: 610px) {
+    @media (max-width: 1100px) {
       margin: 0 auto;
     }
 
@@ -595,11 +593,7 @@ section {
     white-space: nowrap;
     text-align: center;
 
-    @media (max-width: 750px) {
-      white-space: normal;
-    }
-
-    @media (max-width: 610px) {
+    @media (max-width: 1100px) {
       display: none;
     }
 
@@ -706,28 +700,23 @@ section {
       position: absolute;
       height: 75%;
       z-index: 10;
-      left: 28%;
-      transform: translate(-50%, -50);
+      transform: translate(-13.5rem, 0);
       object-fit: contain;
       filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%)
         contrast(101%);
 
       @media (max-width: 1260px) {
-        left: 29%;
+        transform: translate(-10rem, 0);
       }
 
-      @media (max-width: 1050px) {
-        left: 31%;
-      }
+      // @media (max-width: 605px) {
+      //   height: 40%;
+      //   left: 35%;
+      // }
 
-      @media (max-width: 605px) {
-        height: 40%;
-        left: 35%;
-      }
-
-      @media (max-width: 400px) {
-        left: 36%;
-      }
+      // @media (max-width: 400px) {
+      //   left: 36%;
+      // }
     }
   }
 
@@ -737,7 +726,7 @@ section {
     display: flex;
     justify-content: center;
 
-    @media (max-width: 720px) {
+    @media (max-width: 11000px) {
       display: none;
     }
 
@@ -1436,8 +1425,19 @@ section {
   .fagButtons {
     width: 80%;
     margin: 0 auto 8rem auto;
-    height: 1350px;
+    height: 550px;
     z-index: 8;
+    transition: 1s;
+
+    &.full {
+      height: 1350px;
+
+      .button {
+        &:nth-child(1n + 6) {
+          opacity: 1;
+        }
+      }
+    }
 
     @media (max-width: 600px) {
       width: 94%;
@@ -1452,6 +1452,10 @@ section {
       overflow: hidden;
       transition: 0.5s;
       max-height: 90px;
+
+      &:nth-child(1n + 6) {
+        opacity: 0;
+      }
 
       @media (max-width: 600px) {
         max-height: 90px;
@@ -1539,26 +1543,52 @@ section {
     }
   }
 
-  .buttonFag {
+  .buttons {
     display: flex;
     justify-content: center;
-    font-family: "Inter";
-    font-weight: 500;
+    gap: 1rem;
+    z-index: 99;
+    .buttonFag {
+      display: flex;
+      justify-content: center;
+      font-family: "Inter";
+      font-weight: 500;
 
-    .contactButton {
-      text-decoration: none;
+      .contactButton {
+        text-decoration: none;
+      }
+
+      span {
+        background-color: #d3e400;
+        padding: 1rem 3rem 1rem 3rem;
+        border-radius: 6px;
+        transition: 0.2s;
+        color: black;
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 0 1px white;
+        }
+      }
     }
 
-    span {
-      background-color: #d3e400;
-      padding: 1rem 3rem 1rem 3rem;
-      border-radius: 6px;
-      transition: 0.2s;
-      color: black;
+    .buttonFagShowMore {
+      display: flex;
+      justify-content: center;
+      font-family: "Inter";
+      font-weight: 500;
 
-      &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 0 1px white;
+      span {
+        background-color: #1e1e1e;
+        padding: 1rem 3rem 1rem 3rem;
+        border-radius: 6px;
+        transition: 0.2s;
+        color: rgb(255, 255, 255);
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 0 1px white;
+        }
       }
     }
   }
@@ -1569,7 +1599,7 @@ section {
     transform: translateY(-25%);
     z-index: 7;
     width: 100%;
-    height: 40%;
+    height: 100%;
     background-color: #121212;
     mix-blend-mode: lighten;
   }
