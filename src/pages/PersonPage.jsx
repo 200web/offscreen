@@ -1,6 +1,6 @@
 import React from "react";
 import personStyle from "../scss/PersonPage.module.scss";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import arrow from "../assets/img/Arrow.png";
 import { setIsLoaded } from "../Redux/introSlice";
@@ -10,10 +10,15 @@ const PersonPage = () => {
   const { cards } = useSelector((state) => state.teamCard);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     dispatch(setIsLoaded(true));
   }, []);
+
+  const handleBackToTeamClick = () => {
+    navigate("/", { state: { scrollToTeam: true } });
+  };
 
   return (
     <section className={personStyle.section}>
@@ -41,10 +46,13 @@ const PersonPage = () => {
         </div>
         <div className={personStyle.button}>
           {cards[id].description !== "" && (
-            <Link to={`/`} className={personStyle.contactButton}>
+            <div
+              onClick={handleBackToTeamClick}
+              className={personStyle.contactButton}
+            >
               <img draggable="false" src={arrow} alt="arrow" />
               <span>BACK TO TEAM</span>
-            </Link>
+            </div>
           )}
         </div>
       </div>

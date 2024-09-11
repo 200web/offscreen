@@ -97,7 +97,6 @@ const WorkCardElement = () => {
     }
   }, [isHovered, isMobile, cardsData]);
 
-  // Определение отображаемых данных на основе состояния "isShort"
   const displayedCards = isShort ? cardsData.slice(0, 5) : cardsData;
 
   return (
@@ -142,17 +141,19 @@ const WorkCardElement = () => {
             </div>
           </Link>
         ))}
-      <div className={appStyles.workCard} onClick={() => setIsShort(false)}>
-        <img draggable="false" src={workHeadGif} alt="logo" />
-        <div className={appStyles.textContent}>
-          <div>
-            <label>Show more</label>
+      {isShort && (
+        <div className={appStyles.workCard} onClick={() => setIsShort(false)}>
+          <img draggable="false" src={workHeadGif} alt="logo" />
+          <div className={appStyles.textContent}>
+            <div>
+              <label>Go to the portfolio</label>
+            </div>
+          </div>
+          <div className={appStyles.button}>
+            <img draggable="false" src={moreArrow} alt="arrow" />
           </div>
         </div>
-        <div className={appStyles.button}>
-          <img draggable="false" src={moreArrow} alt="arrow" />
-        </div>
-      </div>
+      )}
     </div>
   );
 };

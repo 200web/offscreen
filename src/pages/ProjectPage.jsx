@@ -144,16 +144,6 @@ const ProjectPage = () => {
               <span>get in touch</span>
             </Link>
           )}
-          <div
-            className={`${project.menuButton} ${
-              isMobile ? project.visible : ""
-            } ${menuVisible ? project.active : ""}`}
-            onClick={handleMenuVisible}
-          >
-            <span className={project.toggle}></span>
-            <span className={project.toggle}></span>
-            <span className={project.toggle}></span>
-          </div>
         </div>
       </div>
       <div className={project.backBut} onClick={() => navigate("/")}></div>
@@ -162,7 +152,11 @@ const ProjectPage = () => {
           <label>{projectData.headerText_1}</label>
         </div>
         <div className={project.image}>
-          <img draggable="false" src={maneken} alt="maneken" />
+          <img
+            draggable="false"
+            src={projectData.headerPhoto}
+            alt="headerPhoto"
+          />
         </div>
         <div className={project.span}>
           <span>{projectData.text_1}</span>
@@ -181,8 +175,8 @@ const ProjectPage = () => {
           </div>
         </div>
         <div className={project.gifRow}>
-          <img draggable="false" src={skate} alt="skate" />
-          <img draggable="false" src={mouth} alt="mouth" />
+          <img draggable="false" src={projectData.photo_1} alt="skate" />
+          <img draggable="false" src={projectData.photo_2} alt="mouth" />
         </div>
         <div className={project.fullVideo}>
           <div className={project.headerVideo}>
@@ -208,7 +202,7 @@ const ProjectPage = () => {
               ref={videoRef}
               onClick={togglePlay}
             >
-              <source src={HVideo} type="video/mp4" />
+              <source src={projectData.video} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
           </div>

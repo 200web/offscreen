@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import contactStyles from "../scss/contactPage.module.scss";
 import arrowRight from "../assets/img/arrow Right.png";
 import arrowLeft from "../assets/img/arrow Left.png";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Search from "../components/Search/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { setItems, setOtherValue } from "../Redux/contactCardSlice";
@@ -70,12 +70,12 @@ const ContactCard = ({
         }`}
       >
         <div className={contactStyles.cancelRow}>
-          <Link to={`/`}>
+          <div onClick={() => navigate(-1)}>
             <div>
               <span className={contactStyles.cancel}></span>
               <span className={contactStyles.cancel}></span>
             </div>
-          </Link>
+          </div>
         </div>
         <div className={contactStyles.header}>
           <span>{headerText[currentCard - 1]}</span>

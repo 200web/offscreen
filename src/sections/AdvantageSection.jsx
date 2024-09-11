@@ -49,11 +49,11 @@ const AdvantageSection = () => {
 
   return (
     <section className={appStyles.section}>
-      <div className={appStyles.Row}>
+      {/* <div className={appStyles.Row}>
         <div className={appStyles.title}>
           <h1 className={appStyles.labelTitle}>OFFSCREEN</h1>
         </div>
-      </div>
+      </div> */}
       <div
         className={`${appStyles.content} ${isVisible ? appStyles.active : ""}`}
         ref={myRef}

@@ -6,8 +6,19 @@ import FooterSection from "../sections/FooterSection";
 import Header from "../components/Header";
 import Intro from "../components/Intro";
 import Footer from "../components/Footer";
+import { useLocation } from "react-router-dom";
 
 const HomePage = () => {
+  const location = useLocation();
+
+  React.useEffect(() => {
+    if (location.state?.scrollToTeam) {
+      const teamElement = document.getElementById("Team");
+      if (teamElement) {
+        teamElement.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }, [location]);
   return (
     <>
       <Intro />

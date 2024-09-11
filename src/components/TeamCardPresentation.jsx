@@ -59,7 +59,7 @@ const TeamCardPresentation = ({ images }) => {
           const firstUpdatedImages = currentImages.map(() => anonim);
           setCurrentImages(firstUpdatedImages);
         }
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -101,7 +101,7 @@ const TeamCardPresentation = ({ images }) => {
           const firstUpdatedImages = currentImages.map(() => anonim);
           setCurrentImages(firstUpdatedImages);
         }
-      }, 1000);
+      }, 500);
     }
   };
 
@@ -169,30 +169,30 @@ const TeamCardPresentation = ({ images }) => {
     setCurrentImages(newImages);
   };
 
-  const handleMouseLeave = (id) => {
-    setIsPortraitClicked(false);
-    if (isAnimating.some((anim) => anim === true)) {
-      if (animationTimeouts.current[id]) {
-        clearTimeout(animationTimeouts.current[id]);
-      }
-      const resetAnimating = isAnimating.map(() => false);
-      setIsAnimating(resetAnimating);
-      const newImages = [...currentImages];
-      newImages[id] = anonim;
-      setCurrentImages(newImages);
-      setIsTextChanging(false);
-      setCurrentCard({
-        profession: "Move and stand your mouse on portrait",
-        name: "To see our team",
-        description: [""],
-      });
-      return;
-    }
-    const newImages = [...currentImages];
-    newImages[id] = anonim;
-    setCurrentImages(newImages);
-    callback();
-  };
+  // const handleMouseLeave = (id) => {
+  //   setIsPortraitClicked(false);
+  //   if (isAnimating.some((anim) => anim === true)) {
+  //     if (animationTimeouts.current[id]) {
+  //       clearTimeout(animationTimeouts.current[id]);
+  //     }
+  //     const resetAnimating = isAnimating.map(() => false);
+  //     setIsAnimating(resetAnimating);
+  //     const newImages = [...currentImages];
+  //     newImages[id] = anonim;
+  //     setCurrentImages(newImages);
+  //     setIsTextChanging(false);
+  //     setCurrentCard({
+  //       profession: "Move and stand your mouse on portrait",
+  //       name: "To see our team",
+  //       description: [""],
+  //     });
+  //     return;
+  //   }
+  //   const newImages = [...currentImages];
+  //   newImages[id] = anonim;
+  //   setCurrentImages(newImages);
+  //   callback();
+  // };
 
   useEffect(() => {
     let currentId = 0;
@@ -268,7 +268,7 @@ const TeamCardPresentation = ({ images }) => {
               <div
                 className={appStyles.portrait}
                 onMouseEnter={() => handleMouseEnter(id)}
-                onMouseLeave={() => handleMouseLeave(id)}
+                // onMouseLeave={() => handleMouseLeave(id)}
               >
                 <img
                   id={`video-${id}`}

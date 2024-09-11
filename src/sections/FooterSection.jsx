@@ -182,16 +182,14 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
               <span>GET IN TOUCH</span>
             </Link>
           </div>
-          {isShort && (
-            <div
-              className={appStyles.buttonFagShowMore}
-              onClick={() => setIsShort(false)}
-            >
-              <div className={appStyles.contactButton}>
-                <span>See more</span>
-              </div>
+          <div
+            className={appStyles.buttonFagShowMore}
+            onClick={() => setIsShort(!isShort)}
+          >
+            <div className={appStyles.contactButton}>
+              <span>{isShort ? "Show more" : "Show less"}</span>
             </div>
-          )}
+          </div>
         </div>
       </div>
       <div className={appStyles.reviewBlock}>
