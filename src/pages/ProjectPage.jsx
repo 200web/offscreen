@@ -9,19 +9,20 @@ import facebook from "../assets/img/Face.webp";
 import instagram from "../assets/img/inst.webp";
 import whatsapp from "../assets/img/whatsapp.webp";
 import mail from "../assets/img/mail.webp";
-import maneken from "../assets/img/maneken.png";
-import arrow from "../assets/img/Arrow.png";
-import skate from "../assets/img/skateBoard.gif";
-import mouth from "../assets/img/mouth.png";
+import { Cloudinary } from "@cloudinary/url-gen";
+import { AdvancedVideo } from "@cloudinary/react";
 import { setIsLoaded } from "../Redux/introSlice";
+import { CloudinaryVideoPlayer } from "cloudinary-core";
+import cloudinary from "cloudinary-video-player";
+import "cloudinary-video-player/cld-video-player.min.css";
 import { useDispatch } from "react-redux";
-import HVideo from "../assets/img/HVideo.MP4";
 import axios from "axios";
 
 const ProjectPage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const [isGifPlaying, setIsGifPlaying] = React.useState(false);
+  const [video, setVideo] = React.useState("");
   const fileInputRef = React.useRef(null);
   const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [projectData, setProjectData] = React.useState([]);
@@ -34,43 +35,61 @@ const ProjectPage = () => {
   const videoRef = useRef(null);
 
   const dispatch = useDispatch();
+  const cld = new Cloudinary({
+    cloud: { cloudName: "drk91eyfp" },
+  });
 
   React.useEffect(() => {
+    window.scrollTo(0, 0);
     async function fetchCards() {
       try {
         const { data } = await axios.get(
-          `https://66d60cecf5859a7042683b4d.mockapi.io/PagesContent/?id=` + id
+          `https://66e82c2db17821a9d9dbada4.mockapi.io/PageContent/?id=` + id
         );
+
+        const cloudinaryVideo = cld.video(data[0].video);
+        setVideo(cloudinaryVideo);
+
         setProjectData(data[0]);
+        console.log(data[0]);
       } catch (error) {
         console.log(error);
       }
     }
 
+    // if (videoElem) {
+    //   const player = cloudinary.videoPlayer(videoElem, {
+    //     cloudName: "drk91eyfp",
+    //     hideContextMenu: true,
+    //     showLogo: false,
+    //     colors: {
+    //       base: "#FDFDFD",
+    //       accent: "#93999C",
+    //     },
+    //     controlBar: {
+    //       volumePanel: false,
+    //       fullscreenToggle: false,
+    //     },
+    //   });
+    //   player.source("HVideo");
+    // }
+
     fetchCards();
   }, []);
 
-  const handleMenuVisible = () => {
-    setMenuVisible(!menuVisible);
-  };
+  // const togglePlay = () => {
+  //   const videoElem = videoRef.current;
 
-  const togglePlay = () => {
-    const video = videoRef.current;
-    if (isGifPlaying) {
-      video.pause();
-    } else {
-      video.play();
-    }
-    setIsGifPlaying(!isGifPlaying);
-  };
+  //   if (!videoElem) return;
 
-  const handleMouseEnter = () => {
-    if (!isHovered) setIsHovered(true);
-  };
+  //   if (isGifPlaying) {
+  //     videoElem.pause();
+  //   } else {
+  //     videoElem.play();
+  //   }
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+  //   setIsGifPlaying(!isGifPlaying);
+  // };
 
   const deleteFiles = (index) => {
     setSelectedFiles((prevFiles) => {
@@ -105,8 +124,16 @@ const ProjectPage = () => {
     };
 
     window.addEventListener("resize", handleResize);
-
+    const videoElem = videoRef.current?.videoRef?.current;
+    if (videoElem) {
+      videoElem.addEventListener("pause", () => setIsGifPlaying(false));
+      videoElem.addEventListener("play", () => setIsGifPlaying(true));
+    }
     return () => {
+      if (videoElem) {
+        videoElem.removeEventListener("pause", () => setIsGifPlaying(false));
+        videoElem.removeEventListener("play", () => setIsGifPlaying(true));
+      }
       window.removeEventListener("resize", handleResize);
     };
   }, []);
@@ -120,11 +147,7 @@ const ProjectPage = () => {
             : `${project.Headerlayout}`
         }
       >
-        <div
-          className={project.headerContent}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
+        <div className={project.headerContent}>
           <div className={project.titleSide}>OffScreen</div>
           <div
             className={`${project.buttonSide} ${
@@ -180,7 +203,7 @@ const ProjectPage = () => {
         </div>
         <div className={project.fullVideo}>
           <div className={project.headerVideo}>
-            <div
+            {/* <div
               className={
                 !isGifPlaying
                   ? project.playButton
@@ -188,23 +211,19 @@ const ProjectPage = () => {
               }
               onClick={togglePlay}
             >
-              <span className={project.buttonNext}>&#129170;</span>
-            </div>
-            <video
-              id="video"
-              loop
+              <span className={project.buttonNext}>
+                <img draggable="false" src={playBut} />
+              </span>
+            </div> */}
+            <AdvancedVideo
+              cldVid={video}
+              controls
+              autoPlay
               muted
-              className={
-                isGifPlaying
-                  ? project.Video
-                  : `${project.Video} ${project.paused}`
-              }
-              ref={videoRef}
-              onClick={togglePlay}
-            >
-              <source src={projectData.video} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              loop
+              className={project.Video}
+              innerRef={videoRef}
+            />
           </div>
         </div>
       </div>

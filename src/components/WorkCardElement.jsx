@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import appStyles from "../scss/app.module.scss";
-import workHeadGif from "../assets/img/workHead.gif";
+import Liquid from "../assets/img/Liquid Splitting.gif";
 import moreArrow from "../assets/img/moreArrow.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -20,7 +20,7 @@ const WorkCardElement = () => {
       try {
         setIsLoading(true);
         const { data } = await axios.get(
-          `https://66d60cecf5859a7042683b4d.mockapi.io/Cards`
+          `https://66e82c2db17821a9d9dbada4.mockapi.io/Cards`
         );
         setCardsData(data);
         setIsLoading(false);
@@ -142,11 +142,14 @@ const WorkCardElement = () => {
           </Link>
         ))}
       {isShort && (
-        <div className={appStyles.workCard} onClick={() => setIsShort(false)}>
-          <img draggable="false" src={workHeadGif} alt="logo" />
-          <div className={appStyles.textContent}>
+        <div
+          className={`${appStyles.workCard} ${appStyles.last}`}
+          onClick={() => setIsShort(false)}
+        >
+          <img draggable="false" src={Liquid} alt="logo" />
+          <div className={appStyles.textContentLast}>
             <div>
-              <label>Go to the portfolio</label>
+              <label>MORE</label>
             </div>
           </div>
           <div className={appStyles.button}>

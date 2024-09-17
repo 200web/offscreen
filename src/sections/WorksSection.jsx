@@ -1,7 +1,7 @@
 import React from "react";
 import appStyles from "../scss/app.module.scss";
-import arrow from "../assets/img/Arrow.png";
-import bill from "../assets/img/bill.webp";
+import arrow from "../assets/img/Arrow.svg";
+import dollarEmoji from "../assets/img/dollarEmoji.webp";
 import party from "../assets/img/party.webp";
 import dance from "../assets/img/dance.webp";
 import strawberry from "../assets/img/strawberry.webp";
@@ -10,10 +10,10 @@ import adCardMobile from "../assets/img/addCardMobile.webp";
 import WorkCardElement from "../components/WorkCardElement";
 import { Link } from "react-router-dom";
 
-const photos = [bill, party, dance, strawberry];
+const photos = [dollarEmoji, party, dance, strawberry];
 
 const WorksSection = () => {
-  const [currentPhoto, setCurrentPhoto] = React.useState(bill);
+  const [currentPhoto, setCurrentPhoto] = React.useState(dollarEmoji);
   const [isAnimating, setIsAnimating] = React.useState(false);
   const [scrollTop, setScrollTop] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);

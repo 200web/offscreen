@@ -729,6 +729,7 @@
       width: clamp(270px, 70vw, 80rem);
       height: clamp(205px, 50vw, 60rem);
       margin-left: auto;
+      object-fit: cover;
     }
 
     .arrow {
@@ -770,7 +771,7 @@
     font-family: "Inter";
     text-transform: uppercase;
     font-weight: 300;
-    font-size: clamp(22px, 4vw, 45px);
+    font-size: clamp(22px, 4vw, 35px);
     width: 90%;
     text-indent: calc(111% - clamp(270px, 70vw, 80rem));
   }
@@ -809,7 +810,7 @@
     }
 
     article {
-      width: 30%;
+      // width: 30%;
       text-align: end;
 
       @media (max-width: 830px) {
@@ -818,7 +819,7 @@
     }
     p {
       text-transform: none;
-      width: 30%;
+      // width: 30%;
 
       @media (max-width: 830px) {
         width: 100%;
@@ -829,8 +830,8 @@
   .gifRow {
     width: 100%;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
+    gap: 10px;
 
     img {
       object-fit: none;
@@ -847,6 +848,7 @@
       width: 50%;
       height: 20%;
       object-fit: cover;
+      border-radius: 10px;
 
       @media (max-width: 600px) {
         width: 80%;
@@ -857,16 +859,12 @@
 
   .fullVideo {
     margin-top: 10rem;
-    img {
-      border-radius: 10px;
-      width: 100%;
-      height: 900px;
-    }
   }
 }
 
 .headerVideo {
   margin: 4rem auto 0 auto;
+  height: 80dvh;
 
   @media (max-width: 900px) {
     height: 600px;
@@ -925,14 +923,9 @@
 
     .buttonNext {
       position: absolute;
-      top: 9%;
-      left: 46%;
-      transform: translate(0, -100%);
-      width: 55px;
-      height: 55px;
-      color: white;
-      opacity: 0.75;
-      font-size: 180px;
+      top: 53%;
+      left: 53%;
+      transform: translate(-50%, -50%);
     }
 
     &::before {
