@@ -10,6 +10,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   const fileInputRef = React.useRef(null);
   const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
 
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
@@ -44,6 +45,15 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     setTimeout(() => {
       setIsLoaded(true);
     }, 3000);
+  };
+
+  const handleInputChange = (value, index) => {
+    setInputValues((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[index] = value;
+      return updatedValues;
+    });
+    console.log(inputValues);
   };
 
   return (
@@ -84,21 +94,35 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
             </div>
             <div className={contactStyles.fieldBox}>
               <div className={contactStyles.fieldElem}>
-                <Search placeholder="Name" />
+                <Search
+                  placeholder="Name"
+                  onChange={(value) => handleInputChange(value, 0)}
+                />
               </div>
               <div className={contactStyles.fieldElem}>
-                <Search placeholder="Email address" />
+                <Search
+                  placeholder="Email address"
+                  onChange={(value) => handleInputChange(value, 1)}
+                />
               </div>
               <div className={contactStyles.fieldElem}>
-                <Search placeholder="Budget range" />
+                <Search
+                  placeholder="Budget range"
+                  onChange={(value) => handleInputChange(value, 2)}
+                />
               </div>
               <div className={contactStyles.fieldElem}>
-                <Search placeholder="Website link" />
+                <Search
+                  placeholder="Website link"
+                  onChange={(value) => handleInputChange(value, 3)}
+                />
               </div>
               <div className={contactStyles.fieldElem}>
                 <textarea
                   placeholder="Project details"
                   className={contactStyles.textArea}
+                  value={inputValues[4]}
+                  onChange={(e) => handleInputChange(e.target.value, 4)}
                 />
                 <div className={contactStyles.image} onClick={handleImageClick}>
                   <img draggable="false" src={picture} alt="data" />
