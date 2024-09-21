@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import load from "../scss/components/loader.module.scss";
-import intro from "../assets/img/LiquidIntro.gif";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsLoaded } from "../Redux/introSlice";
-import HVideo from "../assets/img/HVideo.MP4";
+import HVideo from "../assets/img/HVideo.webm";
+import { video } from "@cloudinary/url-gen/qualifiers/source";
 
 const Intro = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const Intro = () => {
     const video = videoRef.current;
     if (video) {
       video.play();
+      video.muted = false;
     }
   }, []);
 
@@ -33,8 +34,8 @@ const Intro = () => {
         <div className={load.intro} onClick={handleHideIntro}>
           <video
             id="video"
-            muted
             loop
+            onLoad={(video.muted = true)}
             className={visible ? `` : `${load.swirl_out}`}
             ref={videoRef}
           >

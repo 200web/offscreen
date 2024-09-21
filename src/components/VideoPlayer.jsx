@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import HVideo from "../assets/img/HVideo.MP4";
+import HVideo from "../assets/img/HVideo.webm";
 import fullscreen from "../assets/img/fullscreen.png";
 import videoStyles from "../scss/components/video.module.scss";
 import arrowRight from "../assets/img/arrow Right.png";
@@ -7,11 +7,9 @@ import { useSelector } from "react-redux";
 
 const VideoPlayer = () => {
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isGifPlaying, setIsGifPlaying] = useState(true);
+  const [isGifPlaying, setIsGifPlaying] = useState(false);
   const videoRef = useRef(null);
   const progressContainerRef = useRef(null);
-
-  const { isLoaded } = useSelector((state) => state.intro);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -27,17 +25,6 @@ const VideoPlayer = () => {
     return () => {
       video.removeEventListener("timeupdate", updateProgressBar);
     };
-  }, []);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (isLoaded === true) {
-      video.play();
-    } else {
-      if (video) {
-        video.play();
-      }
-    }
   }, []);
 
   useEffect(() => {
@@ -137,7 +124,6 @@ const VideoPlayer = () => {
       </div>
       <video
         id="video"
-        muted
         loop
         className={`${videoStyles.Video} ${
           !isGifPlaying && !isFullscreen && videoStyles.paused
@@ -156,7 +142,7 @@ const VideoPlayer = () => {
       >
         <div className={videoStyles.video_header}>
           <div className={videoStyles.video_title}>
-            Watch the showreel
+            {/* Watch the showreel */}
             <div className={videoStyles.video_fullscreen}>
               <img
                 draggable="false"

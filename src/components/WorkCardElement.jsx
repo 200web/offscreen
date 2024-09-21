@@ -9,7 +9,7 @@ const WorkCardElement = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
   const [isHovered, setIsHovered] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isShort, setIsShort] = React.useState(true);
+  const [isShort, setIsShort] = React.useState();
   const animationTimeouts = React.useRef();
   const animationTimeouts2 = React.useRef();
   const [cardsData, setCardsData] = useState([]);
@@ -22,8 +22,11 @@ const WorkCardElement = () => {
         const { data } = await axios.get(
           `https://66e82c2db17821a9d9dbada4.mockapi.io/Cards`
         );
+        const cardsTempData = data.length;
+        console.log(cardsTempData);
         setCardsData(data);
         setIsLoading(false);
+        setIsShort(cardsTempData < 3);
       } catch (error) {
         console.log(error);
       }
@@ -97,7 +100,12 @@ const WorkCardElement = () => {
     }
   }, [isHovered, isMobile, cardsData]);
 
-  const displayedCards = isShort ? cardsData.slice(0, 5) : cardsData;
+  const displayedCards = isShort ? cardsData.slice(0, 3) : cardsData;
+
+  const videoAttributes = {
+    controls: false,
+    controlsList: "nofullscreen nodownload noremoteplayback noplaybackrate",
+  };
 
   return (
     <div className={appStyles.workBlock} id="our works">
@@ -116,9 +124,11 @@ const WorkCardElement = () => {
                 backgroundPosition: "center",
               }}
             >
-              <img
-                draggable="false"
-                src={card.gif}
+              <video
+                id="gif"
+                loop
+                autoPlay
+                muted
                 alt={`project-${id}`}
                 className={`${
                   isMobile
@@ -127,7 +137,11 @@ const WorkCardElement = () => {
                     ? appStyles.fadeIn
                     : appStyles.fadeOut
                 }`}
-              />
+                {...videoAttributes}
+              >
+                <source src={card.gif} type="video/webm" />
+                Your browser does not support the video tag.
+              </video>
               {card && (
                 <div className={appStyles.textContent}>
                   <div>

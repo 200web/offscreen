@@ -1,6 +1,6 @@
 .headerVideo {
   width: 98%;
-  height: 90dvh;
+  height: calc(95dvh - 4rem);
   margin: 4rem auto 0 auto;
 
   video {
@@ -127,7 +127,7 @@
   .video_fullscreen {
     position: absolute;
     right: 0;
-    top: 0;
+    top: -20px;
     z-index: 8;
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
       brightness(100%) contrast(104%);

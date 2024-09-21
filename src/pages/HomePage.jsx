@@ -21,7 +21,6 @@ const HomePage = () => {
   }, [location]);
   return (
     <>
-      <Intro />
       <Header />
       <HeaderSection />
       <AdvantageSection />

@@ -64,7 +64,8 @@ const WorksSection = () => {
     };
   }, []);
 
-  const isScrolling = window.scrollY < 3068 || window.scrollY > 3700;
+  const isScrolling = window.scrollY < 2600;
+  const fixedWord = window.scrollY > 4000;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -85,7 +86,11 @@ const WorksSection = () => {
       <div className={appStyles.Row}>
         <div
           className={`${appStyles.centralTitle} ${
-            isScrolling ? appStyles.scrolling : appStyles.scrollingStop
+            isScrolling
+              ? appStyles.scrolling
+              : fixedWord
+              ? appStyles.fixedWord
+              : appStyles.scrollingStop
           }`}
         >
           <span>OUR WORKS</span>
