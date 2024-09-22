@@ -1,4 +1,5 @@
 import React from "react";
+import { useSelector } from "react-redux"; // Добавить импорт хука useSelector
 import contactStyles from "../scss/contactPage.module.scss";
 import Search from "../components/Search/Search";
 import picture from "../assets/img/picture.webp";
@@ -12,23 +13,20 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
 
+  const cards = useSelector((state) => state.contactCard.cards);
+  const otherValues = useSelector((state) => state.contactCard.otherValues);
+
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
-
     setSelectedFiles((prevFiles) => {
       const remainingSlots = 5 - prevFiles.length;
-
       const newFiles = files.slice(0, remainingSlots);
-
       return [...prevFiles, ...newFiles];
     });
   };
 
   const deleteFiles = (index) => {
-    setSelectedFiles((prevFiles) => {
-      const updatedFiles = prevFiles.filter((file, idx) => idx !== index);
-      return updatedFiles;
-    });
+    setSelectedFiles((prevFiles) => prevFiles.filter((file, idx) => idx !== index));
   };
 
   const handleImageClick = () => {
@@ -42,26 +40,50 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   };
 
   const sentMessage = () => {
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 3000);
+    setIsLoaded(true);
+  
+    // Собираем данные формы в объект
+    const formData = {
+      name: inputValues[0],      // Имя
+      email: inputValues[1],     // Email
+      phone: inputValues[2],     // Телефон
+      website: inputValues[3],   // Вебсайт
+      details: inputValues[4],   // Детали проекта
+      type: cards[0],            // Тип видео
+      goals: cards[1],           // Цели
+      budget: cards[2],          // Бюджет
+      deadline: cards[3]         // Дедлайн
+    };
+  
+    console.log("Form Data to send:", formData); // Логируем данные перед отправкой
+  
+    // Отправляем данные через fetch
+    fetch('https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'no-cors', // Отключение CORS
+      body: JSON.stringify(formData),
+    })
+    .then(() => {
+      console.log("Message sent successfully");
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
   };
-
+  
   const handleInputChange = (value, index) => {
     setInputValues((prevValues) => {
       const updatedValues = [...prevValues];
       updatedValues[index] = value;
       return updatedValues;
     });
-    console.log(inputValues);
   };
 
   return (
-    <div
-      className={`${contactStyles.sideMail} ${
-        isClicked ? contactStyles.active : ""
-      }`}
-    >
+    <div className={`${contactStyles.sideMail} ${isClicked ? contactStyles.active : ""}`}>
       <div className={contactStyles.socialCard}>
         {isLoaded ? (
           <div className={contactStyles.loaded}>
@@ -74,10 +96,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
               </Link>
             </div>
             <img draggable="false" src={loaded} alt="access" />
-            <p>
-              Your message has been sent, we will contact you as soon as
-              possible
-            </p>
+            <p>Your message has been sent, we will contact you as soon as possible</p>
           </div>
         ) : (
           <>
@@ -107,7 +126,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
               </div>
               <div className={contactStyles.fieldElem}>
                 <Search
-                  placeholder="Budget range"
+                  placeholder="Phone number"
                   onChange={(value) => handleInputChange(value, 2)}
                 />
               </div>
