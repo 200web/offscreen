@@ -96,8 +96,6 @@ const FooterContact = () => {
         <h1 id="Contacts">Contacts</h1>
       </div>
       <div className={appStyles.cardGrid}>
-        {!isMobile && (
-          <>
             {/* <div className={appStyles.socialContainer}>
               <div>
                 <div className={`${appStyles.socialCard} ${appStyles.active}`}>
@@ -179,11 +177,9 @@ const FooterContact = () => {
             </div>
                 </div>
             </div>
-          </>
-        )}
-        {isMobile && (
+        {/* {isMobile && (
           <div className={appStyles.cardGridMobile}>
-            {/* <div className={appStyles.socialContainerMobile}>
+            <div className={appStyles.socialContainerMobile}>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                 <div className={appStyles.image}>
                   <img src={facebook} width={50} height={50} alt="facebook" />
@@ -217,9 +213,9 @@ const FooterContact = () => {
                 </div>
                 <div className={appStyles.title}>mail</div>
               </Link>
-            </div> */}
+            </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

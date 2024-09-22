@@ -2123,6 +2123,9 @@ section {
       overflow: hidden;
       background-color: #1e1e1e;
 
+      
+      
+
       .mailBlank {
         color: white;
         width: 60%;
@@ -2151,6 +2154,12 @@ section {
           text-decoration: none; /* Убираем подчеркивание */
         }
 
+      }
+      @media (max-width: 768px) {
+  
+        .mailBlank {
+        width: 100%;
+        }
       }
 
       .fieldBox {
@@ -2288,8 +2297,30 @@ section {
           }
         }
       }
+      @media (max-width: 768px) {
+  
+        .fieldBox {
+          display: block;
+          width: 90%;
+          height: 80%;
+          margin: 0;
+          flex-wrap: wrap;
+          margin-left: 5%;
+
+          .fieldElem {
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
+      }
+      }
+    }
+    @media (max-width: 768px) {
+      .socialCard {
+        display: block; /* Убираем flex на мобильных устройствах */
+      }
     }
   }
+  
 }
 
 .fadeIn {
