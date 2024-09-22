@@ -41,18 +41,30 @@ const ContactCard = ({
 
   const handleNextClick = () => {
     const updatedCards = [...cards];
-    updatedCards[currentCard - 1] =
-      selectedOption !== null ? selectedOption : 4;
-    dispatch(setItems(updatedCards));
+  
+    // Получаем текстовое значение на основе выбранного индекса
+    const selectedText = selectedOption !== null 
+      ? buttonText[currentCard - 1][selectedOption] 
+      : ""; // Если ничего не выбрано, оставляем пустую строку
+  
+    // Если выбрана опция "Другой", используем текст из searchValue
     if (isOtherSelected) {
-      dispatch(setOtherValue({ index: currentCard - 1, value: searchValue }));
+      updatedCards[currentCard - 1] = searchValue; // Сохраняем введённый текст в Redux
+      dispatch(setOtherValue({ index: currentCard - 1, value: searchValue })); // Сохраняем также в otherValues
+    } else {
+      updatedCards[currentCard - 1] = selectedText; // Сохраняем текстовое значение в Redux
     }
+  
+    dispatch(setItems(updatedCards));
+  
     if (currentCard === 4) {
       setIsClicked(true);
     } else {
       setCurrentCard((prevIndex) => (prevIndex < 4 ? prevIndex + 1 : 4));
     }
   };
+  
+  
 
   const handlePrevClick = () => {
     setCurrentCard((prevIndex) => (prevIndex > 1 ? prevIndex - 1 : 1));
