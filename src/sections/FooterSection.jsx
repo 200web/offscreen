@@ -53,7 +53,7 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);
   const [activeCard, setIsActiveCard] = React.useState(0);
-  const teamPhotos = [paul, Dmitry, Andrei, Jonny, Egor];
+  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei];
 
   const handleMoveOver = (id) => {
     if (id === activeCard) {

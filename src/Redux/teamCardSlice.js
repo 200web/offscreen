@@ -49,7 +49,7 @@ const initialState = {
       description: [
         "I am a Warsaw-based cinematographer with a passion for documentary-style shooting, focusing on capturing authentic moments and realistic movements. Skilled in post-production, especially in color correction, I enjoy working on compelling television projects and documentary films. As a highly professional and collaborative team member, I bring my expertise to every project. I graduated from film schools in Belarus and Poland, and I'm fluent in both Polish and English.",
       ],
-      image: Andrei,
+      image: Egor,
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ const initialState = {
       description: [
         "As a passionate Gaffer and Cinematographer with several years of experience in the film industry, I've honed my skills on diverse projects, including the 48HPF, where my lighting work as part of the cinematography team was recognized with the Best Cinematography award. My passion for visual storytelling extends beyond lighting; my own short film has been screened at multiple horror festivals. I bring not only technical expertise but also a client-centric approach, ensuring clear communication and a collaborative spirit to bring every vision to life. I'm always learning and growing, excited for the future in this ever-evolving industry.",
       ],
-      image: Egor,
+      image: Andrei,
     },
   ],
   status: "loading",

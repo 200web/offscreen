@@ -148,7 +148,15 @@ const ProjectPage = () => {
         }
       >
         <div className={project.headerContent}>
-          <div className={project.titleSide}>OffScreen</div>
+          <div
+            className={project.titleSide}
+            onClick={() => {
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
+          >
+            OffScreen
+          </div>
           <div
             className={`${project.buttonSide} ${
               isMobile ? project.mobile : ""

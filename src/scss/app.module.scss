@@ -531,7 +531,7 @@ section {
     @media (width > 1250px) {
       &.scrolling {
         transform: translateY(calc(80rem - (var(--scrollTop) * 0.5)));
-        height: 40em;
+        height: 25em;
         transition: 0.5s;
 
         span {
@@ -541,7 +541,7 @@ section {
       }
 
       &.fixedWord {
-        height: 40em;
+        height: 25em;
         transition: 0.5s;
         transform: translateY(90%);
 
@@ -552,8 +552,8 @@ section {
       }
 
       &.scrollingStop {
-        transform: translateY(calc(14em - var(--TempscrollTop)));
-        height: 40em;
+        transform: translateY(calc(13em - var(--TempscrollTop)));
+        height: 25em;
 
         span {
           font-size: 7.6rem;
@@ -887,8 +887,12 @@ section {
   justify-content: space-between;
   height: 640px;
   width: 98%;
-  margin: 12rem auto 8rem auto;
+  margin: 6rem auto 8rem auto;
   color: white;
+
+  @media (max-width: 900px) {
+    margin: 6rem auto 4rem auto;
+  }
 
   .infoButtons {
     width: 60%;
@@ -955,6 +959,10 @@ section {
     img {
       top: 50%;
       left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .rotated {
       transform: translate(-50%, -50%) rotate(15deg);
     }
 
@@ -1385,12 +1393,12 @@ section {
 
     .fadeIn {
       opacity: 1;
-      transition: opacity 0.5s ease-in;
+      transition: opacity 0.3s ease-in;
     }
 
     .fadeOut {
       opacity: 0;
-      transition: opacity 0.5s ease-out;
+      transition: opacity 0.3s ease-out;
     }
   }
 }
@@ -1574,6 +1582,10 @@ section {
         transition: 0.2s;
         color: black;
 
+        @media (max-width: 450px) {
+          padding: 1rem 1.5rem 1rem 1.5rem;
+        }
+
         &:hover {
           cursor: pointer;
           box-shadow: 0 0 0 1px white;
@@ -1593,6 +1605,10 @@ section {
         border-radius: 6px;
         transition: 0.2s;
         color: rgb(255, 255, 255);
+
+        @media (max-width: 450px) {
+          padding: 1.2rem 1.5rem 1.2rem 1.5rem;
+        }
 
         &:hover {
           cursor: pointer;
@@ -1729,6 +1745,10 @@ section {
         z-index: 8;
         transform: translateX(-50%) scale(0.8);
         opacity: 0.75;
+
+        @media (max-width: 1100px) {
+          opacity: 0;
+        }
       }
 
       &.card2 {
@@ -1743,6 +1763,10 @@ section {
         transform: translateX(-50%) scale(0.8);
         z-index: 8;
         opacity: 0.75;
+
+        @media (max-width: 1100px) {
+          opacity: 0;
+        }
       }
 
       &:hover {
@@ -1771,6 +1795,10 @@ section {
     width: 100%;
     display: flex;
     justify-content: center;
+
+    @media (max-width: 1100px) {
+      top: 48rem;
+    }
 
     button {
       background-color: #2a2a2a;

@@ -1,8 +1,9 @@
 import React from "react";
 import headerStyle from "../scss/components/header.module.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [isHovered, setIsHovered] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [menuVisible, setMenuVisible] = React.useState(false);
@@ -83,7 +84,15 @@ const Header = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div className={headerStyle.titleSide}>OffScreen</div>
+        <div
+          className={headerStyle.titleSide}
+          onClick={() => {
+            navigate("/");
+            window.scrollTo(0, 0);
+          }}
+        >
+          OffScreen
+        </div>
         <div
           className={`${headerStyle.buttonSide} ${
             isMobile ? headerStyle.mobile : ""
