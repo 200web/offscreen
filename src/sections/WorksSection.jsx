@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 const photos = [dollarEmoji, party, dance, strawberry];
 
 const WorksSection = () => {
-  const [currentPhoto, setCurrentPhoto] = React.useState(dollarEmoji);
+  const [currentPhoto, setCurrentPhoto] = React.useState(party);
   const [isAnimating, setIsAnimating] = React.useState(false);
   const [scrollTop, setScrollTop] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
@@ -64,8 +64,8 @@ const WorksSection = () => {
     };
   }, []);
 
-  const isScrolling = window.scrollY < 2600;
-  const fixedWord = window.scrollY > 4000;
+  const isScrolling = window.scrollY < 2550;
+  const fixedWord = window.scrollY > 3400;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -263,7 +263,9 @@ const WorksSection = () => {
             draggable="false"
             src={currentPhoto}
             alt="presentation"
-            className={isAnimating ? appStyles.fadeOut : appStyles.fadeIn}
+            className={`${isAnimating ? appStyles.fadeOut : appStyles.fadeIn} ${
+              currentPhoto === dollarEmoji && appStyles.rotated
+            }`}
           />
         </div>
       </div>
@@ -364,7 +366,7 @@ const WorksSection = () => {
           </div>
         </div>
       </div>
-      <div className={appStyles.Row} id="Team">
+      <div className={appStyles.Row}>
         {/* <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
             <span>Team</span>
@@ -422,7 +424,7 @@ const WorksSection = () => {
           </div>
         </div> */}
         {isWorkChanged && (
-          <div className={appStyles.workTitle}>
+          <div className={appStyles.workTitle} id="Team">
             <span>Our Team</span>
           </div>
         )}

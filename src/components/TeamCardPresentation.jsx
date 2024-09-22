@@ -59,7 +59,7 @@ const TeamCardPresentation = ({ images }) => {
           const firstUpdatedImages = currentImages.map(() => anonim);
           setCurrentImages(firstUpdatedImages);
         }
-      }, 500);
+      }, 300);
     }
   };
 
@@ -101,7 +101,7 @@ const TeamCardPresentation = ({ images }) => {
           const firstUpdatedImages = currentImages.map(() => anonim);
           setCurrentImages(firstUpdatedImages);
         }
-      }, 500);
+      }, 300);
     }
   };
 
