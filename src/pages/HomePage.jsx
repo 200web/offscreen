@@ -15,7 +15,12 @@ const HomePage = () => {
     if (location.state?.scrollToTeam) {
       const teamElement = document.getElementById("Team");
       if (teamElement) {
-        teamElement.scrollIntoView();
+        const elementPosition =
+          teamElement.getBoundingClientRect().top + window.pageYOffset;
+        window.scrollTo({
+          top: elementPosition + 1000,
+          behavior: "smooth",
+        });
       }
     }
   }, [location]);

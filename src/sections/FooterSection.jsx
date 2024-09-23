@@ -147,7 +147,7 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
   ];
 
   return (
-    <section className={appStyles.section}>
+    <section className={appStyles.section} id="Team">
       <div className={appStyles.teamBlock}>
         <TeamCardPresentation images={teamPhotos} />
       </div>

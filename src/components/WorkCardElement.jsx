@@ -4,6 +4,7 @@ import Liquid from "../assets/img/Liquid Splitting.gif";
 import moreArrow from "../assets/img/moreArrow.png";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MyLoader from "./Loader";
 
 const WorkCardElement = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
@@ -109,7 +110,7 @@ const WorkCardElement = () => {
 
   return (
     <div className={appStyles.workBlock} id="our works">
-      {!isLoading &&
+      {!isLoading ? (
         displayedCards.length > 0 &&
         displayedCards.map((card, id) => (
           <Link to={`/project/${id}`} key={id}>
@@ -154,7 +155,23 @@ const WorkCardElement = () => {
               )}
             </div>
           </Link>
-        ))}
+        ))
+      ) : (
+        <>
+          <div className={appStyles.workCard}>
+            <MyLoader />
+          </div>
+          <div className={appStyles.workCard}>
+            <MyLoader />
+          </div>
+          <div className={appStyles.workCard}>
+            <MyLoader />
+          </div>
+          <div className={appStyles.workCard}>
+            <MyLoader />
+          </div>
+        </>
+      )}
       {isShort && (
         <div
           className={`${appStyles.workCard} ${appStyles.last}`}

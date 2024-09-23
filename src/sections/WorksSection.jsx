@@ -424,7 +424,7 @@ const WorksSection = () => {
           </div>
         </div> */}
         {isWorkChanged && (
-          <div className={appStyles.workTitle} id="Team">
+          <div className={appStyles.workTitle}>
             <span>Our Team</span>
           </div>
         )}
