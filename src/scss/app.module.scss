@@ -33,17 +33,29 @@ section {
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: max-content;
   z-index: 10;
   margin: 0 auto;
   background-color: #121212;
 }
 
 .section {
-  margin-bottom: 2rem;
+  // margin-bottom: 2rem;
   width: 100%;
   max-width: 2200px;
   overflow: hidden;
+}
+
+.HVideoLayout {
+  width: 98%;
+  height: calc(95dvh - 4rem);
+  margin: 4rem auto 0 auto;
+
+  .video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 6;
+  }
 }
 
 .content {

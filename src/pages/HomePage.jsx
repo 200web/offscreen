@@ -15,7 +15,7 @@ const HomePage = () => {
     if (location.state?.scrollToTeam) {
       const teamElement = document.getElementById("Team");
       if (teamElement) {
-        teamElement.scrollIntoView({ behavior: "smooth" });
+        teamElement.scrollIntoView();
       }
     }
   }, [location]);

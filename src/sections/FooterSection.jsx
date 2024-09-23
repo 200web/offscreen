@@ -1,10 +1,11 @@
 import React from "react";
 import appStyles from "../scss/app.module.scss";
 import paul from "../assets/img/paul.jpg";
-import Dmitry from "../assets/img/Dmitry.jpg";
+import Dmitry from "../assets/img/Dmitry.webp";
 import Andrei from "../assets/img/Andrei.jpg";
 import Jonny from "../assets/img/Jonny.jpg";
 import Egor from "../assets/img/Egor.jpg";
+import Valiantsin from "../assets/img/Valiantsin.jpg";
 import CardCarousel from "../components/CardCarousel";
 import CardElement from "../components/CardElement";
 
@@ -53,7 +54,7 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);
   const [activeCard, setIsActiveCard] = React.useState(0);
-  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei];
+  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei, Valiantsin];
 
   const handleMoveOver = (id) => {
     if (id === activeCard) {

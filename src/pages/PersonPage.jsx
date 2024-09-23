@@ -16,10 +16,6 @@ const PersonPage = () => {
     dispatch(setIsLoaded(true));
   }, []);
 
-  const handleBackToTeamClick = () => {
-    navigate("/", { state: { scrollToTeam: true } });
-  };
-
   return (
     <section className={personStyle.section}>
       <div className={personStyle.content}>
@@ -47,7 +43,7 @@ const PersonPage = () => {
         <div className={personStyle.button}>
           {cards[id].description !== "" && (
             <div
-              onClick={handleBackToTeamClick}
+              onClick={() => navigate("/", { state: { scrollToTeam: true } })}
               className={personStyle.contactButton}
             >
               <img draggable="false" src={arrow} alt="arrow" />

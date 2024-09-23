@@ -1,10 +1,11 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import paul from "../assets/img/paul.jpg";
-import Dmitry from "../assets/img/Dmitry.jpg";
+import Dmitry from "../assets/img/Dmitry.webp";
 import Andrei from "../assets/img/Andrei.jpg";
 import Jonny from "../assets/img/Jonny.jpg";
 import Egor from "../assets/img/Egor.jpg";
+import Valiantsin from "../assets/img/Valiantsin.jpg";
 
 export const fetchCards = createAsyncThunk(
   "card/fetchCardStatus",
@@ -69,6 +70,15 @@ const initialState = {
         "As a passionate Gaffer and Cinematographer with several years of experience in the film industry, I've honed my skills on diverse projects, including the 48HPF, where my lighting work as part of the cinematography team was recognized with the Best Cinematography award. My passion for visual storytelling extends beyond lighting; my own short film has been screened at multiple horror festivals. I bring not only technical expertise but also a client-centric approach, ensuring clear communication and a collaborative spirit to bring every vision to life. I'm always learning and growing, excited for the future in this ever-evolving industry.",
       ],
       image: Andrei,
+    },
+    {
+      id: 5,
+      profession: "Cinematographer",
+      name: "Valiantsin Hlushko",
+      description: [
+        "With over 10 years on set, he has shaped his craft across a diverse range of projects, from documentaries and music videos to high-impact TV commercials. His work has been showcased at prestigious film festivals in Venice and Brazil, and he also held a personal exhibition in Berlin. He approaches every project with a fresh perspective, driven by the challenge of pushing creative boundaries and telling stories in visually compelling ways.",
+      ],
+      image: Valiantsin,
     },
   ],
   status: "loading",

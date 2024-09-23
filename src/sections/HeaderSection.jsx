@@ -59,7 +59,16 @@ const HeaderSection = () => {
   }, [isVisible]);
   return (
     <section className={appStyles.section}>
-      <VideoPlayer />
+      {/* <VideoPlayer /> */}
+      <div className={appStyles.HVideoLayout}>
+        <iframe
+          src="https://player.vimeo.com/video/1011674048?badge=0&autopause=0&autoplay=1&muted=1&player_id=0&app_id=58479"
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+          className={appStyles.video}
+          title="SHOWREEL'24"
+        ></iframe>
+      </div>
       {!isMobile && (
         <>
           <div className={appStyles.Row}>
