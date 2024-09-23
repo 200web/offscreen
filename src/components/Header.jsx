@@ -84,14 +84,15 @@ const Header = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div
-          className={headerStyle.titleSide}
-          onClick={() => {
-            navigate("/");
-            window.scrollTo(0, 0);
-          }}
-        >
-          OffScreen
+        <div className={headerStyle.titleSide}>
+          <span
+            onClick={() => {
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
+          >
+            OffScreen
+          </span>
         </div>
         <div
           className={`${headerStyle.buttonSide} ${
