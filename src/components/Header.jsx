@@ -100,12 +100,14 @@ const Header = () => {
           } ${menuVisible && isMobile ? headerStyle.active : ""}`}
         >
           <ul>
-            <li
-              className={headerStyle.h_but_s}
-              onClick={() => handleActiveButton(0)}
-            >
-              <span>About Us</span>
-            </li>
+            {!isMobile && (
+              <li
+                className={headerStyle.h_but_s}
+                onClick={() => handleActiveButton(0)}
+              >
+                <span>About Us</span>
+              </li>
+            )}
             <li
               className={headerStyle.h_but_s}
               onClick={() => handleActiveButton(1)}

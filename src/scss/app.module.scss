@@ -1364,8 +1364,28 @@ section {
       }
 
       @media (max-width: 1200px) {
+        height: 100% !important;
         &.active {
           z-index: 99;
+
+          .descriptionBox .profession,
+          .descriptionBox .name {
+            position: relative;
+            transform: translateY(50%);
+          }
+
+          .descriptionBox .name {
+            transform: translateY(-250%);
+          }
+
+          .descriptionBox .addInf {
+            position: relative;
+            transform: translateY(-40%);
+            overflow: visible;
+            -webkit-line-clamp: unset;
+            height: auto;
+          }
+
           img {
             width: 80px;
             height: 80px;
@@ -1376,7 +1396,7 @@ section {
             border: 1px solid white;
 
             @media (max-width: 600px) {
-              top: 15%;
+              top: 13%;
             }
           }
         }
@@ -1503,7 +1523,7 @@ section {
         font-weight: 500;
 
         @media (max-width: 600px) {
-          padding: 2rem calc(2rem + 7%) 1rem 1rem;
+          padding: 1.7rem calc(2rem + 9%) 1rem 1rem;
         }
 
         div {
