@@ -2135,6 +2135,9 @@ section {
       overflow: hidden;
       background-color: #1e1e1e;
 
+      
+      
+
       .mailBlank {
         color: white;
         width: 60%;
@@ -2148,15 +2151,26 @@ section {
         }
         .mailInf {
           font-size: 14px;
-          margin-bottom: 5rem;
+          margin-bottom: 4rem;
           font-family: "Inter";
         }
         .title {
           width: 60%;
           text-transform: uppercase;
           font-size: 21px;
-          margin: 2rem 0 5rem 0;
+          margin: 0 0 5rem 0;
           font-family: "Inter";
+        }
+        .title a {
+          color: #C0D100; /* Цвет ссылки */
+          text-decoration: none; /* Убираем подчеркивание */
+        }
+
+      }
+      @media (max-width: 768px) {
+  
+        .mailBlank {
+        width: 100%;
         }
       }
 
@@ -2167,7 +2181,7 @@ section {
         display: flex;
         flex-wrap: wrap;
 
-        :nth-child(5) {
+        :nth-child(3) {
           width: 100% !important;
         }
 
@@ -2177,7 +2191,7 @@ section {
         }
 
         .fieldElem {
-          width: 49%;
+          width: 48%;
           margin-bottom: 0.5rem;
 
           .image {
@@ -2295,8 +2309,30 @@ section {
           }
         }
       }
+      @media (max-width: 768px) {
+  
+        .fieldBox {
+          display: block;
+          width: 90%;
+          height: 80%;
+          margin: 0;
+          flex-wrap: wrap;
+          margin-left: 5%;
+
+          .fieldElem {
+          width: 100%;
+          margin-bottom: 0.5rem;
+        }
+      }
+      }
+    }
+    @media (max-width: 768px) {
+      .socialCard {
+        display: block; /* Убираем flex на мобильных устройствах */
+      }
     }
   }
+  
 }
 
 .fadeIn {

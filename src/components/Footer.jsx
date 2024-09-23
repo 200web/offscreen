@@ -10,6 +10,7 @@ const Footer = () => {
         <div className={footer.contentFooter}>
           <main>
             <div>
+             <span>OFFSCREEN PROD.</span> <br />
               <span>Copyright, 2024</span>
             </div>
             <span className={footer.web}>

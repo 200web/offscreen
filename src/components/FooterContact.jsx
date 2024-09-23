@@ -16,6 +16,43 @@ const FooterContact = () => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 1000);
   const [selectedFiles, setSelectedFiles] = React.useState([]);
   const dispatch = useDispatch();
+  const [name, setName] = React.useState('');
+  const [emailOrPhone, setEmailOrPhone] = React.useState('');
+  const [projectDetails, setProjectDetails] = React.useState('');
+  const [isLoaded, setIsLoaded] = React.useState(false);
+
+   // Функция отправки сообщения
+   const sendMessage = () => {
+    setIsLoaded(true);
+
+    const formData = {
+      name: name,
+      emailOrPhone: emailOrPhone,
+      projectDetails: projectDetails,
+    };
+
+    console.log("Form Data to send:", formData); // Для проверки данных перед отправкой
+
+    fetch('https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'no-cors', // Отключение CORS
+      body: JSON.stringify(formData),
+    })
+    .then(() => {
+      console.log("Message sent successfully");
+      setIsLoaded(false); // Сброс загрузки после отправки
+      setName(''); // Очищаем поля после успешной отправки
+      setEmailOrPhone('');
+      setProjectDetails('');
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      setIsLoaded(false);
+    });
+  };
 
   const deleteFiles = (index) => {
     setSelectedFiles((prevFiles) => {
@@ -59,9 +96,7 @@ const FooterContact = () => {
         <h1 id="Contacts">Contacts</h1>
       </div>
       <div className={appStyles.cardGrid}>
-        {!isMobile && (
-          <>
-            <div className={appStyles.socialContainer}>
+            {/* <div className={appStyles.socialContainer}>
               <div>
                 <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                   <div className={appStyles.image}>
@@ -99,73 +134,50 @@ const FooterContact = () => {
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
               </div>
-            </div>
+            </div> */}
             <div className={appStyles.sideMail}>
               <div className={appStyles.socialCard}>
                 <div className={appStyles.mailBlank}>
                   <div className={appStyles.mailTile}>Mail</div>
                   <div className={appStyles.mailInf}>
-                    Astap.dedign@gmail.com
+                     prod.offscreen@gmail.com
                   </div>
                   <div className={appStyles.title}>
                     If you have a general or project enquiry, please drop me an
-                    email or fill the form — available now.
+                    email or <br /><Link to="/contact" className={appStyles.link}>fill the form</Link> — available now.
                   </div>
                 </div>
                 <div className={appStyles.fieldBox}>
-                  <div className={appStyles.fieldElem}>
-                    <Search placeholder="Name" />
-                  </div>
-                  <div className={appStyles.fieldElem}>
-                    <Search placeholder="Email address" />
-                  </div>
-                  <div className={appStyles.fieldElem}>
-                    <Search placeholder="Budget range" />
-                  </div>
-                  <div className={appStyles.fieldElem}>
-                    <Search placeholder="Website link" />
-                  </div>
-                  <div className={appStyles.fieldElem}>
-                    <textarea
-                      placeholder="Project details"
-                      className={appStyles.textArea}
-                    />
-                    <div className={appStyles.image} onClick={handleImageClick}>
-                      <img draggable="false" src={picture} alt="data" />
-                    </div>
-                    <input
-                      type="file"
-                      ref={fileInputRef}
-                      style={{ display: "none" }}
-                      accept=".png,.jpg,.jpeg,.mp4,.mov"
-                      onChange={handleFileChange}
-                    />
-                    {selectedFiles.length > 0 && (
-                      <div className={appStyles.selectedFiles}>
-                        {selectedFiles.map((file, index) => (
-                          <div className={appStyles.fileName}>
-                            <label key={index}>{file.name}</label>
-                            <div
-                              className={appStyles.cancelButton}
-                              onClick={() => deleteFiles(index)}
-                            >
-                              <span className={appStyles.cancel}></span>
-                              <span className={appStyles.cancel}></span>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                  <div className={appStyles.button}>
-                    <p>Send Message</p>
-                  </div>
-                </div>
+                <div className={appStyles.fieldElem}>
+                <Search
+                  placeholder="Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
+              <div className={appStyles.fieldElem}>
+                <Search
+                  placeholder="Email address or Phone number"
+                  value={emailOrPhone}
+                  onChange={(e) => setEmailOrPhone(e.target.value)}
+                />
+              </div>
+              <div className={appStyles.fieldElem}>
+                <textarea
+                  placeholder="Project details"
+                  className={appStyles.textArea}
+                  value={projectDetails}
+                  onChange={(e) => setProjectDetails(e.target.value)}
+                />
+              </div>
+              <div className={appStyles.button} onClick={sendMessage}>
+                <p>Send Message</p>
+              </div>
+              {isLoaded && <p>Sending message...</p>}
             </div>
-          </>
-        )}
-        {isMobile && (
+                </div>
+            </div>
+        {/* {isMobile && (
           <div className={appStyles.cardGridMobile}>
             <div className={appStyles.socialContainerMobile}>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
@@ -203,7 +215,7 @@ const FooterContact = () => {
               </Link>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
