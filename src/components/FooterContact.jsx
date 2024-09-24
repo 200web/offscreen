@@ -32,7 +32,7 @@ const FooterContact = () => {
       projectDetails: projectDetails,
     };
 
-    console.log("Form Data to send: llalalalal", formData); // Для проверки данных перед отправкой
+    console.log("Form Data to send:", formData); // Для проверки данных перед отправкой
 
     fetch('https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec', {
       method: 'POST',
