@@ -43,7 +43,7 @@ const FooterContact = () => {
       body: JSON.stringify(formData),
     })
     .then(() => {
-      console.log("Message sent successfully111111111111");
+      console.log("Message sent successfully");
       setIsLoaded(false); // Сброс загрузки после отправки
       setName(''); // Очищаем поля после успешной отправки
       setEmailOrPhone('');
