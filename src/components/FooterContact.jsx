@@ -50,7 +50,7 @@ const FooterContact = () => {
       setProjectDetails('');
     })
     .catch((error) => {
-      console.error("Error00000:", error);
+      console.error("Error:", error);
       setIsLoaded(false);
     });
   };
