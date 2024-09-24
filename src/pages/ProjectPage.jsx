@@ -17,6 +17,7 @@ import cloudinary from "cloudinary-video-player";
 import "cloudinary-video-player/cld-video-player.min.css";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import FooterContact from "../components/FooterContact";
 
 const ProjectPage = () => {
   const navigate = useNavigate();
@@ -148,14 +149,15 @@ const ProjectPage = () => {
         }
       >
         <div className={project.headerContent}>
-          <div
-            className={project.titleSide}
-            onClick={() => {
-              navigate("/");
-              window.scrollTo(0, 0);
-            }}
-          >
-            OffScreen
+          <div className={project.titleSide}>
+            <span
+              onClick={() => {
+                navigate("/");
+                window.scrollTo(0, 0);
+              }}
+            >
+              OffScreen
+            </span>
           </div>
           <div
             className={`${project.buttonSide} ${
@@ -235,7 +237,8 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
-      <div className={project.contactBlock}>
+      {/* Прошлая версия, без рефакторинга */}
+      {/* <div className={project.contactBlock}>
         {!isMobileContact && (
           <div className={project.container__contact}>
             <h1 id="Contacts">Contacts</h1>
@@ -408,7 +411,47 @@ const ProjectPage = () => {
             </div>
           )}
         </div>
-      </div>
+      </div> */}
+      {!isMobileContact && <FooterContact />}
+      {isMobileContact && (
+        <div className={project.cardGridMobile}>
+          <div className={project.socialContainerMobile}>
+            <div className={`${project.socialCard} ${project.active}`}>
+              <div className={project.image}>
+                <img src={facebook} width={50} height={50} alt="facebook" />
+              </div>
+              <div className={project.title}>Facebook</div>
+            </div>
+            <div className={`${project.socialCard} ${project.active}`}>
+              <div className={project.image}>
+                <img src={telegram} width={70} height={70} alt="facebook" />
+              </div>
+              <div className={project.title}>Telegram</div>
+            </div>
+            <div className={`${project.socialCard} ${project.active}`}>
+              <div className={project.image}>
+                <img src={instagram} width={70} height={70} alt="facebook" />
+              </div>
+              <div className={project.title}>Instagram</div>
+            </div>
+            <div className={`${project.socialCard} ${project.active}`}>
+              <div className={project.image}>
+                <img src={whatsapp} width={70} height={70} alt="facebook" />
+              </div>
+              <div className={project.title}>WhatsApp</div>
+            </div>
+            <Link
+              to={`/Contact`}
+              className={`${project.socialCard} ${project.active}`}
+            >
+              <div className={project.image}>
+                <img src={mail} width={70} height={70} alt="facebook" />
+              </div>
+              <div className={project.title}>mail</div>
+            </Link>
+          </div>
+        </div>
+      )}
       <footer className={footer.bodyFooter}>
         <footer className={footer.containerFooter}>
           <div className={footer.contentFooter}>

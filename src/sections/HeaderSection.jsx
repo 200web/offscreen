@@ -94,13 +94,13 @@ const HeaderSection = () => {
           </div>
           <div className={appStyles.Row}>
             <div
+              id="about us"
               className={
                 isVisible === false
                   ? `${appStyles.smileRow}`
                   : `${appStyles.smileRow} ${appStyles.active}`
               }
               ref={myRef}
-              id="about us"
             >
               <div>
                 <h1 className={appStyles.startWord}>AB</h1>

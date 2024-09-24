@@ -144,7 +144,10 @@
         font-weight: 800;
         color: #f0f0f0;
         z-index: 99;
-        cursor: pointer;
+
+        span {
+          cursor: pointer;
+        }
 
         @media (max-width: 690px) {
           position: absolute;

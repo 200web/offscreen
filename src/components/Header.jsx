@@ -84,14 +84,15 @@ const Header = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <div
-          className={headerStyle.titleSide}
-          onClick={() => {
-            navigate("/");
-            window.scrollTo(0, 0);
-          }}
-        >
-          OffScreen
+        <div className={headerStyle.titleSide}>
+          <span
+            onClick={() => {
+              navigate("/");
+              window.scrollTo(0, 0);
+            }}
+          >
+            OffScreen
+          </span>
         </div>
         <div
           className={`${headerStyle.buttonSide} ${
@@ -99,12 +100,14 @@ const Header = () => {
           } ${menuVisible && isMobile ? headerStyle.active : ""}`}
         >
           <ul>
-            <li
-              className={headerStyle.h_but_s}
-              onClick={() => handleActiveButton(0)}
-            >
-              <span>About Us</span>
-            </li>
+            {!isMobile && (
+              <li
+                className={headerStyle.h_but_s}
+                onClick={() => handleActiveButton(0)}
+              >
+                <span>About Us</span>
+              </li>
+            )}
             <li
               className={headerStyle.h_but_s}
               onClick={() => handleActiveButton(1)}
