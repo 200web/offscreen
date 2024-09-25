@@ -1256,6 +1256,7 @@ section {
         transform: translateY(-101%);
         border-radius: 10px;
         z-index: 45;
+        transition: 0.5s;
 
         .profession {
           position: absolute;
