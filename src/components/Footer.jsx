@@ -6,24 +6,27 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <footer className={footer.bodyFooter}>
-      <footer className={footer.containerFooter}>
+      <div className={footer.containerFooter}>
         <div className={footer.contentFooter}>
-          <main>
+          <main className={footer.leftFooter}>
             <div>
-             <span>OFFSCREEN PROD.</span> <br />
-              <span>Copyright, 2024</span>
+              <span>OFFSCREEN PROD.</span> <br />
+              <span>Copyright, 2024</span><br />
             </div>
             <span className={footer.web}>
+            <br />
               web: <a href="https://t.me/tsyhankovah">@tsyhankovah</a>
             </span>
           </main>
-          {/* <label className={footer.policy}>
-            <Link to="/policy">
-              <span>Политика Конфиденциальности</span>
-            </Link>
-          </label> */}
+          <main className={footer.rightFooter}>
+            <div>
+              <span>Interstatex PSA</span> <br />
+              <span>Jarzyły 2 06-216 Polska</span> <br />
+              <span>NIP7571494909</span>
+            </div>
+          </main>
         </div>
-      </footer>
+      </div>
     </footer>
   );
 };

@@ -2226,6 +2226,19 @@ section {
             height: 30px;
             background-color: #313131;
           }
+          .inputField{
+            min-width: 100%;
+            max-width: 100%;
+            min-height: 2.6rem;
+            max-height: 120px;
+            color: rgba(255, 255, 255, 0.7);
+            background-color: #1e1e1e;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 15px;
+            padding-left: 15px;
+            font-size: 15px;
+            font-family: "Inter";
+          }
 
           .textArea {
             min-width: 100%;
