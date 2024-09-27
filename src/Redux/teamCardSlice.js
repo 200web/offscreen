@@ -83,10 +83,10 @@ const initialState = {
     },
     {
       id: 6,
-      profession: "Консультант, директор по маркетингу",
-      name: "Дмитрий Астап",
+      profession: "Consultant, Marketing Director",
+      name: "Dmitry Astap",
       description: [
-        "Наш консультант и директор по маркетингу, специализирующийся на операционном и визуальном маркетинге. Обладая 8-летним опытом работы, Дмитрий является дипломированным специалистом с большим опытом взаимодействия с креативными группами. Его навыки в управлении командами помогают эффективно воплощать маркетинговые стратегии, объединяя креативные идеи с четкими бизнес-целями. Дмитрий успешно разрабатывает и реализует маркетинговые решения, направленные на развитие брендов и продуктов, обеспечивая их рост и успех на рынке.",
+        "Our consultant and marketing director, specializing in operational and visual marketing. With 8 years of experience, Dmitry is a certified specialist with extensive experience in interacting with creative developments. His team management skills help to effectively implement marketing strategies, combining creative ideas with four business goals. Dmitry successfully develops and implements marketing solutions aimed at developing brands and products, ensuring their growth and success in the market.",
       ],
       image: DimaLarge,
     },
