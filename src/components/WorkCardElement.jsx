@@ -182,9 +182,9 @@ const WorkCardElement = () => {
               <label>MORE</label>
             </div>
           </div>
-          <div className={appStyles.button}>
+          {/* <div className={appStyles.button}>
             <img draggable="false" src={moreArrow} alt="arrow" />
-          </div>
+          </div> */}
         </div>
       )}
     </div>

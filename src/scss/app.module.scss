@@ -846,7 +846,7 @@ section {
 
       label {
         display: block;
-        font-size: clamp(16px, 3vw, 35px);
+        font-size: clamp(18px, 3vw, 35px);
       }
     }
 
@@ -2227,7 +2227,7 @@ section {
             height: 30px;
             background-color: #313131;
           }
-          .inputField{
+          .inputField {
             min-width: 100%;
             max-width: 100%;
             min-height: 2.6rem;

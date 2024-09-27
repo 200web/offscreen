@@ -314,7 +314,7 @@ const TeamCardPresentation = ({ images }) => {
                       : appStyles.fadeIn
                   }
                 >
-                  CEO - Director
+                  {currentCard.profession}
                 </span>
                 <div className={appStyles.descriptionBox}>
                   <div
