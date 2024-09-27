@@ -2,6 +2,7 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import paul from "../assets/img/paul.jpg";
 import Dmitry from "../assets/img/Dmitry.webp";
+import DimaLarge from "../assets/img/DimaLarge.webp";
 import Andrei from "../assets/img/Andrei.jpg";
 import Jonny from "../assets/img/Jonny.jpg";
 import Egor from "../assets/img/Egor.jpg";
@@ -79,6 +80,15 @@ const initialState = {
         "With over 10 years on set, he has shaped his craft across a diverse range of projects, from documentaries and music videos to high-impact TV commercials. His work has been showcased at prestigious film festivals in Venice and Brazil, and he also held a personal exhibition in Berlin. He approaches every project with a fresh perspective, driven by the challenge of pushing creative boundaries and telling stories in visually compelling ways.",
       ],
       image: Valiantsin,
+    },
+    {
+      id: 6,
+      profession: "Консультант, директор по маркетингу",
+      name: "Дмитрий Астап",
+      description: [
+        "Наш консультант и директор по маркетингу, специализирующийся на операционном и визуальном маркетинге. Обладая 8-летним опытом работы, Дмитрий является дипломированным специалистом с большим опытом взаимодействия с креативными группами. Его навыки в управлении командами помогают эффективно воплощать маркетинговые стратегии, объединяя креативные идеи с четкими бизнес-целями. Дмитрий успешно разрабатывает и реализует маркетинговые решения, направленные на развитие брендов и продуктов, обеспечивая их рост и успех на рынке.",
+      ],
+      image: DimaLarge,
     },
   ],
   status: "loading",

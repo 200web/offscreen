@@ -5,10 +5,10 @@ import Dmitry from "../assets/img/Dmitry.webp";
 import Andrei from "../assets/img/Andrei.jpg";
 import Jonny from "../assets/img/Jonny.jpg";
 import Egor from "../assets/img/Egor.jpg";
+import DimaLarge from "../assets/img/DimaLarge.webp";
 import Valiantsin from "../assets/img/Valiantsin.jpg";
 import CardCarousel from "../components/CardCarousel";
 import CardElement from "../components/CardElement";
-
 import light from "../assets/img/REDAPPLE.gif";
 import TeamCardPresentation from "../components/TeamCardPresentation";
 import { Link } from "react-router-dom";
@@ -54,7 +54,7 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);
   const [activeCard, setIsActiveCard] = React.useState(0);
-  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei, Valiantsin];
+  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei, Valiantsin, DimaLarge];
 
   const handleMoveOver = (id) => {
     if (id === activeCard) {
