@@ -22,6 +22,14 @@
   width: 90%;
   margin: 0 auto;
   font-family: "Inter";
+  display: flex; /* Add flexbox to align items */
+  justify-content: space-between; /* Space between left and right */
+  line-height: 1.4;
+
+  @media (max-width: 750px) {
+    flex-direction: column; /* Stack items on mobile */
+    align-items: center; /* Center align */
+  }
 
   span {
     color: #ffffff;
@@ -35,66 +43,82 @@
   }
 
   main {
+    flex: 1; /* Allow main to grow */
+    
     @media (max-width: 750px) {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      div {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-      }
+      text-align: center; /* Center text on mobile */
     }
-    span {
-      color: rgba(255, 255, 255, 0.4);
-      font-size: clamp(12px, 1.4vw, 15px);
-      text-decoration: none;
-      margin-right: 0.5rem;
+  }
 
-      a {
-        text-decoration: none;
-        color: rgba(255, 255, 255, 0.4);
-        transition: 0.3s;
+  /* Specific styles for the right footer */
+  .rightFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Align items to the right */
+    line-height: 2;
 
-        &:hover {
-          color: rgba(255, 255, 255, 1);
-        }
-      }
-
-      &:nth-of-type(3) {
-        font-size: clamp(12px, 1.4vw, 14px);
-      }
+    @media (max-width: 750px) {
+      align-items: center; /* Center on mobile */
+      text-align: center; /* Center text */
+      line-height: 1.4;
     }
 
-    .web {
-      display: block;
-      width: 100%;
-      text-align: start;
-
+    div {
+      text-align: right; /* Align text to the right */
       @media (max-width: 750px) {
-        text-align: center;
+        text-align: center; /* Center text */
       }
     }
   }
 
-  .policy {
-    display: flex;
-    align-items: center;
-    @media (max-width: 750px) {
-      justify-content: center;
-    }
+  span {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: clamp(14px, 1.4vw, 16px);
+    text-decoration: none;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+
     a {
       text-decoration: none;
-    }
-    span {
-      opacity: 0.4;
-      font-size: clamp(12px, 1.4vw, 15px);
-      transition: 0.2s;
+      color: rgba(255, 255, 255, 0.588);
+      transition: 0.3s;
 
       &:hover {
-        opacity: 1;
+        color: rgba(255, 255, 255, 1);
       }
+    }
+
+    &:nth-of-type(3) {
+      font-size: clamp(12px, 1.4vw, 14px);
+    }
+  }
+  .web {
+    display: block;
+    width: 100%;
+    text-align: start;
+
+    @media (max-width: 750px) {
+      text-align: center;
+    }
+  }
+}
+
+.policy {
+  display: flex;
+  align-items: center;
+  @media (max-width: 750px) {
+    justify-content: center;
+  }
+  a {
+    text-decoration: none;
+  }
+  span {
+    opacity: 0.4;
+    font-size: clamp(12px, 1.4vw, 15px);
+    transition: 0.2s;
+
+    &:hover {
+      opacity: 1;
     }
   }
 }

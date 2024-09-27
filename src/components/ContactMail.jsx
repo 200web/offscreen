@@ -58,7 +58,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     console.log("Form Data to send:", formData); // Логируем данные перед отправкой
   
     // Отправляем данные через fetch
-    fetch('https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec', {
+    fetch(process.env.GOOGLE_SCRIPT_API, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
