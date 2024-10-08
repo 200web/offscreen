@@ -18,38 +18,50 @@ import FaqButton from "../components/FAQButton";
 const FooterSection = () => {
   const cards = [
     <div>
-      <CardElement
-        headerText={"Alina Rizhko (CEO)"}
+    <CardElement
+            headerText={"Anna Kowalska"}
+            positionText={"CEO"}
+            descriptionText={[
+              "Offscreen produced a fantastic ad for our product launch that perfectly captured the energy and style we were aiming for. The team delivered on time and handled all feedback efficiently.",
+           ]}
+          />
+        </div>,
+    <div>
+<CardElement
+        headerText={"Olena Petrova"}
+        positionText={"CEO"}
         descriptionText={[
-          "I recently had the pleasure of working with Dmitry, and I must say, he's been the best thing that could have happened to me as someone who decided to take a new step in business and open up a new direction.",
-          "The website he designed for me is amazing, but what's truly invaluable is the ongoing support he provides in managing social media and just being there for me whenever I need assistance.",
-          "What's even more impressive is that he delivered everything on time, which is a rarity in this industry.",
-          "Dmitry, I can't thank you enough! You're simply the best.",
-        ]}
+          "We needed a series of short social media videos for a campaign, and offscreen delivered fast, engaging content that really boosted our engagement. Easy to work with, quick turnaround.",
+       ]}
       />
     </div>,
     <div>
       <CardElement
-        headerText={"Avitology"}
+        headerText={"Piotr Nowak"}
+        positionText={"CEO"}
         descriptionText={[
-          `Dmitry has supported me with the development of several web pages for business in the field of coffee industry. Each time, he provided a distinct design concept that aligned with the company's vision and mission.`,
-          `Furthermore, I would like to mention that:`,
-          ` 1. He prioritizes customer satisfaction and is highly attentive to their needs.`,
-          ` 2. He adheres to timelines and stays within the agreed-upon budget.`,
-          ` 3. He is creative and flexible.`,
+        "Offscreen helped us with a last-minute event video. They not only met the tight deadline but exceeded our expectations in terms of quality. The footage and editing were on point.",
         ]}
       />
     </div>,
     <div>
-      <CardElement
-        headerText={"Konstantyn Sulytski"}
-        descriptionText={[
-          `I had the pleasure of working with Dmitry on a web design project on the Tilda platform, and I must say that his skills exceeded my expectations. He was able to create a responsive and visually stunning website that perfectly captured the essence of my business.
-Dmitry’s attention to detail was impressive, and he was able to incorporate all the technical features that I wanted.`,
-          `Throughout the project, Dmitry was communicative, responsive, and always available to address any questions or concerns that I had. His ability to understand my vision and translate it into a tangible product was truly remarkable.`,
-        ]}
-      />
-    </div>,
+    <CardElement
+     headerText={"Matt Newell"}
+     positionText={"CEO"}
+     descriptionText={[
+       "The music video offscreen shot for me was exactly how I wanted - visually striking and in sync with the song’s vibe. The crew knew what they were doing from the first meeting to the final edit.",
+      ]}
+    />
+  </div>,
+  <div>
+  <CardElement
+    headerText={"Raman Zayankouski"}
+    positionText={"CEO"}
+    descriptionText={[
+      "Offscreen shot a solid video of our office and production line for a trade show in Cannes. It was well put together and showcased everything we needed for the event. The feedback from viewers was positive.",
+    ]}
+  />
+</div>,
   ];
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);

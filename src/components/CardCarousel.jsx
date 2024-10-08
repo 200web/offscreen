@@ -25,9 +25,14 @@ const CardCarousel = ({ cards }) => {
         return appStyles.card2;
       case 2:
         return appStyles.card3;
-      default:
-        return "";
-    }
+        case 3:
+        return appStyles.card4;
+        case 4:
+        return appStyles.card5;
+        default:
+          return appStyles.hidden; // Скрывать остальные отзывы
+      }
+    
   };
 
   return (

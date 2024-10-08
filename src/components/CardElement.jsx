@@ -2,7 +2,7 @@ import React from "react";
 import appStyles from "../scss/app.module.scss";
 import like from "../assets/img/like.webp";
 
-const CardElement = ({ headerText, descriptionText }) => {
+const CardElement = ({ headerText, positionText, descriptionText }) => {
   return (
     <article>
       <div className={appStyles.reviewCardHeader}>
@@ -11,6 +11,9 @@ const CardElement = ({ headerText, descriptionText }) => {
         </div>
         <div className={appStyles.name}>
           <span>{headerText}</span>
+        </div>
+        <div className={appStyles.position}>
+        <span>{positionText}</span>
         </div>
       </div>
       <div className={appStyles.reviewDescriptionText}>

@@ -1723,7 +1723,7 @@ section {
     .card {
       position: absolute;
       width: 480px;
-      height: 500px;
+      height: 360px;
       background-color: #1e1e1e;
       color: white;
       border-radius: 10px;
@@ -1753,15 +1753,43 @@ section {
         .name {
           width: 85%;
           margin: 0 auto;
-          padding: 2rem 0 2rem 0;
-          border-bottom: 1px solid white;
+          padding: 1.5rem 0 0.5rem 0;
           font-family: "Inter";
           font-weight: 500;
           span {
             font-size: clamp(18px, 5vw, 30px);
           }
         }
+             // Обновленные стили для .position
+      .position {
+        width: 85%;
+        margin: 0 auto;
+        padding: 0.5rem 0 1rem 0;
+        font-family: "Inter";
+        font-weight: 400;        
+        border-bottom: 1px solid transparent; 
+        span {
+          font-size: clamp(14px, 4vw, 22px);
+        }
       }
+
+      .card2 .reviewCardHeader .position {
+        border-bottom: 1px solid rgb(0, 0, 0) !important; // Убедитесь, что это сработает
+        background-color: rgba(255, 0, 0, 0.1); // Временный цвет фона
+        span {
+          color: rgba(0, 0, 0, 0.8); 
+        }
+      }
+
+      // Стиль для остальных карточек (card1 и card3)
+      .card1 .position, 
+      .card3 .position {
+        border-bottom: 1px solid rgb(233, 233, 233, 1) !important;
+        span {
+          color: rgba(233, 233, 233, 1);
+        }
+      }
+    }
 
       .reviewDescriptionText {
         width: 85%;
@@ -1769,7 +1797,7 @@ section {
         transition: 0.5s;
         font-size: clamp(12px, 2.4vw, 15px);
         line-height: 23px;
-        color: rgba(255, 255, 255, 0.8);
+        
         padding: 2rem 0 2rem 0;
         font-family: "Inter";
 
@@ -1783,6 +1811,7 @@ section {
         z-index: 8;
         transform: translateX(-50%) scale(0.8);
         opacity: 0.75;
+        color: rgba(255, 255, 255, 0.8);
 
         @media (max-width: 1100px) {
           opacity: 0;
@@ -1794,6 +1823,8 @@ section {
         transform: translateX(-50%) scale(1);
         z-index: 9;
         opacity: 1;
+        color: black !important;
+        background-color: #d3e400;
       }
 
       &.card3 {
@@ -1801,29 +1832,34 @@ section {
         transform: translateX(-50%) scale(0.8);
         z-index: 8;
         opacity: 0.75;
+        color: rgba(255, 255, 255, 0.8);
 
         @media (max-width: 1100px) {
           opacity: 0;
         }
       }
 
+      &.card4, &.card5 {
+        display: none;
+    }
+
       &:hover {
         opacity: 1;
-        color: black;
-        background-color: #d3e400;
+        // color: black;
+        // background-color: #d3e400;
 
-        .name {
-          border-color: black;
-        }
+        // .name {
+        //   border-color: black;
+        // }
 
-        .like {
-          filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
-            brightness(100%) contrast(104%);
-        }
+        // .like {
+        //   filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
+        //     brightness(100%) contrast(104%);
+        // }
 
-        .reviewDescriptionText {
-          color: black;
-        }
+        // .reviewDescriptionText {
+        //   color: black;
+        // }
       }
     }
   }
