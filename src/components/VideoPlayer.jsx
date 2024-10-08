@@ -3,11 +3,14 @@ import HVideo from "../assets/img/HVideo.webm";
 import fullscreen from "../assets/img/fullscreen.png";
 import videoStyles from "../scss/components/video.module.scss";
 import arrowRight from "../assets/img/arrow Right.png";
+import muteIcon from "../assets/img/VolumeOff.webp";
+import unmuteIcon from "../assets/img/volumeOn.webp";
 import { useSelector } from "react-redux";
 
 const VideoPlayer = () => {
+  const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isGifPlaying, setIsGifPlaying] = useState(false);
+  const [isGifPlaying, setIsGifPlaying] = useState(true);
   const videoRef = useRef(null);
   const progressContainerRef = useRef(null);
 
@@ -40,6 +43,7 @@ const VideoPlayer = () => {
         if (video.play()) {
           setIsGifPlaying(true);
         }
+        setIsMuted(video.muted);
       }
     };
 
@@ -92,6 +96,12 @@ const VideoPlayer = () => {
     }
   };
 
+  const toggleMute = () => {
+    const video = videoRef.current;
+    video.muted = !isMuted;
+    setIsMuted(!isMuted);
+  };
+
   const handleProgressClick = (event) => {
     const progressContainer = progressContainerRef.current;
     const rect = progressContainer.getBoundingClientRect();
@@ -130,6 +140,8 @@ const VideoPlayer = () => {
         }`}
         ref={videoRef}
         onClick={togglePlay}
+        autoPlay
+        muted
         {...videoAttributes}
       >
         <source src={HVideo} type="video/mp4" />
@@ -151,6 +163,15 @@ const VideoPlayer = () => {
                 width={20}
                 height={20}
                 onClick={showFullVideo}
+              />
+            </div>
+            <div className={videoStyles.mute_button}>
+              <img
+                src={isMuted ? muteIcon : unmuteIcon}
+                alt="mute/unmute"
+                width={20}
+                height={20}
+                onClick={toggleMute}
               />
             </div>
           </div>

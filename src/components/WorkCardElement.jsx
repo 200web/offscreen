@@ -24,10 +24,9 @@ const WorkCardElement = () => {
           `https://66e82c2db17821a9d9dbada4.mockapi.io/Cards`
         );
         const cardsTempData = data.length;
-        console.log(cardsTempData);
         setCardsData(data);
         setIsLoading(false);
-        setIsShort(cardsTempData < 3);
+        setIsShort(cardsTempData > 3);
       } catch (error) {
         console.log(error);
       }
@@ -183,9 +182,9 @@ const WorkCardElement = () => {
               <label>MORE</label>
             </div>
           </div>
-          <div className={appStyles.button}>
+          {/* <div className={appStyles.button}>
             <img draggable="false" src={moreArrow} alt="arrow" />
-          </div>
+          </div> */}
         </div>
       )}
     </div>

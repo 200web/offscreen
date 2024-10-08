@@ -2,6 +2,7 @@ import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import paul from "../assets/img/paul.jpg";
 import Dmitry from "../assets/img/Dmitry.webp";
+import DimaLarge from "../assets/img/DimaLarge.webp";
 import Andrei from "../assets/img/Andrei.jpg";
 import Jonny from "../assets/img/Jonny.jpg";
 import Egor from "../assets/img/Egor.jpg";
@@ -79,6 +80,15 @@ const initialState = {
         "With over 10 years on set, he has shaped his craft across a diverse range of projects, from documentaries and music videos to high-impact TV commercials. His work has been showcased at prestigious film festivals in Venice and Brazil, and he also held a personal exhibition in Berlin. He approaches every project with a fresh perspective, driven by the challenge of pushing creative boundaries and telling stories in visually compelling ways.",
       ],
       image: Valiantsin,
+    },
+    {
+      id: 6,
+      profession: "Consultant, Marketing Director",
+      name: "Dmitry Astap",
+      description: [
+        "Our consultant and marketing director, specializing in operational and visual marketing. With 8 years of experience, Dmitry is a certified specialist with extensive experience in interacting with creative developments. His team management skills help to effectively implement marketing strategies, combining creative ideas with four business goals. Dmitry successfully develops and implements marketing solutions aimed at developing brands and products, ensuring their growth and success in the market.",
+      ],
+      image: DimaLarge,
     },
   ],
   status: "loading",
