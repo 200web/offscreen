@@ -104,7 +104,7 @@ const WorkCardElement = () => {
 
   const videoAttributes = {
     controls: false,
-    controlsList: "no0fullscreen nodownload noremoteplayback noplaybackrate",
+    controlsList: "nofullscreen nodownload noremoteplayback noplaybackrate",
   };
 
   return (
