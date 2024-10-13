@@ -48,7 +48,7 @@ const CardCarousel = ({ cards }) => {
           </div>
         ))}
         {/* </div> */}
-      </div>
+     
       <div className={appStyles.reviewNav}>
         <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
           <img draggable="false" src={arrowLeft} />
@@ -56,6 +56,7 @@ const CardCarousel = ({ cards }) => {
         <button className={appStyles.buttonNext} onClick={handleNextClick}>
           <img draggable="false" src={arrowRight} />
         </button>
+      </div> 
       </div>
     </>
   );

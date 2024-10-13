@@ -7,6 +7,7 @@
   font-family: MersadExtraBold;
   src: url("components/Mersad-ExtraBold.ttf");
 }
+
 * {
   position: relative;
   padding: 0;
@@ -312,6 +313,7 @@ section {
 
       img {
         transition: 0.5s;
+
         @media (max-width: 1350px) {
           scale: 0.9;
         }
@@ -479,17 +481,15 @@ section {
   margin-bottom: 10rem;
 
   @media (max-width: 1200px) {
-    margin-top: 6rem;
+    margin-top: 8rem;
     margin-bottom: 2rem;
   }
 }
 
 .Row {
   width: 100%;
-  margin-top: 3rem;
 
   .workTitle {
-    margin-top: 3rem;
     text-align: center;
     font-family: "Inter";
     color: white;
@@ -500,10 +500,16 @@ section {
     font-family: "Inter";
     color: white;
   }
+
   .title,
   .centralTitle {
     width: 98%;
     margin: 8rem auto 0 auto;
+    // font-size: clamp(36px, 3vw, 40px);
+
+    span {
+      font-size: clamp(50px, 3vw, 100px);
+    }
 
     .labelTitle {
       font-size: clamp(36px, 3vw, 40px);
@@ -528,11 +534,11 @@ section {
 
   .centralTitle {
     color: white;
-    margin: 10rem auto 0 auto;
+    margin: 10rem auto 20rem auto;
     text-align: center;
     font-family: MersadRegular;
     font-weight: 500;
-    font-size: clamp(22px, 5vw, 42px);
+    font-size: 100px;
     transform: translateY(100%);
 
     @media (max-width: 1250px) {
@@ -576,6 +582,21 @@ section {
           transition: 0.5s;
         }
       }
+    }
+  }
+
+  .centralTitleWorks{
+    color: white;
+    margin: 0rem auto 18rem auto;
+    text-align: center;
+    font-family: MersadRegular;
+    font-weight: 500;
+    font-size: 120px;
+    transform: translateY(100%);
+
+    @media (max-width: 1250px) {
+      font-size: clamp(40px, 17vw, 50px);
+      margin: 0rem auto 10rem auto;
     }
   }
 
@@ -636,6 +657,7 @@ section {
       .startWord {
         transform: translateX(0);
       }
+
       .endWord {
         transform: translateX(5px);
       }
@@ -705,8 +727,7 @@ section {
       z-index: 10;
       transform: translate(-13.5rem, 0);
       object-fit: contain;
-      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%)
-        contrast(101%);
+      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%) contrast(101%);
 
       @media (max-width: 1260px) {
         transform: translate(-10rem, 0);
@@ -789,6 +810,7 @@ section {
     display: flex;
     white-space: nowrap;
     font-family: MersadRegular;
+    margin: 4rem 0 4rem 0;
 
     .text {
       text-align: center;
@@ -819,6 +841,7 @@ section {
 
   @media (max-width: 900px) {
     grid-template-columns: repeat(1, 1fr);
+    margin: 3rem auto 7rem auto;
   }
 
   .workCard {
@@ -924,6 +947,7 @@ section {
           padding: 0 0 0.5rem 0;
         }
       }
+
       .description {
         display: block;
         opacity: 0.75;
@@ -1012,8 +1036,10 @@ section {
       }
     }
   }
+
   .presentation {
     width: 35%;
+
     img {
       top: 50%;
       left: 50%;
@@ -1387,9 +1413,10 @@ section {
         }
       }
 
-      @media (width >= 1200px) {
+      @media (width >=1200px) {
         &:hover {
           z-index: 99;
+
           img {
             width: 80px;
             height: 80px;
@@ -1408,6 +1435,7 @@ section {
 
       @media (max-width: 1200px) {
         height: 100% !important;
+
         &.active {
           z-index: 99;
 
@@ -1644,6 +1672,7 @@ section {
     justify-content: center;
     gap: 1rem;
     z-index: 99;
+
     .buttonFag {
       display: flex;
       justify-content: center;
@@ -1728,6 +1757,7 @@ section {
       font-weight: 500;
       margin-bottom: 0.3rem;
     }
+
     .headerSpan {
       font-size: clamp(18px, 4vw, 30px);
       color: rgba(255, 255, 255, 0.7);
@@ -1741,11 +1771,13 @@ section {
       color: rgba(255, 255, 255, 0.7);
       font-family: "Inter";
       font-weight: 300;
+
       span {
         display: block;
         font-size: clamp(12px, 3.4vw, 20px);
         width: 35rem;
         color: rgba(255, 255, 255, 0.7);
+
         text {
           color: rgba(255, 255, 255, 1);
         }
@@ -1754,12 +1786,18 @@ section {
   }
 
   .reviewCardsCarousel {
+    
     display: flex;
-    margin: 6rem 0 39rem 0.5rem;
+    margin: 6rem 0 40rem 0.5rem;
+
+    @media (max-width: 768px) {
+      margin: 2rem 0 22rem 0.5rem;
+    }
+    
 
     .cardsContainer {
       display: flex;
-      
+
     }
 
     .card {
@@ -1798,26 +1836,31 @@ section {
           padding: 1.5rem 0 0 0;
           font-family: "Inter";
           font-weight: 500;
+
           span {
             font-size: clamp(18px, 5vw, 30px);
           }
         }
-             // Обновленные стили для .position
-      .position {
-        width: 85%;
-        margin: 0 auto;
-        padding: 0.5rem 0 1.5rem 0;
-        font-family: "Inter";
-        font-weight: 400;      
-        color: #9e9e9e;  
-        border-bottom: 1px solid rgb(233, 233, 233, 1) !important;
-        span {
-          font-size: clamp(14px, 4vw, 18px);
+
+        // Обновленные стили для .position
+        .position {
+          width: 85%;
+          margin: 0 auto;
+          padding: 0.5rem 0 1.5rem 0;
+          font-family: "Inter";
+          font-weight: 400;
+          color: #9e9e9e;
+          border-bottom: 1px solid rgb(233, 233, 233, 1);
+
+          span {
+            font-size: clamp(14px, 4vw, 18px);
+          }
+
+          
         }
+
+
       }
-
-
-    }
 
       .reviewDescriptionText {
         width: 85%;
@@ -1825,7 +1868,7 @@ section {
         transition: 0.5s;
         font-size: clamp(12px, 2.4vw, 15px);
         line-height: 23px;
-        
+
         padding: 2rem 0 2rem 0;
         font-family: "Inter";
 
@@ -1868,14 +1911,15 @@ section {
         }
       }
 
-      &.card4, &.card5 {
+      &.card4,
+      &.card5 {
         display: none;
-    }
+      }
 
       &:hover {
         opacity: 1;
-        // color: black;
-        // background-color: #d3e400;
+        color: black;
+        background-color: #D6DCDC;
 
         // .name {
         //   border-color: black;
@@ -1886,21 +1930,28 @@ section {
         //     brightness(100%) contrast(104%);
         // }
 
-        // .reviewDescriptionText {
-        //   color: black;
-        // }
+        .position {
+          color: #000000; /* Цвет текста при hover */
+          border-bottom-color: #000000; /* Цвет нижней границы при hover */
+          transition: all 0.6s ease;
+        }
+        .reviewDescriptionText {
+          color: black;
+        }
+       
       }
     }
   }
+
   .reviewNav {
     position: absolute;
-    top: 51rem;
+    top: 25rem;
     width: 100%;
     display: flex;
     justify-content: center;
 
     @media (max-width: 1100px) {
-      top: 48rem;
+      top: 20rem;
     }
 
     button {
@@ -1920,22 +1971,22 @@ section {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg)
-          brightness(112%) contrast(100%);
+        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg) brightness(112%) contrast(100%);
       }
 
       &:nth-child(1) img {
         left: 45%;
       }
+
       &:nth-child(2) img {
         left: 53%;
       }
 
       &:hover {
         background-color: #ddd;
+
         img {
-          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%)
-            contrast(104%);
+          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
         }
       }
     }
@@ -1969,11 +2020,9 @@ section {
     left: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.4),
-      rgba(0, 0, 0, 0.2)
-    );
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(0, 0, 0, 0.2));
   }
 
   &::before {
@@ -1982,11 +2031,9 @@ section {
     right: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.4),
-      rgba(0, 0, 0, 0.2)
-    );
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(0, 0, 0, 0.2));
   }
 
   .container {
@@ -2009,7 +2056,7 @@ section {
         font-family: "Inter";
         font-weight: 500;
         color: white;
-        font-size: 32px;
+        font-size: 50px;
 
         @media (max-width: 1000px) {
           margin: 8rem auto 0 auto;
@@ -2021,7 +2068,7 @@ section {
   .cardGridMobile {
     width: 100%;
     margin: 0 auto;
-    margin-top: 8em;
+    margin-top: 4em;
     padding-bottom: 2.5em;
     border-top: 1px solid white;
     border-radius: 35px;
@@ -2038,11 +2085,9 @@ section {
       left: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2)
-      );
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.2),
+          rgba(0, 0, 0, 0.2));
     }
 
     &::before {
@@ -2051,18 +2096,16 @@ section {
       right: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2)
-      );
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.2),
+          rgba(0, 0, 0, 0.2));
     }
 
     .socialContainerMobile {
       position: relative;
       display: flex;
       flex-wrap: wrap;
-      padding: 0.2em 0.2em 40px 0.2em;
+      padding: 0.2em 0.2em 4rem 0.2em;
       width: 100%;
       height: 950px;
 
@@ -2112,9 +2155,9 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
-              brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
           }
+
           .title {
             transform: translate(-50%, -100%);
             color: black;
@@ -2164,6 +2207,7 @@ section {
       margin: 0 auto;
       gap: 10px;
       margin-bottom: 10rem;
+
       .socialCard {
         position: relative;
         width: 240px;
@@ -2183,8 +2227,7 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
-              brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
           }
         }
 
@@ -2202,6 +2245,7 @@ section {
           }
         }
       }
+
       .title {
         display: block;
         text-align: center;
@@ -2231,6 +2275,9 @@ section {
         color: white;
         width: 60%;
         margin-left: 5%;
+
+        
+
         .mailTile {
           text-transform: uppercase;
           font-size: 25px;
@@ -2238,23 +2285,36 @@ section {
           font-family: "Inter";
           font-weight: 500;
         }
+
         .mailInf {
           font-size: 14px;
           margin-bottom: 4rem;
           font-family: "Inter";
         }
+
         .title {
           width: 60%;
           text-transform: uppercase;
           font-size: 21px;
           margin: 0 0 5rem 0;
           font-family: "Inter";
+
+          
+        @media (max-width: 768px) {
+          width: 80%;
+          font-weight: 400;
+          font-size: 18px;
         }
+        }
+
         .title a {
-          color: #c0d100; /* Цвет ссылки */
-          text-decoration: none; /* Убираем подчеркивание */
+          color: #c0d100;
+          /* Цвет ссылки */
+          text-decoration: none;
+          /* Убираем подчеркивание */
         }
       }
+
       @media (max-width: 768px) {
         .mailBlank {
           width: 100%;
@@ -2293,6 +2353,7 @@ section {
             height: 30px;
             background-color: #313131;
           }
+
           .inputField {
             min-width: 100%;
             max-width: 100%;
@@ -2387,6 +2448,7 @@ section {
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
+
             .cancel {
               position: absolute;
               top: 50%;
@@ -2409,6 +2471,7 @@ section {
           }
         }
       }
+
       @media (max-width: 768px) {
         .fieldBox {
           display: block;
@@ -2425,9 +2488,11 @@ section {
         }
       }
     }
+
     @media (max-width: 768px) {
       .socialCard {
-        display: block; /* Убираем flex на мобильных устройствах */
+        display: block;
+        /* Убираем flex на мобильных устройствах */
       }
     }
   }
@@ -2447,6 +2512,7 @@ section {
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(-100%, 0, 0);
   }
@@ -2456,9 +2522,11 @@ section {
   0% {
     transform: translateY(80px);
   }
+
   50% {
     transform: translateY(50px);
   }
+
   100% {
     transform: translateY(80px);
   }
@@ -2468,9 +2536,11 @@ section {
   0% {
     transform: translateY(-160px);
   }
+
   50% {
     transform: translateY(-130px);
   }
+
   100% {
     transform: translateY(-160px);
   }
@@ -2480,9 +2550,11 @@ section {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-50px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -2492,36 +2564,44 @@ section {
   0% {
     transform: translateY(-70px);
   }
+
   50% {
     transform: translateY(-30px);
   }
+
   100% {
     transform: translateY(-70px);
   }
 }
 
 @keyframes shake-top {
+
   0%,
   100% {
     transform: rotate(0deg);
     transform-origin: 50% 0;
   }
+
   10% {
     transform: rotate(0deg);
   }
+
   20%,
   40%,
   60% {
     transform: rotate(-2deg);
   }
+
   30%,
   50%,
   70% {
     transform: rotate(2deg);
   }
+
   80% {
     transform: rotate(0deg);
   }
+
   90% {
     transform: rotate(0deg);
   }
