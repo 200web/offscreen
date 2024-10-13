@@ -8,9 +8,9 @@ import unmuteIcon from "../assets/img/volumeOn.webp";
 import { useSelector } from "react-redux";
 
 const VideoPlayer = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const [isMuted, setIsMuted] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isGifPlaying, setIsGifPlaying] = useState(true);
+  const [isGifPlaying, setIsGifPlaying] = useState(false);
   const videoRef = useRef(null);
   const progressContainerRef = useRef(null);
 
@@ -140,8 +140,6 @@ const VideoPlayer = () => {
         }`}
         ref={videoRef}
         onClick={togglePlay}
-        autoPlay
-        muted
         {...videoAttributes}
       >
         <source src={HVideo} type="video/mp4" />

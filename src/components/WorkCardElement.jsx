@@ -10,7 +10,7 @@ const WorkCardElement = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
   const [isHovered, setIsHovered] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [isShort, setIsShort] = React.useState();
+  const [isShort, setIsShort] = React.useState(false);
   const animationTimeouts = React.useRef();
   const animationTimeouts2 = React.useRef();
   const [cardsData, setCardsData] = useState([]);
@@ -26,7 +26,7 @@ const WorkCardElement = () => {
         const cardsTempData = data.length;
         setCardsData(data);
         setIsLoading(false);
-        setIsShort(cardsTempData > 3);
+        // setIsShort(cardsTempData > 6);
       } catch (error) {
         console.log(error);
       }
@@ -100,7 +100,7 @@ const WorkCardElement = () => {
     }
   }, [isHovered, isMobile, cardsData]);
 
-  const displayedCards = isShort ? cardsData.slice(0, 3) : cardsData;
+  const displayedCards = isShort ? cardsData.slice(0, 6) : cardsData;
 
   const videoAttributes = {
     controls: false,

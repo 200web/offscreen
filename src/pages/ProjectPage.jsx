@@ -228,8 +228,6 @@ const ProjectPage = () => {
             <AdvancedVideo
               cldVid={video}
               controls
-              autoPlay
-              muted
               loop
               className={project.Video}
               innerRef={videoRef}

@@ -32,8 +32,8 @@
     position: fixed;
     bottom: 1%;
     right: 3%;
-    width: 128px;
-    height: 128px;
+    width: 86px;
+    height: 86px;
     background-color: #121212;
     border-radius: 50%;
     z-index: 7;
@@ -835,6 +835,19 @@
     justify-content: space-between;
     gap: 10px;
 
+    @media (max-width: 750px) {
+      flex-direction: column;
+
+      :first-of-type {
+        width: 70% !important;
+      }
+
+      :last-of-type {
+        width: 70% !important;
+        margin-left: auto;
+      }
+    }
+
     img {
       object-fit: none;
     }
@@ -849,7 +862,7 @@
     :last-of-type {
       width: 50%;
       height: 20%;
-      object-fit: cover;
+      object-fit: contain;
       border-radius: 10px;
     }
   }
