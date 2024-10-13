@@ -30,7 +30,7 @@ const ProjectPage = () => {
   const [menuVisible, setMenuVisible] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [isMobileContact, setIsMobileContact] = React.useState(
-    window.innerWidth <= 1000
+    window.innerWidth <= 900
   );
   const [isHovered, setIsHovered] = React.useState(false);
   const videoRef = useRef(null);
