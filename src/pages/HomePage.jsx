@@ -31,7 +31,7 @@ const HomePage = () => {
       <AdvantageSection />
       <WorksSection />
       <FooterSection />
-      <Footer />
+
     </>
   );
 };
