@@ -127,6 +127,42 @@ const HeaderSection = () => {
           </div>
         </>
       )}
+      <div className={appStyles.Row}>
+        <div
+          id="about us"
+          className={
+            isVisible === false
+              ? `${appStyles.smileRow}`
+              : `${appStyles.smileRow} ${appStyles.active}`
+          }
+          ref={myRef}
+        >
+          <div>
+            <h1 className={appStyles.startWord}>AB</h1>
+          </div>
+          {startAnimation ? (
+            <img
+              draggable="false"
+              src={smile}
+              alt="smile"
+              className={appStyles.smileGif}
+            />
+          ) : (
+            <img
+              draggable="false"
+              src={smilePNG}
+              alt="smile"
+              className={appStyles.smileGif}
+            />
+          )}
+          <div>
+            <h1 className={appStyles.endWord}>UT</h1>
+          </div>
+        </div>
+        <div>
+          <h1 className={appStyles.endWordMobile}>US</h1>
+        </div>
+      </div>
     </section>
   );
 };

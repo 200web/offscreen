@@ -247,8 +247,8 @@ const TeamCardPresentation = ({ images }) => {
           <div className={appStyles.profession}>{currentCard.profession}</div>
           <div className={appStyles.name}>{currentCard.name}</div>
           <div className={appStyles.addInf}>
-            {currentCard.description.map((text) => (
-              <div>
+            {currentCard.description.map((text, id) => (
+              <div key={id}>
                 <p>{text}</p>
               </div>
             ))}
@@ -281,6 +281,7 @@ const TeamCardPresentation = ({ images }) => {
                   className={
                     isAnimating[id] ? appStyles.fadeOut : appStyles.fadeIn
                   }
+                  loading="lazy"
                 />
               </div>
             </Link>
@@ -316,7 +317,7 @@ const TeamCardPresentation = ({ images }) => {
                 >
                   {currentCard.profession}
                 </span>
-                <div className={appStyles.descriptionBox}>
+                <div className={appStyles.descriptionBox} key={id}>
                   <div
                     className={`${appStyles.profession} ${
                       isPortraitClicked
@@ -354,8 +355,8 @@ const TeamCardPresentation = ({ images }) => {
                         : ""
                     }`}
                   >
-                    {currentCard.description.map((text) => (
-                      <div>
+                    {currentCard.description.map((text, id) => (
+                      <div key={id}>
                         <p>{text}</p>
                       </div>
                     ))}

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = React.useState(false);
+  const [isHovered, setIsHovered] = React.useState(true);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [menuVisible, setMenuVisible] = React.useState(false);
 
@@ -81,8 +81,8 @@ const Header = () => {
     >
       <div
         className={headerStyle.headerContent}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
+        // onMouseEnter={handleMouseEnter}
+        // onMouseLeave={handleMouseLeave}
       >
         <div className={headerStyle.titleSide}>
           <span
