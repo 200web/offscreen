@@ -20,7 +20,7 @@ const FooterSection = () => {
     <div>
     <CardElement
             headerText={"Anna Kowalska"}
-            positionText={"CEO"}
+            positionText={"Marketing Manager"}
             descriptionText={[
               "Offscreen produced a fantastic ad for our product launch that perfectly captured the energy and style we were aiming for. The team delivered on time and handled all feedback efficiently.",
            ]}
@@ -29,7 +29,7 @@ const FooterSection = () => {
     <div>
 <CardElement
         headerText={"Olena Petrova"}
-        positionText={"CEO"}
+        positionText={"Social Media Coordinator"}
         descriptionText={[
           "We needed a series of short social media videos for a campaign, and offscreen delivered fast, engaging content that really boosted our engagement. Easy to work with, quick turnaround.",
        ]}
@@ -38,7 +38,7 @@ const FooterSection = () => {
     <div>
       <CardElement
         headerText={"Piotr Nowak"}
-        positionText={"CEO"}
+        positionText={"Event Coordinator"}
         descriptionText={[
         "Offscreen helped us with a last-minute event video. They not only met the tight deadline but exceeded our expectations in terms of quality. The footage and editing were on point.",
         ]}
@@ -47,7 +47,7 @@ const FooterSection = () => {
     <div>
     <CardElement
      headerText={"Matt Newell"}
-     positionText={"CEO"}
+     positionText={"Musician"}
      descriptionText={[
        "The music video offscreen shot for me was exactly how I wanted - visually striking and in sync with the song’s vibe. The crew knew what they were doing from the first meeting to the final edit.",
       ]}
@@ -56,7 +56,7 @@ const FooterSection = () => {
   <div>
   <CardElement
     headerText={"Raman Zayankouski"}
-    positionText={"CEO"}
+    positionText={"PR manager, NICOTOBACCO"}
     descriptionText={[
       "Offscreen shot a solid video of our office and production line for a trade show in Cannes. It was well put together and showcased everything we needed for the event. The feedback from viewers was positive.",
     ]}

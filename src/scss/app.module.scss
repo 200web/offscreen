@@ -1717,12 +1717,13 @@ section {
 
     .cardsContainer {
       display: flex;
+      
     }
 
     .card {
       position: absolute;
       width: 480px;
-      height: 360px;
+      // height: 360px;
       background-color: #1e1e1e;
       color: white;
       border-radius: 10px;
@@ -1752,7 +1753,7 @@ section {
         .name {
           width: 85%;
           margin: 0 auto;
-          padding: 1.5rem 0 0.5rem 0;
+          padding: 1.5rem 0 0 0;
           font-family: "Inter";
           font-weight: 500;
           span {
@@ -1763,31 +1764,17 @@ section {
       .position {
         width: 85%;
         margin: 0 auto;
-        padding: 0.5rem 0 1rem 0;
+        padding: 0.5rem 0 1.5rem 0;
         font-family: "Inter";
-        font-weight: 400;        
-        border-bottom: 1px solid transparent; 
-        span {
-          font-size: clamp(14px, 4vw, 22px);
-        }
-      }
-
-      .card2 .reviewCardHeader .position {
-        border-bottom: 1px solid rgb(0, 0, 0) !important; // Убедитесь, что это сработает
-        background-color: rgba(255, 0, 0, 0.1); // Временный цвет фона
-        span {
-          color: rgba(0, 0, 0, 0.8); 
-        }
-      }
-
-      // Стиль для остальных карточек (card1 и card3)
-      .card1 .position, 
-      .card3 .position {
+        font-weight: 400;      
+        color: #9e9e9e;  
         border-bottom: 1px solid rgb(233, 233, 233, 1) !important;
         span {
-          color: rgba(233, 233, 233, 1);
+          font-size: clamp(14px, 4vw, 18px);
         }
       }
+
+
     }
 
       .reviewDescriptionText {
@@ -1822,8 +1809,9 @@ section {
         transform: translateX(-50%) scale(1);
         z-index: 9;
         opacity: 1;
-        color: black !important;
-        background-color: #d3e400;
+        color: rgba(255, 255, 255, 0.8);
+        // color: black !important;
+        // background-color: #d3e400;
       }
 
       &.card3 {

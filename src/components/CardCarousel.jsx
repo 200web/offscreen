@@ -38,6 +38,7 @@ const CardCarousel = ({ cards }) => {
   return (
     <>
       <div className={appStyles.reviewCardsCarousel}>
+        {/* <div className={appStyles.cardsContainer}> */}
         {cards.map((card, index) => (
           <div
             key={index}
@@ -46,6 +47,7 @@ const CardCarousel = ({ cards }) => {
             {card}
           </div>
         ))}
+        {/* </div> */}
       </div>
       <div className={appStyles.reviewNav}>
         <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
