@@ -8,7 +8,7 @@ const HeaderSection = () => {
   const myRef = React.useRef();
   const [isVisible, setIsVisible] = React.useState(false);
   const [startAnimation, setStartAnimation] = React.useState(false);
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 1100);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -37,14 +37,9 @@ const HeaderSection = () => {
       observer.observe(myRef.current);
     }
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 1100);
-    };
-
-    window.addEventListener("resize", handleResize);
-
     return () => {
-      window.removeEventListener("resize", handleResize);
+      // Этот блок уже не требует повторного вызова handleResize
+      // window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -57,20 +52,13 @@ const HeaderSection = () => {
       return () => clearTimeout(timer);
     }
   }, [isVisible]);
+
   return (
     <section className={appStyles.section}>
       <VideoPlayer />
-      {/* <div className={appStyles.HVideoLayout}>
-        <iframe
-          src="https://player.vimeo.com/video/1011674048?badge=0&autopause=0&autoplay=1&muted=1&player_id=0&app_id=58479"
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-          className={appStyles.video}
-          title="SHOWREEL'24"
-        ></iframe>
-      </div> */}
       {!isMobile ? (
         <>
+          {/* Десктопная версия */}
           <div className={appStyles.Row}>
             <div className={appStyles.buttonRow}>
               <article>
@@ -127,38 +115,45 @@ const HeaderSection = () => {
           </div>
         </>
       ) : (
-        <div className={appStyles.Row}>
-          <div
-            id="about us"
-            className={`${appStyles.smileRow} ${appStyles.active}`}
-            ref={myRef}
-          >
-            <div>
-              <h1 className={appStyles.startWord}>AB</h1>
+        <>
+          {/* Мобильная версия */}
+          <div className={appStyles.Row}>
+            <div
+              id="about us"
+              className={
+                isVisible === false
+                  ? `${appStyles.smileRow}`
+                  : `${appStyles.smileRow} ${appStyles.active}`
+              }
+              ref={myRef}
+            >
+              <div>
+                <h1 className={appStyles.startWord}>AB</h1>
+              </div>
+              {startAnimation ? (
+                <img
+                  draggable="false"
+                  src={smile}
+                  alt="smile"
+                  className={appStyles.smileGif}
+                />
+              ) : (
+                <img
+                  draggable="false"
+                  src={smilePNG}
+                  alt="smile"
+                  className={appStyles.smileGif}
+                />
+              )}
+              <div>
+                <h1 className={appStyles.endWord}>UT</h1>
+              </div>
             </div>
-            {startAnimation ? (
-              <img
-                draggable="false"
-                src={smile}
-                alt="smile"
-                className={appStyles.smileGif}
-              />
-            ) : (
-              <img
-                draggable="false"
-                src={smilePNG}
-                alt="smile"
-                className={appStyles.smileGif}
-              />
-            )}
             <div>
-              <h1 className={appStyles.endWord}>UT</h1>
+              <h1 className={appStyles.endWordMobile}>US</h1>
             </div>
           </div>
-          <div>
-            <h1 className={appStyles.endWordMobile}>US</h1>
-          </div>
-        </div>
+        </>
       )}
     </section>
   );

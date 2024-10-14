@@ -25,14 +25,20 @@ const CardCarousel = ({ cards }) => {
         return appStyles.card2;
       case 2:
         return appStyles.card3;
-      default:
-        return "";
-    }
+        case 3:
+        return appStyles.card4;
+        case 4:
+        return appStyles.card5;
+        default:
+          return appStyles.hidden; // Скрывать остальные отзывы
+      }
+    
   };
 
   return (
     <>
       <div className={appStyles.reviewCardsCarousel}>
+        {/* <div className={appStyles.cardsContainer}> */}
         {cards.map((card, index) => (
           <div
             key={index}
@@ -41,7 +47,8 @@ const CardCarousel = ({ cards }) => {
             {card}
           </div>
         ))}
-      </div>
+        {/* </div> */}
+     
       <div className={appStyles.reviewNav}>
         <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
           <img draggable="false" src={arrowLeft} />
@@ -49,6 +56,7 @@ const CardCarousel = ({ cards }) => {
         <button className={appStyles.buttonNext} onClick={handleNextClick}>
           <img draggable="false" src={arrowRight} />
         </button>
+      </div> 
       </div>
     </>
   );

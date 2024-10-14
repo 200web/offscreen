@@ -1,7 +1,7 @@
 import React from "react";
 import appStyles from "../scss/app.module.scss";
 import arrow from "../assets/img/Arrow.svg";
-import dollarEmoji from "../assets/img/dollarEmoji.webp";
+import dollarEmoji from "../assets/img/dollar.png";
 import party from "../assets/img/party.webp";
 import dance from "../assets/img/dance.webp";
 import strawberry from "../assets/img/strawberry.webp";
@@ -84,7 +84,13 @@ const WorksSection = () => {
   return (
     <section className={appStyles.section}>
       <div className={appStyles.Row}>
-        <div
+
+      <div className={appStyles.centralTitleWorks}>
+  <span>OUR WORKS</span>
+</div>
+
+</div>
+        {/* <div
           className={`${appStyles.centralTitle} ${
             isScrolling
               ? appStyles.scrolling
@@ -95,7 +101,7 @@ const WorksSection = () => {
         >
           <span>OUR WORKS</span>
         </div>
-      </div>
+      </div> */}
       <WorkCardElement />
       <div className={appStyles.Row} id="services">
         <div className={appStyles.scrolling_text}>
