@@ -423,9 +423,20 @@ const WorksSection = () => {
             <span>Team</span>
           </div>
         </div> */}
-        {isWorkChanged && (
+        {isWorkChanged ? (
           <div className={appStyles.workTitle}>
             <span>Our Team</span>
+          </div>
+        ) : (
+          <div className={appStyles.workTitle} id="Team">
+            <label>Our Team</label>
+            <span>
+              “these are highly qualified specialists who turn your ideas into
+              advanced solutions, ensuring stable growth and business success”
+            </span>
+            <Link to={`/Contact`} className={appStyles.buttonFag}>
+              <span>SEND CV</span>
+            </Link>
           </div>
         )}
       </div>

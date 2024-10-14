@@ -489,11 +489,63 @@ section {
   margin-top: 3rem;
 
   .workTitle {
-    margin-top: 3rem;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
     font-family: "Inter";
     color: white;
-    font-size: clamp(32px, 4vw, 45px);
+    margin-top: 6rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+
+    label {
+      font-size: 25px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    span {
+      width: 65%;
+      font-size: clamp(30px, 4vw, 35px);
+    }
+
+    .buttonFag {
+      display: flex;
+      justify-content: center;
+      font-family: "Inter";
+      font-weight: 700;
+      text-decoration: none;
+
+      span {
+        width: 100%;
+        background-color: #d3e400;
+        padding: 1rem 6rem 1rem 6rem;
+        border-radius: 6px;
+        transition: 0.2s;
+        color: black;
+        font-size: 23px;
+
+        // @media (max-width: 450px) {
+        //   padding: 1rem 1.5rem 1rem 1.5rem;
+        // }
+
+        &:hover {
+          cursor: pointer;
+          box-shadow: 0 0 0 1px white;
+        }
+      }
+    }
+
+    @media (max-width: 1200px) {
+      display: block;
+      margin-top: -6rem;
+      text-align: center;
+
+      span {
+        font-size: clamp(32px, 4vw, 45px);
+      }
+    }
   }
 
   .title {
@@ -1170,12 +1222,139 @@ section {
   display: flex;
   justify-content: space-between;
   width: 95%;
-  height: 680px;
-  margin: 8rem auto 8rem auto;
+  // height: 680px;
+  margin: 3rem auto 8rem auto;
   color: white;
+  font-family: "Inter";
 
   @media (max-width: 1200px) {
     height: 100%;
+  }
+
+  .team_card_presentation {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .card_container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 1rem 1rem 5rem 0;
+    gap: 10px;
+
+    @media (max-width: 690px) {
+      flex-direction: column;
+      padding: 1rem;
+    }
+
+    &::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+
+    // scrollbar ползунок
+    &::-webkit-scrollbar-thumb {
+      background-color: white;
+      border-radius: 6px;
+      border: 3px solid transparent;
+    }
+
+    // scrollbar track
+    &::-webkit-scrollbar-track {
+      background-color: #999999;
+      border-radius: 6px;
+    }
+
+    &::-webkit-scrollbar-button {
+      display: none; // Убираем стрелки скроллбара
+    }
+  }
+
+  .team_card {
+    flex: 0 0 auto;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: "Inter";
+
+    .name {
+      width: 100%;
+      position: absolute;
+      left: 50%;
+      bottom: 25%;
+      transform: translate(-50%, -50%);
+      letter-spacing: 0.02rem;
+      font-size: 20px;
+    }
+
+    .team_image {
+      width: 330px;
+      height: 330px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .card_info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      margin-top: 10px;
+
+      @media (max-width: 690px) {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .role {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 16px;
+      }
+
+      .profession {
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 16px;
+      }
+    }
+  }
+
+  .nav_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    top: 45%;
+    transform: translateY(-50%);
+    padding: 1rem;
+    z-index: 100;
+
+    @media (max-width: 690px) {
+      display: none;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+      filter: invert(1);
+    }
+
+    &.left {
+      position: absolute;
+      left: 1%;
+    }
+
+    &.right {
+      position: absolute;
+      right: 1%;
+    }
   }
 
   .teamDescription {
@@ -1489,6 +1668,10 @@ section {
 
   @media (max-width: 1200px) {
     width: 100%;
+  }
+
+  @media (max-width: 690px) {
+    margin: 10rem auto 8rem auto;
   }
 
   .headerFag {

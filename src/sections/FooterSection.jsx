@@ -14,6 +14,7 @@ import TeamCardPresentation from "../components/TeamCardPresentation";
 import { Link } from "react-router-dom";
 import FooterContact from "../components/FooterContact";
 import FaqButton from "../components/FAQButton";
+import TeamCardPresentation_2 from "../components/TeamCardPresentation_2";
 
 const FooterSection = () => {
   const cards = [
@@ -147,9 +148,10 @@ Dmitry’s attention to detail was impressive, and he was able to incorporate al
   ];
 
   return (
-    <section className={appStyles.section} id="Team">
+    <section className={appStyles.section}>
       <div className={appStyles.teamBlock}>
-        <TeamCardPresentation images={teamPhotos} />
+        {/* <TeamCardPresentation images={teamPhotos} /> */}
+        <TeamCardPresentation_2 images={teamPhotos} />
       </div>
       <div className={appStyles.fagBlock}>
         <div className={appStyles.headerFag}>FAQ</div>
