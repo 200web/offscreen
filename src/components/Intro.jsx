@@ -29,6 +29,7 @@ const Intro = () => {
             id="video"
             src={HVideo}
             className={visible ? `` : `${load.swirl_out}`}
+            loading="eager"
           />
         </div>
       )}
