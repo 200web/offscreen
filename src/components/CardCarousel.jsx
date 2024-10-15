@@ -25,14 +25,13 @@ const CardCarousel = ({ cards }) => {
         return appStyles.card2;
       case 2:
         return appStyles.card3;
-        case 3:
+      case 3:
         return appStyles.card4;
-        case 4:
+      case 4:
         return appStyles.card5;
-        default:
-          return appStyles.hidden; // Скрывать остальные отзывы
-      }
-    
+      default:
+        return appStyles.hidden; // Скрывать остальные отзывы
+    }
   };
 
   return (
@@ -48,15 +47,15 @@ const CardCarousel = ({ cards }) => {
           </div>
         ))}
         {/* </div> */}
-     
-      <div className={appStyles.reviewNav}>
-        <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
-          <img draggable="false" src={arrowLeft} />
-        </button>
-        <button className={appStyles.buttonNext} onClick={handleNextClick}>
-          <img draggable="false" src={arrowRight} />
-        </button>
-      </div> 
+
+        <div className={appStyles.reviewNav}>
+          <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
+            <img draggable="false" src={arrowLeft} />
+          </button>
+          <button className={appStyles.buttonNext} onClick={handleNextClick}>
+            <img draggable="false" src={arrowRight} />
+          </button>
+        </div>
       </div>
     </>
   );

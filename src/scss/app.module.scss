@@ -490,12 +490,15 @@ section {
   width: 100%;
 
   .workTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     font-family: "Inter";
     color: white;
     margin-top: 6rem;
     margin-bottom: 0.5rem;
-    text-align: center;
+    gap: 3rem;
 
     label {
       font-size: 25px;
@@ -542,6 +545,18 @@ section {
       span {
         font-size: clamp(32px, 4vw, 45px);
       }
+    }
+
+    @media (max-width: 1200px) {
+      margin-top: 4rem;
+    }
+
+    @media (max-width: 1000px) {
+      margin-top: 0;
+    }
+
+    @media (max-width: 860px) {
+      margin-top: 4rem;
     }
   }
 
@@ -1355,7 +1370,7 @@ section {
     border: none;
     cursor: pointer;
     border-radius: 50%;
-    top: 45%;
+    top: 37%;
     transform: translateY(-50%);
     padding: 1rem;
     z-index: 100;
@@ -2052,6 +2067,12 @@ section {
       }
 
       &.card1 {
+        left: 0;
+        transform: translateX(-50%) scale(0.6);
+        opacity: 0;
+      }
+
+      &.card2 {
         left: 18%;
         z-index: 8;
         transform: translateX(-50%) scale(0.8);
@@ -2063,17 +2084,15 @@ section {
         }
       }
 
-      &.card2 {
+      &.card3 {
         left: 50%;
         transform: translateX(-50%) scale(1);
         z-index: 9;
         opacity: 1;
         color: rgba(255, 255, 255, 0.8);
-        // color: black !important;
-        // background-color: #d3e400;
       }
 
-      &.card3 {
+      &.card4 {
         left: 82%;
         transform: translateX(-50%) scale(0.8);
         z-index: 8;
@@ -2085,8 +2104,13 @@ section {
         }
       }
 
-      &.card4,
       &.card5 {
+        left: 100%;
+        transform: translateX(-50%) scale(0.6);
+        opacity: 0;
+      }
+
+      &.hidden {
         display: none;
       }
 

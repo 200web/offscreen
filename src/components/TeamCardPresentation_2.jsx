@@ -1,16 +1,17 @@
 import React, { useRef, useState } from "react";
 import appStyles from "../scss/app.module.scss";
-import paul from "../scss/../assets/img/paul.gif";
-import dmitrop from "../scss/../assets/img/dmitrop.gif";
-import dmitrmark from "../scss/../assets/img/dmitrmark.gif";
-import egor from "../scss/../assets/img/egor.gif";
-import jonny from "../scss/../assets/img/jonny.gif";
-import valik from "../scss/../assets/img/valik.gif";
-import drew from "../scss/../assets/img/drew.gif";
+import paul from "../scss/../assets/img/paul.webm";
+import dmitrop from "../scss/../assets/img/dmitrop.webm";
+import dmitrmark from "../scss/../assets/img/dmitrmark.webm";
+import egor from "../scss/../assets/img/egor.webm";
+import jonny from "../scss/../assets/img/jonny.webm";
+import valik from "../scss/../assets/img/valik.webm";
+import drew from "../scss/../assets/img/drew.webm";
 import arrow from "../scss/../assets/img/Arrow.png";
 
 const TeamCardPresentation_2 = ({ images }) => {
   const cardContainerRef = useRef(null);
+  const videoRef = useRef();
 
   const scrollCards = (direction) => {
     const scrollAmount = 330;
@@ -75,6 +76,11 @@ const TeamCardPresentation_2 = ({ images }) => {
     },
   ];
 
+  React.useEffect(() => {
+    const video = videoRef.current;
+    video.play();
+  }, []);
+
   return (
     <div className={appStyles.team_card_presentation}>
       <button
@@ -87,10 +93,13 @@ const TeamCardPresentation_2 = ({ images }) => {
       <div className={appStyles.card_container} ref={cardContainerRef}>
         {teamMembers.map((member) => (
           <div className={appStyles.team_card} key={member.id}>
-            <img
+            <video
               src={member.image}
-              alt={member.name}
               className={appStyles.team_image}
+              muted
+              autoPlay
+              loop
+              ref={videoRef}
             />
             <div className={appStyles.card_info}>
               <p className={appStyles.role}>{member.role}</p>
