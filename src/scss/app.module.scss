@@ -491,8 +491,8 @@ section {
 
   .workTitle {
     display: flex;
-    flex-direction: column;
     align-items: center;
+    flex-direction: column;
     text-align: center;
     font-family: "Inter";
     color: white;
@@ -1311,7 +1311,7 @@ section {
     }
 
     &::-webkit-scrollbar-button {
-      display: none; // Убираем стрелки скроллбара
+      display: none; // Убираем стрелки скроллбар
     }
   }
 
