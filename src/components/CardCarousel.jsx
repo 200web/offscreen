@@ -37,7 +37,7 @@ const CardCarousel = ({ cards }) => {
   return (
     <>
       <div className={appStyles.reviewCardsCarousel}>
-        {/* <div className={appStyles.cardsContainer0}> */}
+        {/* <div className={appStyles.cardsContainer00}> */}
         {cards.map((card, index) => (
           <div
             key={index}
