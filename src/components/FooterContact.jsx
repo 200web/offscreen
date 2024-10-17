@@ -216,7 +216,7 @@ const FooterContact = () => {
             <div className={appStyles.sideMail}>
               <div className={appStyles.socialCard}>
                 <div className={appStyles.mailBlank}>
-                  <div className={appStyles.mailTile}>Mail</div>
+                  <div className={appStyles.mailTile}>Mail </div>
                   <div className={appStyles.mailInf}>prod.offscreen@gmail.com</div>
                   <div className={appStyles.title}>
                     If you have a general or project enquiry, please drop me an email or <br />
