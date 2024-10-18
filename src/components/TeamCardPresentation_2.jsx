@@ -11,7 +11,7 @@ import arrow from "../scss/../assets/img/Arrow.png";
 
 const TeamCardPresentation_2 = ({ images }) => {
   const cardContainerRef = useRef(null);
-  const videoRef = useRef();
+  const videoRefs = useRef([]);
 
   const scrollCards = (direction) => {
     const scrollAmount = 330;
@@ -77,8 +77,38 @@ const TeamCardPresentation_2 = ({ images }) => {
   ];
 
   React.useEffect(() => {
-    const video = videoRef.current;
-    video.play();
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const callback = (entries, observer) => {
+      entries.forEach((entry) => {
+        const video = entry.target;
+        if (entry.isIntersecting) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        observer.observe(video);
+      }
+    });
+
+    return () => {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          observer.unobserve(video);
+        }
+      });
+    };
   }, []);
 
   return (
@@ -91,7 +121,7 @@ const TeamCardPresentation_2 = ({ images }) => {
       </button>
 
       <div className={appStyles.card_container} ref={cardContainerRef}>
-        {teamMembers.map((member) => (
+        {teamMembers.map((member, index) => (
           <div className={appStyles.team_card} key={member.id}>
             <video
               src={member.image}
@@ -100,7 +130,7 @@ const TeamCardPresentation_2 = ({ images }) => {
               autoPlay
               loop
               playsInline
-              ref={videoRef}
+              ref={(el) => (videoRefs.current[index] = el)}
             />
             <div className={appStyles.card_info}>
               <p className={appStyles.role}>{member.role}</p>
