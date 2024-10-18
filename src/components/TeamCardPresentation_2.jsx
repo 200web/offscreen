@@ -99,6 +99,7 @@ const TeamCardPresentation_2 = ({ images }) => {
               muted
               autoPlay
               loop
+              playsInline
               ref={videoRef}
             />
             <div className={appStyles.card_info}>

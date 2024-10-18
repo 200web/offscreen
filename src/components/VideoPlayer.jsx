@@ -142,7 +142,7 @@ const VideoPlayer = () => {
         onClick={togglePlay}
         {...videoAttributes}
       >
-        <source src={HVideo} type="video/mp4" />
+        <source src={HVideo} type="video/webm" />
         Your browser does not support the video tag.
       </video>
       <div
