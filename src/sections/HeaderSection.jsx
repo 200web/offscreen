@@ -82,7 +82,7 @@ const HeaderSection = () => {
           </div>
           <div className={appStyles.Row}>
             <div
-              id="about us"
+              id="About us"
               className={
                 isVisible === false
                   ? `${appStyles.smileRow}`
@@ -119,12 +119,8 @@ const HeaderSection = () => {
           {/* Мобильная версия */}
           <div className={appStyles.Row}>
             <div
-              id="about us"
-              className={
-                isVisible === false
-                  ? `${appStyles.smileRow}`
-                  : `${appStyles.smileRow} ${appStyles.active}`
-              }
+              id="About us"
+              className={`${appStyles.smileRow} ${appStyles.active}`}
               ref={myRef}
             >
               <div>

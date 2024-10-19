@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import load from "../scss/components/loader.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { setIsLoaded } from "../Redux/introSlice";
-import HVideo from "../assets/img/liquedType.gif";
+import HVideo from "../assets/img/liquedType.webm";
 
 const Intro = () => {
   const dispatch = useDispatch();
@@ -11,26 +11,27 @@ const Intro = () => {
 
   const { isLoaded } = useSelector((state) => state.intro);
 
-  React.useEffect(() => {
-    setTimeout(() => {
-      setVisible(false);
-
-      setTimeout(() => {
-        dispatch(setIsLoaded(true));
-      }, 800);
-    }, 5000);
-  }, []);
-
   return (
     <>
       {!isLoaded && (
         <div className={load.intro}>
-          <img
-            id="video"
-            src={HVideo}
+          <video
             className={visible ? `` : `${load.swirl_out}`}
-            loading="eager"
-          />
+            onEnded={() => {
+              setVisible(false);
+
+              setTimeout(() => {
+                dispatch(setIsLoaded(true));
+              }, 800);
+            }}
+            autoPlay
+            muted
+            playsInline
+            preload="auto"
+          >
+            <source src={HVideo} type="video/webm" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       )}
     </>

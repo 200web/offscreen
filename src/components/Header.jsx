@@ -4,140 +4,77 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isHovered, setIsHovered] = React.useState(true);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [menuVisible, setMenuVisible] = React.useState(false);
 
-  const handleMouseEnter = () => {
-    if (!isHovered) setIsHovered(true);
+  const sections = {
+    0: "About us",
+    1: "Services",
+    2: "Our works",
+    3: "Our team",
+    4: "Contacts",
   };
 
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
-
-  const handleMenuVisible = () => {
-    setMenuVisible(!menuVisible);
-  };
+  const handleMenuVisible = () => setMenuVisible(!menuVisible);
 
   const handleActiveButton = (id) => {
-    if (isMobile) {
-      setMenuVisible(!menuVisible);
-    }
-    switch (id) {
-      case 0: {
-        const element = document.getElementById("about us");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 1: {
-        const element = document.getElementById("services");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 2: {
-        const element = document.getElementById("our works");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-
-      case 3: {
-        const element = document.getElementById("Team");
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-        break;
-      }
-    }
+    if (isMobile) setMenuVisible(false);
+    const element = document.getElementById(sections[id]);
+    if (element) element.scrollIntoView({ behavior: "smooth" });
   };
 
   React.useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 690);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth <= 690);
     window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <div
-      className={
-        isHovered === true
-          ? `${headerStyle.Headerlayout} ${headerStyle.active}`
-          : `${headerStyle.Headerlayout}`
-      }
+      className={`${headerStyle.Headerlayout} ${
+        menuVisible && isMobile ? headerStyle.active : ""
+      }`}
     >
-      <div
-        className={headerStyle.headerContent}
-        // onMouseEnter={handleMouseEnter}
-        // onMouseLeave={handleMouseLeave}
-      >
-        <div className={headerStyle.titleSide}>
-          <span
-            onClick={() => {
-              navigate("/");
-              window.scrollTo(0, 0);
-            }}
-          >
-            OffScreen
-          </span>
+      <div className={headerStyle.headerContent}>
+        <div
+          className={headerStyle.titleSide}
+          onClick={() => {
+            navigate("/");
+            window.scrollTo(0, 0);
+          }}
+        >
+          OffScreen
         </div>
+
         <div
           className={`${headerStyle.buttonSide} ${
             isMobile ? headerStyle.mobile : ""
-          } ${menuVisible && isMobile ? headerStyle.active : ""}`}
+          } ${menuVisible ? headerStyle.active : ""}`}
         >
           <ul>
-            {!isMobile && (
+            {Object.keys(sections).map((key) => (
               <li
+                key={key}
+                onClick={() => handleActiveButton(key)}
                 className={headerStyle.h_but_s}
-                onClick={() => handleActiveButton(0)}
               >
-                <span>About Us</span>
+                <span>{sections[key].replace("_", " ")}</span>
               </li>
-            )}
-            <li
-              className={headerStyle.h_but_s}
-              onClick={() => handleActiveButton(1)}
-            >
-              <span>Services</span>
-            </li>
-            <li
-              className={headerStyle.h_but_s}
-              onClick={() => handleActiveButton(2)}
-            >
-              <span>our works</span>
-            </li>
-            <li
-              className={headerStyle.h_but_s}
-              onClick={() => handleActiveButton(3)}
-            >
-              <span>our team</span>
-            </li>
+            ))}
             {!isMobile && (
-              <Link to={`/Contact`} className={headerStyle.h_but_s}>
+              <Link to="/Contact" className={headerStyle.h_but_s}>
                 <span>get in touch</span>
               </Link>
             )}
           </ul>
         </div>
+
         {isMobile && (
-          <Link to={`/Contact`} className={headerStyle.h_but_s_Mobile}>
+          <Link to="/Contact" className={headerStyle.h_but_s_Mobile}>
             <span>get in touch</span>
           </Link>
         )}
+
         <div
           className={`${headerStyle.menuButton} ${
             isMobile ? headerStyle.visible : ""

@@ -108,7 +108,7 @@ const WorkCardElement = () => {
   };
 
   return (
-    <div className={appStyles.workBlock} id="our works">
+    <div className={appStyles.workBlock} id="Our works">
       {!isLoading ? (
         displayedCards.length > 0 &&
         displayedCards.map((card, id) => (

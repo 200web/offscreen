@@ -84,13 +84,11 @@ const WorksSection = () => {
   return (
     <section className={appStyles.section}>
       <div className={appStyles.Row}>
-
-      <div className={appStyles.centralTitleWorks}>
-  <span>OUR WORKS</span>
-</div>
-
-</div>
-        {/* <div
+        <div className={appStyles.centralTitleWorks}>
+          <span>OUR WORKS</span>
+        </div>
+      </div>
+      {/* <div
           className={`${appStyles.centralTitle} ${
             isScrolling
               ? appStyles.scrolling
@@ -103,7 +101,7 @@ const WorksSection = () => {
         </div>
       </div> */}
       <WorkCardElement />
-      <div className={appStyles.Row} id="services">
+      <div className={appStyles.Row} id="Services">
         <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>
             <span>Services</span>
@@ -434,7 +432,7 @@ const WorksSection = () => {
             <span>Our Team</span>
           </div>
         ) : (
-          <div className={appStyles.workTitle} id="Team">
+          <div className={appStyles.workTitle} id="Our team">
             <label>Our Team</label>
             <span>
               “these are highly qualified specialists who turn your ideas into

@@ -1017,7 +1017,7 @@ section {
         display: block;
         opacity: 0.75;
         width: 60%;
-        font-size: clamp(12px, 2vw, 18px);
+        font-size: clamp(16px, 2vw, 18px);
       }
     }
 
@@ -2269,7 +2269,7 @@ section {
         font-size: 50px;
 
         @media (max-width: 1000px) {
-          margin: 8rem auto 0 auto;
+          margin: 4rem auto 0 auto;
         }
       }
     }

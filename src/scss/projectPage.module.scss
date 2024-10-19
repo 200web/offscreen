@@ -800,12 +800,24 @@
     margin-top: 6rem;
     margin-bottom: 6rem;
 
+    @media (max-width: 830px) {
+      flex-direction: column;
+      gap: 3rem;
+      margin-top: 3rem;
+      font-size: clamp(18px, 2vw, 22px);
+
+      article {
+        font-size: clamp(40px, 10vw, 65px);
+      }
+    }
+
     .listFlex {
       width: 50%;
       display: flex;
       gap: 10rem;
 
       @media (max-width: 830px) {
+        width: 100%;
         flex-direction: column;
         gap: 2rem;
       }
