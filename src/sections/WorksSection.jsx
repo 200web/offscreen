@@ -438,9 +438,9 @@ const WorksSection = () => {
               “these are highly qualified specialists who turn your ideas into
               advanced solutions, ensuring stable growth and business success”
             </span>
-            <Link to={`/Contact`} className={appStyles.buttonFag}>
+            {/* <Link to={`/Contact`} className={appStyles.buttonFag}>
               <span>SEND CV</span>
-            </Link>
+            </Link> */}
           </div>
         )}
       </div>

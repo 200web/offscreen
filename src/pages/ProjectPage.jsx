@@ -18,6 +18,7 @@ import "cloudinary-video-player/cld-video-player.min.css";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 import FooterContact from "../components/FooterContact";
+import { setScrollToElement } from "../Redux/scrollSlice";
 
 const ProjectPage = () => {
   const navigate = useNavigate();
@@ -179,7 +180,13 @@ const ProjectPage = () => {
           )}
         </div>
       </div>
-      <div className={project.backBut} onClick={() => navigate("/")}></div>
+      <div
+        className={project.backBut}
+        onClick={() => {
+          dispatch(setScrollToElement("Our works"));
+          navigate("/");
+        }}
+      ></div>
       <div className={project.headerSection}>
         <div className={project.row}>
           <label>{projectData.headerText_1}</label>
@@ -235,7 +242,7 @@ const ProjectPage = () => {
           </div>
         </div>
       </div>
-    
+
       <FooterContact />
     </div>
   );
