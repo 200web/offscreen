@@ -142,7 +142,7 @@ const VideoPlayer = () => {
         loop
         className={`${videoStyles.Video} ${
           !isGifPlaying && !isFullscreen && videoStyles.paused
-        }`}
+        } ${!isFullscreen && videoStyles.notFullScreened}`}
         ref={videoRef}
         onClick={togglePlay}
         {...videoAttributes}

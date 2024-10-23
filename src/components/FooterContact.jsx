@@ -15,15 +15,23 @@ const FooterForm = ({ sendMessage }) => {
         <input
           type="text"
           id="name"
-          placeholder="Name"
+          placeholder="Name*"
           className={appStyles.inputField}
         />
       </div>
       <div className={appStyles.fieldElem}>
         <input
           type="text"
-          id="emailOrPhone"
-          placeholder="Email address or Phone number"
+          id="Phone"
+          placeholder="Phone number"
+          className={appStyles.inputField}
+        />
+      </div>
+      <div className={appStyles.fieldElem}>
+        <input
+          type="text"
+          id="email"
+          placeholder="Email address*"
           className={appStyles.inputField}
         />
       </div>
@@ -42,8 +50,6 @@ const FooterForm = ({ sendMessage }) => {
 };
 
 const FooterContact = () => {
-  const fileInputRef = useRef(null);
-  const [selectedFiles, setSelectedFiles] = useState([]);
   const [isMobileContact, setIsMobileContact] = useState(
     window.innerWidth <= 1000
   );
@@ -89,26 +95,13 @@ const FooterContact = () => {
       .then(() => {
         console.log("Message sent successfully");
         document.getElementById("name").value = "";
-        document.getElementById("emailOrPhone").value = "";
+        document.getElementById("Phone").value = "";
+        document.getElementById("email").value = "";
         document.getElementById("projectDetails").value = "";
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  };
-
-  const handleFileChange = (e) => {
-    setSelectedFiles([...e.target.files]);
-  };
-
-  const deleteFiles = (index) => {
-    const newFiles = [...selectedFiles];
-    newFiles.splice(index, 1);
-    setSelectedFiles(newFiles);
-  };
-
-  const handleImageClick = () => {
-    fileInputRef.current.click();
   };
 
   return (

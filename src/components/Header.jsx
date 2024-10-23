@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 800);
   const [menuVisible, setMenuVisible] = React.useState(false);
 
   const sections = {
@@ -24,7 +24,7 @@ const Header = () => {
   };
 
   React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 690);
+    const handleResize = () => setIsMobile(window.innerWidth <= 800);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);

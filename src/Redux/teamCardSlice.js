@@ -1,12 +1,12 @@
 import axios from "axios";
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import paul from "../assets/img/paul.jpg";
-import Dmitry from "../assets/img/Dmitry.webp";
-import DimaLarge from "../assets/img/DimaLarge.webp";
-import Andrei from "../assets/img/Andrei.jpg";
-import Jonny from "../assets/img/Jonny.jpg";
-import Egor from "../assets/img/Egor.jpg";
-import Valiantsin from "../assets/img/Valiantsin.jpg";
+// import paul from "../assets/img/paul.jpg";
+// import Dmitry from "../assets/img/Dmitry.webp";
+// import DimaLarge from "../assets/img/DimaLarge.webp";
+// import Andrei from "../assets/img/Andrei.jpg";
+// import Jonny from "../assets/img/Jonny.jpg";
+// import Egor from "../assets/img/Egor.jpg";
+// import Valiantsin from "../assets/img/Valiantsin.jpg";
 
 export const fetchCards = createAsyncThunk(
   "card/fetchCardStatus",
@@ -33,7 +33,7 @@ const initialState = {
         "Throughout my career as a director, I've explored a diverse range of formats, from short videos to feature films. I possess a unique ability to tell compelling stories and highlight the most important aspects, regardless of the format or duration.",
         "My varied background and professional education enable me to be flexible, balancing academic precision with artistic freedom to create innovations and push the boundaries.",
       ],
-      image: paul,
+      // image: paul,
     },
     {
       id: 1,
@@ -42,7 +42,7 @@ const initialState = {
       description: [
         "As a seasoned cinematographer with 20 years of on-set experience, I’ve worked on everything from small student short films to major television series. In the past two years, I’ve expanded my expertise into producing and managing production processes. I bring a blend of creativity and professionalism to every project, ensuring your vision comes to life.",
       ],
-      image: Dmitry,
+      // image: Dmitry,
     },
     {
       id: 2,
@@ -51,7 +51,7 @@ const initialState = {
       description: [
         "I am a Warsaw-based cinematographer with a passion for documentary-style shooting, focusing on capturing authentic moments and realistic movements. Skilled in post-production, especially in color correction, I enjoy working on compelling television projects and documentary films. As a highly professional and collaborative team member, I bring my expertise to every project. I graduated from film schools in Belarus and Poland, and I'm fluent in both Polish and English.",
       ],
-      image: Egor,
+      // image: Egor,
     },
     {
       id: 3,
@@ -61,7 +61,7 @@ const initialState = {
         "With extensive experience as a motion and VFX designer, I've collaborated with leading IT companies such as UFC, SPRIBE, EASYBRAIN, SAY GAMES, BEATHEAD, BITLICA, and CIFRA LTD. My work also includes creating content for renowned MMA fighters like Alex Pereira, Johnny Walker, and Merab Dvalishvili. Recently, I had the opportunity to shoot for the artist Skriptonit.",
         "Additionally, I've contributed to major production projects, including working with the news and history-focused production company City Dog. I'm currently involved in developing a new season of their historical show.",
       ],
-      image: Jonny,
+      // image: Jonny,
     },
     {
       id: 4,
@@ -70,7 +70,7 @@ const initialState = {
       description: [
         "As a passionate Gaffer and Cinematographer with several years of experience in the film industry, I've honed my skills on diverse projects, including the 48HPF, where my lighting work as part of the cinematography team was recognized with the Best Cinematography award. My passion for visual storytelling extends beyond lighting; my own short film has been screened at multiple horror festivals. I bring not only technical expertise but also a client-centric approach, ensuring clear communication and a collaborative spirit to bring every vision to life. I'm always learning and growing, excited for the future in this ever-evolving industry.",
       ],
-      image: Andrei,
+      // image: Andrei,
     },
     {
       id: 5,
@@ -79,7 +79,7 @@ const initialState = {
       description: [
         "With over 10 years on set, he has shaped his craft across a diverse range of projects, from documentaries and music videos to high-impact TV commercials. His work has been showcased at prestigious film festivals in Venice and Brazil, and he also held a personal exhibition in Berlin. He approaches every project with a fresh perspective, driven by the challenge of pushing creative boundaries and telling stories in visually compelling ways.",
       ],
-      image: Valiantsin,
+      // image: Valiantsin,
     },
     {
       id: 6,
@@ -88,7 +88,7 @@ const initialState = {
       description: [
         "Our consultant and marketing director, specializing in operational and visual marketing. With 8 years of experience, Dmitry is a certified specialist with extensive experience in interacting with creative developments. His team management skills help to effectively implement marketing strategies, combining creative ideas with four business goals. Dmitry successfully develops and implements marketing solutions aimed at developing brands and products, ensuring their growth and success in the market.",
       ],
-      image: DimaLarge,
+      // image: DimaLarge,
     },
   ],
   status: "loading",

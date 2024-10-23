@@ -8,10 +8,29 @@ import jonny from "../scss/../assets/img/jonny.webm";
 import valik from "../scss/../assets/img/valik.webm";
 import drew from "../scss/../assets/img/drew.webm";
 import arrow from "../scss/../assets/img/Arrow.png";
+import Egor from "../scss/../assets/img/Egor.webp";
+import Dmitry from "../scss/../assets/img/Dmitry.webp";
+import Astap from "../scss/../assets/img/Astap.webp";
+import Andrei from "../scss/../assets/img/Andrei.webp";
+import Paul from "../scss/../assets/img/Paul.webp";
+import valin from "../scss/../assets/img/valin.webp";
+import Jonhy from "../scss/../assets/img/Jonhy.webp";
 
 const TeamCardPresentation_2 = ({ images }) => {
   const cardContainerRef = useRef(null);
   const videoRefs = useRef([]);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 690);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const scrollCards = (direction) => {
     const scrollAmount = 330;
@@ -30,49 +49,49 @@ const TeamCardPresentation_2 = ({ images }) => {
       name: "Paul Gerassi",
       role: "Founder",
       profession: "Director and director of editing",
-      image: paul,
+      image: isMobile ? Paul : paul,
     },
     {
       id: 2,
       name: "Dmitry Shabaldin",
       role: "CO_Founder",
       profession: "Producer",
-      image: dmitrop,
+      image: isMobile ? Dmitry : dmitrop,
     },
     {
       id: 3,
       name: "Dmitry Astap",
       role: "Marketing Director",
       profession: "Marketing Consultant",
-      image: dmitrmark,
+      image: isMobile ? Astap : dmitrmark,
     },
     {
       id: 4,
       name: "Egor Efimov",
       role: "Technical Director",
       profession: "Cinematographer",
-      image: egor,
+      image: isMobile ? Egor : egor,
     },
     {
       id: 5,
       name: "Jonny Symmetry",
       role: "Designer",
       profession: "VFX artist",
-      image: jonny,
+      image: isMobile ? Jonhy : jonny,
     },
     {
       id: 6,
       name: "Andrei Iofe Mdivani",
       role: "Client Manager",
       profession: "Gaffer",
-      image: drew,
+      image: isMobile ? Andrei : drew,
     },
     {
       id: 7,
       name: "Valiantsin Hlushko",
       role: "Cinematographer",
       profession: "Cinematographer",
-      image: valik,
+      image: isMobile ? valin : valik,
     },
   ];
 
@@ -123,14 +142,23 @@ const TeamCardPresentation_2 = ({ images }) => {
       <div className={appStyles.card_container} ref={cardContainerRef}>
         {teamMembers.map((member, index) => (
           <div className={appStyles.team_card} key={member.id}>
-            <video
-              src={member.image}
-              className={appStyles.team_image}
-              muted
-              loop
-              playsInline
-              ref={(el) => (videoRefs.current[index] = el)}
-            />
+            {isMobile ? (
+              <img
+                src={member.image}
+                draggable="false"
+                loading="lazy"
+                className={appStyles.team_image}
+              />
+            ) : (
+              <video
+                src={member.image}
+                className={appStyles.team_image}
+                muted
+                loop
+                playsInline
+                ref={(el) => (videoRefs.current[index] = el)}
+              />
+            )}
             <div className={appStyles.card_info}>
               <p className={appStyles.role}>{member.role}</p>
               <p className={appStyles.profession}>{member.profession}</p>

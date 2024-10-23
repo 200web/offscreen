@@ -1,12 +1,12 @@
 import React from "react";
 import appStyles from "../scss/app.module.scss";
-import paul from "../assets/img/paul.jpg";
-import Dmitry from "../assets/img/Dmitry.webp";
-import Andrei from "../assets/img/Andrei.jpg";
-import Jonny from "../assets/img/Jonny.jpg";
-import Egor from "../assets/img/Egor.jpg";
-import DimaLarge from "../assets/img/DimaLarge.webp";
-import Valiantsin from "../assets/img/Valiantsin.jpg";
+// import paul from "../assets/img/paul.jpg";
+// import Dmitry from "../assets/img/Dmitry.webp";
+// import Andrei from "../assets/img/Andrei.jpg";
+// import Jonny from "../assets/img/Jonny.jpg";
+// import Egor from "../assets/img/Egor.jpg";
+// import DimaLarge from "../assets/img/DimaLarge.webp";
+// import Valiantsin from "../assets/img/Valiantsin.jpg";
 import CardCarousel from "../components/CardCarousel";
 import CardElement from "../components/CardElement";
 import light from "../assets/img/REDAPPLE.gif";
@@ -67,7 +67,7 @@ const FooterSection = () => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);
   const [activeCard, setIsActiveCard] = React.useState(0);
-  const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei, Valiantsin, DimaLarge];
+  // const teamPhotos = [paul, Dmitry, Egor, Jonny, Andrei, Valiantsin, DimaLarge];
 
   const handleMoveOver = (id) => {
     if (id === activeCard) {
@@ -163,7 +163,7 @@ const FooterSection = () => {
     <section className={appStyles.section}>
       <div className={appStyles.teamBlock}>
         {/* <TeamCardPresentation images={teamPhotos} /> */}
-        <TeamCardPresentation_2 images={teamPhotos} />
+        <TeamCardPresentation_2 />
       </div>
       <div className={appStyles.fagBlock}>
         <div className={appStyles.headerFag}>FAQ</div>
