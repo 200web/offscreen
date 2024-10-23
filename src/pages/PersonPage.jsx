@@ -35,6 +35,7 @@ const PersonPage = () => {
         </div>
         <div key={id} className={personStyle.portrait}>
           <img
+            loading="lazy"
             id={`video-${id}`}
             src={cards[id].image}
             alt={`portrait-${id}`}
@@ -46,7 +47,7 @@ const PersonPage = () => {
               onClick={() => navigate("/", { state: { scrollToTeam: true } })}
               className={personStyle.contactButton}
             >
-              <img draggable="false" src={arrow} alt="arrow" />
+              <img loading="lazy" draggable="false" src={arrow} alt="arrow" />
               <span>BACK TO TEAM</span>
             </div>
           )}

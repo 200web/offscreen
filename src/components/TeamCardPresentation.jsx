@@ -275,13 +275,13 @@ const TeamCardPresentation = ({ images }) => {
                 // onMouseLeave={() => handleMouseLeave(id)}
               >
                 <img
+                  loading="lazy"
                   id={`video-${id}`}
                   src={currentImages[id]}
                   alt={`portrait-${id}`}
                   className={
                     isAnimating[id] ? appStyles.fadeOut : appStyles.fadeIn
                   }
-                  loading="lazy"
                 />
               </div>
             </Link>
@@ -299,6 +299,7 @@ const TeamCardPresentation = ({ images }) => {
               >
                 <div className={appStyles.image}>
                   <img
+                    loading="lazy"
                     id={`video-${id}`}
                     src={currentImages[id]}
                     alt={`portrait-${id}`}

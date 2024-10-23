@@ -61,7 +61,7 @@ const AdvantageSection = () => {
         <div className={appStyles.introCard}>
           <div className={appStyles.headerContent}>
             <div className={appStyles.imgBox}>
-              <img draggable="false" src={packa} alt="pointer" />
+              <img loading="lazy" draggable="false" src={packa} alt="pointer" />
             </div>
           </div>
           <div
@@ -78,7 +78,7 @@ const AdvantageSection = () => {
         <div className={appStyles.introCard}>
           <div className={appStyles.headerContent}>
             <div className={appStyles.imgBoxSpecial}>
-              <img draggable="false" src={tick} alt="pointer" />
+              <img loading="lazy" draggable="false" src={tick} alt="pointer" />
             </div>
           </div>
           <div
@@ -99,7 +99,7 @@ const AdvantageSection = () => {
               boxVisible[2] && appStyles.active
             }`}
           >
-            <img draggable="false" src={caset} alt="pointer" />
+            <img loading="lazy" draggable="false" src={caset} alt="pointer" />
           </div>
           <Link to={`/Contact`} className={appStyles.contactButton}>
             <div className={appStyles.activeButton}>Get in touch</div>
@@ -117,7 +117,7 @@ const AdvantageSection = () => {
           <div className={appStyles.advantageCard}>
             <div className={appStyles.blurBlock}></div>
             <div className={appStyles.cardImageSpecial}>
-              <img draggable="false" src={rupor} alt="pointer" />
+              <img loading="lazy" draggable="false" src={rupor} alt="pointer" />
             </div>
             <div className={appStyles.textContent}>
               <div>
@@ -131,7 +131,7 @@ const AdvantageSection = () => {
           <div className={appStyles.advantageCard}>
             <div className={appStyles.blurBlock}></div>
             <div className={appStyles.cardImageSpecial}>
-              <img src={notes} alt="pointer" />
+              <img loading="lazy" src={notes} alt="pointer" />
             </div>
             <div className={appStyles.textContent}>
               <div>
@@ -148,7 +148,7 @@ const AdvantageSection = () => {
             }`}
           >
             <div className={appStyles.cardImageSpecial2}>
-              <img src={security} alt="pointer" />
+              <img loading="lazy" src={security} alt="pointer" />
             </div>
             <div className={appStyles.textContent}>
               <div>
@@ -162,7 +162,7 @@ const AdvantageSection = () => {
           <div className={appStyles.advantageCard}>
             <div className={appStyles.blurBlock}></div>
             <div className={appStyles.cardImage}>
-              <img src={baby} alt="pointer" />
+              <img loading="lazy" src={baby} alt="pointer" />
             </div>
             <div className={appStyles.textContent}>
               <div>

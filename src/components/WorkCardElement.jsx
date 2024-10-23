@@ -7,6 +7,7 @@ import axios from "axios";
 import MyLoader from "./Loader";
 
 const WorkCardElement = () => {
+  const videoRefs = React.useRef([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 900);
   const [isHovered, setIsHovered] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -17,22 +18,48 @@ const WorkCardElement = () => {
   const [isAnimating, setIsAnimating] = useState(cardsData?.map(() => false));
 
   useEffect(() => {
-    async function fetchCards() {
-      try {
-        setIsLoading(true);
-        const { data } = await axios.get(
-          `https://66e82c2db17821a9d9dbada4.mockapi.io/Cards`
-        );
-        const cardsTempData = data.length;
-        setCardsData(data);
-        setIsLoading(false);
-        // setIsShort(cardsTempData > 6);
-      } catch (error) {
-        console.log(error);
-      }
+    const targetElement = document.getElementById("Our works");
+
+    const options = {
+      root: null,
+      rootMargin: "0px",
+      threshold: 0.5,
+    };
+
+    const callback = (entries) => {
+      entries.forEach(async (entry) => {
+        if (entry.isIntersecting) {
+          async function fetchCards() {
+            try {
+              setIsLoading(true);
+              const { data } = await axios.get(
+                `https://66e82c2db17821a9d9dbada4.mockapi.io/Cards`
+              );
+              setCardsData(data);
+              setIsLoading(false);
+              observer.disconnect();
+            } catch (error) {
+              console.log(error);
+              observer.disconnect();
+            }
+          }
+
+          fetchCards();
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(callback, options);
+
+    if (targetElement) {
+      observer.observe(targetElement);
     }
 
-    fetchCards();
+    return () => {
+      if (targetElement) {
+        observer.unobserve(targetElement);
+      }
+    };
   }, []);
 
   const animate = (indices, state) => {
@@ -65,6 +92,11 @@ const WorkCardElement = () => {
   }, []);
 
   useEffect(() => {
+    videoRefs.current.forEach((video) => {
+      if (video) {
+        video.play();
+      }
+    });
     if (isHovered !== null) {
       clearInterval(animationTimeouts.current);
       clearTimeout(animationTimeouts2.current);
@@ -126,8 +158,8 @@ const WorkCardElement = () => {
             >
               <video
                 id="gif"
+                ref={(el) => (videoRefs.current[id] = el)}
                 loop
-                autoPlay
                 muted
                 alt={`project-${id}`}
                 className={`${
@@ -176,14 +208,14 @@ const WorkCardElement = () => {
           className={`${appStyles.workCard} ${appStyles.last}`}
           onClick={() => setIsShort(false)}
         >
-          <img draggable="false" src={Liquid} alt="logo" />
+          <img loading="lazy" draggable="false" src={Liquid} alt="logo" />
           <div className={appStyles.textContentLast}>
             <div>
               <label>MORE</label>
             </div>
           </div>
           {/* <div className={appStyles.button}>
-            <img draggable="false" src={moreArrow} alt="arrow" />
+            <img loading="lazy" draggable="false" src={moreArrow} alt="arrow" />
           </div> */}
         </div>
       )}

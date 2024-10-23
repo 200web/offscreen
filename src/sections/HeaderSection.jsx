@@ -95,6 +95,7 @@ const HeaderSection = () => {
               </div>
               {startAnimation ? (
                 <img
+                  loading="lazy"
                   draggable="false"
                   src={smile}
                   alt="smile"
@@ -102,6 +103,7 @@ const HeaderSection = () => {
                 />
               ) : (
                 <img
+                  loading="lazy"
                   draggable="false"
                   src={smilePNG}
                   alt="smile"
@@ -128,6 +130,7 @@ const HeaderSection = () => {
               </div>
               {startAnimation ? (
                 <img
+                  loading="lazy"
                   draggable="false"
                   src={smile}
                   alt="smile"
@@ -135,6 +138,7 @@ const HeaderSection = () => {
                 />
               ) : (
                 <img
+                  loading="lazy"
                   draggable="false"
                   src={smilePNG}
                   alt="smile"

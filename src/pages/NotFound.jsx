@@ -12,7 +12,7 @@ const NotFound = () => {
           <p>Something went wrong while displaying this web page.</p>
         </div>
         <div className={styles.image}>
-          <img draggable="false" src={eyes} alt="eyes" />
+          <img loading="lazy" draggable="false" src={eyes} alt="eyes" />
         </div>
       </div>
     </section>

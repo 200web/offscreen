@@ -7,13 +7,13 @@ const CardElement = ({ headerText, positionText, descriptionText }) => {
     <article>
       <div className={appStyles.reviewCardHeader}>
         <div className={appStyles.like}>
-          <img draggable="false" src={like} alt="like" />
+          <img loading="lazy" draggable="false" src={like} alt="like" />
         </div>
         <div className={appStyles.name}>
           <span>{headerText}</span>
         </div>
         <div className={appStyles.position}>
-        <span>{positionText}</span>
+          <span>{positionText}</span>
         </div>
       </div>
       <div className={appStyles.reviewDescriptionText}>

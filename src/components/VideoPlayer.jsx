@@ -8,15 +8,19 @@ import unmuteIcon from "../assets/img/volumeOn.webp";
 import { useSelector } from "react-redux";
 
 const VideoPlayer = () => {
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isGifPlaying, setIsGifPlaying] = useState(false);
+  const [isGifPlaying, setIsGifPlaying] = useState(true);
   const videoRef = useRef(null);
   const progressContainerRef = useRef(null);
 
   useEffect(() => {
     const video = videoRef.current;
     const progressBar = document.getElementById("progress-bar");
+
+    if (videoRef.current) {
+      videoRef.current.play();
+    }
 
     const updateProgressBar = () => {
       const percentage = (video.currentTime / video.duration) * 100;
@@ -129,11 +133,12 @@ const VideoPlayer = () => {
         onClick={togglePlay}
       >
         <span className={videoStyles.buttonNext}>
-          <img draggable="false" src={arrowRight} />
+          <img loading="lazy" draggable="false" src={arrowRight} />
         </span>
       </div>
       <video
         id="video"
+        muted
         loop
         className={`${videoStyles.Video} ${
           !isGifPlaying && !isFullscreen && videoStyles.paused
@@ -155,6 +160,7 @@ const VideoPlayer = () => {
             {/* Watch the showreel */}
             <div className={videoStyles.video_fullscreen}>
               <img
+                loading="lazy"
                 draggable="false"
                 src={fullscreen}
                 alt="fullscreen"
@@ -165,6 +171,7 @@ const VideoPlayer = () => {
             </div>
             <div className={videoStyles.mute_button}>
               <img
+                loading="lazy"
                 src={isMuted ? muteIcon : unmuteIcon}
                 alt="mute/unmute"
                 width={20}

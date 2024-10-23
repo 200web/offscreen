@@ -193,6 +193,7 @@ const ProjectPage = () => {
         </div>
         <div className={project.image}>
           <img
+            loading="lazy"
             draggable="false"
             src={projectData.headerPhoto}
             alt="headerPhoto"
@@ -215,8 +216,18 @@ const ProjectPage = () => {
           </div>
         </div>
         <div className={project.gifRow}>
-          <img draggable="false" src={projectData.photo_1} alt="skate" />
-          <img draggable="false" src={projectData.photo_2} alt="mouth" />
+          <img
+            loading="lazy"
+            draggable="false"
+            src={projectData.photo_1}
+            alt="skate"
+          />
+          <img
+            loading="lazy"
+            draggable="false"
+            src={projectData.photo_2}
+            alt="mouth"
+          />
         </div>
         <div className={project.fullVideo}>
           <div className={project.headerVideo}>
@@ -229,7 +240,7 @@ const ProjectPage = () => {
               onClick={togglePlay}
             >
               <span className={project.buttonNext}>
-                <img draggable="false" src={playBut} />
+                <img loading="lazy" draggable="false" src={playBut} />
               </span>
             </div> */}
             <AdvancedVideo

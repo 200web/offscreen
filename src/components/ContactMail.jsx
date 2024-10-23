@@ -26,7 +26,9 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   };
 
   const deleteFiles = (index) => {
-    setSelectedFiles((prevFiles) => prevFiles.filter((file, idx) => idx !== index));
+    setSelectedFiles((prevFiles) =>
+      prevFiles.filter((file, idx) => idx !== index)
+    );
   };
 
   const handleImageClick = () => {
@@ -41,39 +43,39 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
 
   const sentMessage = () => {
     setIsLoaded(true);
-  
+
     // Собираем данные формы в объект
     const formData = {
-      name: inputValues[0],      // Имя
-      email: inputValues[1],     // Email
-      phone: inputValues[2],     // Телефон
-      website: inputValues[3],   // Вебсайт
-      details: inputValues[4],   // Детали проекта
-      type: cards[0],            // Тип видео
-      goals: cards[1],           // Цели
-      budget: cards[2],          // Бюджет
-      deadline: cards[3]         // Дедлайн
+      name: inputValues[0], // Имя
+      email: inputValues[1], // Email
+      phone: inputValues[2], // Телефон
+      website: inputValues[3], // Вебсайт
+      details: inputValues[4], // Детали проекта
+      type: cards[0], // Тип видео
+      goals: cards[1], // Цели
+      budget: cards[2], // Бюджет
+      deadline: cards[3], // Дедлайн
     };
-  
+
     console.log("Form Data to send:", formData); // Логируем данные перед отправкой
-  
+
     // Отправляем данные через fetch
     fetch(process.env.GOOGLE_SCRIPT_API, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      mode: 'no-cors', // Отключение CORS
+      mode: "no-cors", // Отключение CORS
       body: JSON.stringify(formData),
     })
-    .then(() => {
-      console.log("Message sent successfully");
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+      .then(() => {
+        console.log("Message sent successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
-  
+
   const handleInputChange = (value, index) => {
     setInputValues((prevValues) => {
       const updatedValues = [...prevValues];
@@ -83,7 +85,11 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   };
 
   return (
-    <div className={`${contactStyles.sideMail} ${isClicked ? contactStyles.active : ""}`}>
+    <div
+      className={`${contactStyles.sideMail} ${
+        isClicked ? contactStyles.active : ""
+      }`}
+    >
       <div className={contactStyles.socialCard}>
         {isLoaded ? (
           <div className={contactStyles.loaded}>
@@ -95,8 +101,11 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
                 </div>
               </Link>
             </div>
-            <img draggable="false" src={loaded} alt="access" />
-            <p>Your message has been sent, we will contact you as soon as possible</p>
+            <img loading="lazy" draggable="false" src={loaded} alt="access" />
+            <p>
+              Your message has been sent, we will contact you as soon as
+              possible
+            </p>
           </div>
         ) : (
           <>
@@ -144,7 +153,12 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
                   onChange={(e) => handleInputChange(e.target.value, 4)}
                 />
                 <div className={contactStyles.image} onClick={handleImageClick}>
-                  <img draggable="false" src={picture} alt="data" />
+                  <img
+                    loading="lazy"
+                    draggable="false"
+                    src={picture}
+                    alt="data"
+                  />
                 </div>
                 <input
                   type="file"
@@ -177,7 +191,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
             <div className={contactStyles.pagination} onClick={handlePrevClick}>
               <div className={contactStyles.prevLayout}>
                 <button className={contactStyles.buttonPrev}>
-                  <img draggable="false" src={arrowLeft} />
+                  <img loading="lazy" draggable="false" src={arrowLeft} />
                 </button>
                 <label>Back</label>
               </div>

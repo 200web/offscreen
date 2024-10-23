@@ -50,10 +50,10 @@ const CardCarousel = ({ cards }) => {
 
         <div className={appStyles.reviewNav}>
           <button className={appStyles.buttonPrev} onClick={handlePrevClick}>
-            <img draggable="false" src={arrowLeft} />
+            <img loading="lazy" draggable="false" src={arrowLeft} />
           </button>
           <button className={appStyles.buttonNext} onClick={handleNextClick}>
-            <img draggable="false" src={arrowRight} />
+            <img loading="lazy" draggable="false" src={arrowRight} />
           </button>
         </div>
       </div>

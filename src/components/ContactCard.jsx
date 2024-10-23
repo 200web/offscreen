@@ -41,12 +41,13 @@ const ContactCard = ({
 
   const handleNextClick = () => {
     const updatedCards = [...cards];
-  
+
     // Получаем текстовое значение на основе выбранного индекса
-    const selectedText = selectedOption !== null 
-      ? buttonText[currentCard - 1][selectedOption] 
-      : ""; // Если ничего не выбрано, оставляем пустую строку
-  
+    const selectedText =
+      selectedOption !== null
+        ? buttonText[currentCard - 1][selectedOption]
+        : ""; // Если ничего не выбрано, оставляем пустую строку
+
     // Если выбрана опция "Другой", используем текст из searchValue
     if (isOtherSelected) {
       updatedCards[currentCard - 1] = searchValue; // Сохраняем введённый текст в Redux
@@ -54,17 +55,15 @@ const ContactCard = ({
     } else {
       updatedCards[currentCard - 1] = selectedText; // Сохраняем текстовое значение в Redux
     }
-  
+
     dispatch(setItems(updatedCards));
-  
+
     if (currentCard === 4) {
       setIsClicked(true);
     } else {
       setCurrentCard((prevIndex) => (prevIndex < 4 ? prevIndex + 1 : 4));
     }
   };
-  
-  
 
   const handlePrevClick = () => {
     setCurrentCard((prevIndex) => (prevIndex > 1 ? prevIndex - 1 : 1));
@@ -127,6 +126,7 @@ const ContactCard = ({
           >
             {currentCard > 1 ? (
               <img
+                loading="lazy"
                 src={images[currentCard - 2]}
                 alt="image"
                 className={
@@ -160,7 +160,7 @@ const ContactCard = ({
               className={contactStyles.buttonPrev}
               onClick={handlePrevClick}
             >
-              <img draggable="false" src={arrowLeft} />
+              <img loading="lazy" draggable="false" src={arrowLeft} />
             </button>
           )}
           <button
@@ -168,7 +168,7 @@ const ContactCard = ({
             onClick={handleNextClick}
           >
             <span>
-              <img draggable="false" src={arrowRight} />
+              <img loading="lazy" draggable="false" src={arrowRight} />
             </span>
           </button>
         </div>

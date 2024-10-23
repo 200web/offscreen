@@ -177,7 +177,7 @@ const WorksSection = () => {
             <div className={appStyles.buttonHeader}>
               <span>Music Videos</span>
               <div>
-                <img draggable="false" src={arrow} alt="arrow" />
+                <img loading="lazy" draggable="false" src={arrow} alt="arrow" />
               </div>
             </div>
             <div className={appStyles.buttonDescription}>
@@ -202,7 +202,7 @@ const WorksSection = () => {
             <div className={appStyles.buttonHeader}>
               <span>Commercials</span>
               <div>
-                <img draggable="false" src={arrow} alt="arrow" />
+                <img loading="lazy" draggable="false" src={arrow} alt="arrow" />
               </div>
             </div>
             <div className={appStyles.buttonDescription}>
@@ -227,7 +227,7 @@ const WorksSection = () => {
             <div className={appStyles.buttonHeader}>
               <span>Event Videos</span>
               <div>
-                <img draggable="false" src={arrow} alt="arrow" />
+                <img loading="lazy" draggable="false" src={arrow} alt="arrow" />
               </div>
             </div>
             <div className={appStyles.buttonDescription}>
@@ -252,7 +252,7 @@ const WorksSection = () => {
             <div className={appStyles.buttonHeader}>
               <span>Product Videos</span>
               <div>
-                <img draggable="false" src={arrow} alt="arrow" />
+                <img loading="lazy" draggable="false" src={arrow} alt="arrow" />
               </div>
             </div>
             <div className={appStyles.buttonDescription}>
@@ -264,6 +264,7 @@ const WorksSection = () => {
         </div>
         <div className={appStyles.presentation}>
           <img
+            loading="lazy"
             draggable="false"
             src={currentPhoto}
             alt="presentation"
@@ -338,6 +339,7 @@ const WorksSection = () => {
           }`}
         >
           <img
+            loading="lazy"
             draggable="false"
             src={isMobile ? adCardMobile : adCard}
             alt="card"

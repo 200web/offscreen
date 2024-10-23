@@ -19,21 +19,21 @@ import TeamCardPresentation_2 from "../components/TeamCardPresentation_2";
 const FooterSection = () => {
   const cards = [
     <div>
-    <CardElement
-            headerText={"Anna Kowalska"}
-            positionText={"Marketing Manager"}
-            descriptionText={[
-              "Offscreen produced a fantastic ad for our product launch that perfectly captured the energy and style we were aiming for. The team delivered on time and handled all feedback efficiently.",
-           ]}
-          />
-        </div>,
+      <CardElement
+        headerText={"Anna Kowalska"}
+        positionText={"Marketing Manager"}
+        descriptionText={[
+          "Offscreen produced a fantastic ad for our product launch that perfectly captured the energy and style we were aiming for. The team delivered on time and handled all feedback efficiently.",
+        ]}
+      />
+    </div>,
     <div>
-<CardElement
+      <CardElement
         headerText={"Olena Petrova"}
         positionText={"Social Media Coordinator"}
         descriptionText={[
           "We needed a series of short social media videos for a campaign, and offscreen delivered fast, engaging content that really boosted our engagement. Easy to work with, quick turnaround.",
-       ]}
+        ]}
       />
     </div>,
     <div>
@@ -41,28 +41,28 @@ const FooterSection = () => {
         headerText={"Piotr Nowak"}
         positionText={"Event Coordinator"}
         descriptionText={[
-        "Offscreen helped us with a last-minute event video. They not only met the tight deadline but exceeded our expectations in terms of quality. The footage and editing were on point.",
+          "Offscreen helped us with a last-minute event video. They not only met the tight deadline but exceeded our expectations in terms of quality. The footage and editing were on point.",
         ]}
       />
     </div>,
     <div>
-    <CardElement
-     headerText={"Matt Newell"}
-     positionText={"Musician"}
-     descriptionText={[
-       "The music video offscreen shot for me was exactly how I wanted - visually striking and in sync with the song’s vibe. The crew knew what they were doing from the first meeting to the final edit.",
-      ]}
-    />
-  </div>,
-  <div>
-  <CardElement
-    headerText={"Raman Zayankouski"}
-    positionText={"PR manager, NICOTOBACCO"}
-    descriptionText={[
-      "Offscreen shot a solid video of our office and production line for a trade show in Cannes. It was well put together and showcased everything we needed for the event. The feedback from viewers was positive.",
-    ]}
-  />
-</div>,
+      <CardElement
+        headerText={"Matt Newell"}
+        positionText={"Musician"}
+        descriptionText={[
+          "The music video offscreen shot for me was exactly how I wanted - visually striking and in sync with the song’s vibe. The crew knew what they were doing from the first meeting to the final edit.",
+        ]}
+      />
+    </div>,
+    <div>
+      <CardElement
+        headerText={"Raman Zayankouski"}
+        positionText={"PR manager, NICOTOBACCO"}
+        descriptionText={[
+          "Offscreen shot a solid video of our office and production line for a trade show in Cannes. It was well put together and showcased everything we needed for the event. The feedback from viewers was positive.",
+        ]}
+      />
+    </div>,
   ];
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isShort, setIsShort] = React.useState(true);
@@ -168,6 +168,7 @@ const FooterSection = () => {
       <div className={appStyles.fagBlock}>
         <div className={appStyles.headerFag}>FAQ</div>
         <img
+          loading="lazy"
           className={appStyles.light}
           draggable="false"
           src={light}

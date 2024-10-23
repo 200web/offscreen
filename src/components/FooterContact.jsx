@@ -125,7 +125,13 @@ const FooterContact = () => {
               <div>
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img src={facebook} width={50} height={50} alt="facebook" />
+                    <img
+                      loading="lazy"
+                      src={facebook}
+                      width={50}
+                      height={50}
+                      alt="facebook"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>Facebook</div>
@@ -133,7 +139,13 @@ const FooterContact = () => {
               <div>
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img src={telegram} width={70} height={70} alt="telegram" />
+                    <img
+                      loading="lazy"
+                      src={telegram}
+                      width={70}
+                      height={70}
+                      alt="telegram"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>Telegram</div>
@@ -142,6 +154,7 @@ const FooterContact = () => {
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
                     <img
+                      loading="lazy"
                       src={instagram}
                       width={70}
                       height={70}
@@ -154,7 +167,13 @@ const FooterContact = () => {
               <div>
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img src={whatsapp} width={70} height={70} alt="whatsapp" />
+                    <img
+                      loading="lazy"
+                      src={whatsapp}
+                      width={70}
+                      height={70}
+                      alt="whatsapp"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
@@ -188,25 +207,49 @@ const FooterContact = () => {
             <div className={appStyles.socialContainerMobile}>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                 <div className={appStyles.image}>
-                  <img src={facebook} width={50} height={50} alt="facebook" />
+                  <img
+                    loading="lazy"
+                    src={facebook}
+                    width={50}
+                    height={50}
+                    alt="facebook"
+                  />
                 </div>
                 <div className={appStyles.title}>Facebook</div>
               </div>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                 <div className={appStyles.image}>
-                  <img src={telegram} width={70} height={70} alt="telegram" />
+                  <img
+                    loading="lazy"
+                    src={telegram}
+                    width={70}
+                    height={70}
+                    alt="telegram"
+                  />
                 </div>
                 <div className={appStyles.title}>Telegram</div>
               </div>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                 <div className={appStyles.image}>
-                  <img src={instagram} width={70} height={70} alt="instagram" />
+                  <img
+                    loading="lazy"
+                    src={instagram}
+                    width={70}
+                    height={70}
+                    alt="instagram"
+                  />
                 </div>
                 <div className={appStyles.title}>Instagram</div>
               </div>
               <div className={`${appStyles.socialCard} ${appStyles.active}`}>
                 <div className={appStyles.image}>
-                  <img src={whatsapp} width={70} height={70} alt="whatsapp" />
+                  <img
+                    loading="lazy"
+                    src={whatsapp}
+                    width={70}
+                    height={70}
+                    alt="whatsapp"
+                  />
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
               </div>
@@ -215,7 +258,13 @@ const FooterContact = () => {
                 className={`${appStyles.socialCard} ${appStyles.active}`}
               >
                 <div className={appStyles.image}>
-                  <img src={mail} width={70} height={70} alt="mail" />
+                  <img
+                    loading="lazy"
+                    src={mail}
+                    width={70}
+                    height={70}
+                    alt="mail"
+                  />
                 </div>
                 <div className={appStyles.title}>mail</div>
               </Link>

@@ -117,7 +117,7 @@ const TeamCardPresentation_2 = ({ images }) => {
         className={`${appStyles.nav_button} ${appStyles.left}`}
         onClick={() => scrollCards("left")}
       >
-        <img draggable="false" src={arrow} />
+        <img loading="lazy" draggable="false" src={arrow} />
       </button>
 
       <div className={appStyles.card_container} ref={cardContainerRef}>
@@ -127,7 +127,6 @@ const TeamCardPresentation_2 = ({ images }) => {
               src={member.image}
               className={appStyles.team_image}
               muted
-              autoPlay
               loop
               playsInline
               ref={(el) => (videoRefs.current[index] = el)}
@@ -146,6 +145,7 @@ const TeamCardPresentation_2 = ({ images }) => {
         onClick={() => scrollCards("right")}
       >
         <img
+          loading="lazy"
           draggable="false"
           src={arrow}
           style={{ transform: "rotate(180deg)" }}
