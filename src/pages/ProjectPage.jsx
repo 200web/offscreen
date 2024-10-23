@@ -25,8 +25,6 @@ const ProjectPage = () => {
   const { id } = useParams();
   const [isGifPlaying, setIsGifPlaying] = React.useState(false);
   const [video, setVideo] = React.useState("");
-  const fileInputRef = React.useRef(null);
-  const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [projectData, setProjectData] = React.useState([]);
   const [menuVisible, setMenuVisible] = React.useState(false);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
@@ -92,31 +90,6 @@ const ProjectPage = () => {
 
   //   setIsGifPlaying(!isGifPlaying);
   // };
-
-  const deleteFiles = (index) => {
-    setSelectedFiles((prevFiles) => {
-      const updatedFiles = prevFiles.filter((file, idx) => idx !== index);
-      return updatedFiles;
-    });
-  };
-
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-
-    setSelectedFiles((prevFiles) => {
-      const remainingSlots = 5 - prevFiles.length;
-
-      const newFiles = files.slice(0, remainingSlots);
-
-      return [...prevFiles, ...newFiles];
-    });
-  };
-
-  const handleImageClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
 
   React.useEffect(() => {
     dispatch(setIsLoaded(true));
