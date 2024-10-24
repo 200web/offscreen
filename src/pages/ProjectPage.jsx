@@ -177,10 +177,10 @@ const ProjectPage = () => {
         </div>
       </div>
       <div className={project.descriptionSection}>
-        <div>
-          <label>{projectData.headerText_2_bigger}</label>
-          <span>{projectData.headerText_2_smaller}</span>
-        </div>
+        {/* <div> */}
+          {/* <label>{projectData.headerText_2_bigger}</label> */}
+          {/* <span>{projectData.headerText_2_smaller}</span> */}
+        {/* </div> */}
         <div className={project.details}>
           <article>{projectData.articleOfList}</article>
           <div className={project.listFlex}>

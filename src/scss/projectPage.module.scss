@@ -709,7 +709,7 @@
 
 .headerSection {
   width: 98%;
-  margin: 0 auto 8rem auto;
+  margin: 0 auto 8rem 1rem;
   padding-top: 3.5rem;
 
   .row {
@@ -726,8 +726,9 @@
     width: 100%;
 
     img {
-      width: clamp(270px, 70vw, 80rem);
-      height: clamp(205px, 50vw, 60rem);
+      width: clamp(170px, 70vw, 70rem);
+      height: clamp(100px, 50vw, 40rem);
+      border-radius: 25px;
       margin-left: auto;
       object-fit: cover;
     }
@@ -771,61 +772,72 @@
     font-family: "Inter";
     text-transform: uppercase;
     font-weight: 300;
-    font-size: clamp(22px, 4vw, 35px);
+    font-size: clamp(20px, 4vw, 32px);
     width: 90%;
-    text-indent: calc(111% - clamp(270px, 70vw, 80rem));
+    text-indent: calc(111% - clamp(170px, 70vw, 70rem));
     color: #f0f0f0;
+    margin-top: 30px;
+    line-height: 140%;
   }
 }
 
 .descriptionSection {
-  width: 98%;
-  margin: 6rem auto 2rem auto;
+  width: 95%;
+  margin: 6rem 1rem 2rem 1rem;
   color: #f0f0f0;
 
-  label {
-    font-size: clamp(50px, 10vw, 105px);
-    font-family: "Inter";
-  }
-  span {
-    font-size: clamp(35px, 6vw, 50px);
-    font-family: "Inter";
-  }
+  // label {
+  //   font-size: clamp(42px, 10vw, 92px);
+  //   font-family: "Inter";
+  // }
+  // span {
+  //   font-size: clamp(35px, 6vw, 50px);
+  //   font-family: "Inter";
+  // }
 
   .details {
     display: flex;
-    justify-content: space-around;
-    font-size: clamp(16px, 2vw, 22px);
+    // justify-content: space-around;
+    font-size: clamp(16px, 2vw, 20px);
+    color: #bbbbbb;
     font-family: "Inter";
     margin-top: 6rem;
-    margin-bottom: 6rem;
+    margin-bottom: 8rem;
+
+    article {
+      font-size: clamp(32px, 8vw, 48px);
+      color: #f0f0f0;
+    }
 
     @media (max-width: 830px) {
       flex-direction: column;
       gap: 3rem;
+      line-height: 130%;
       margin-top: 3rem;
       font-size: clamp(18px, 2vw, 22px);
 
       article {
-        font-size: clamp(40px, 10vw, 65px);
+        font-size: clamp(32px, 8vw, 64px);
       }
     }
 
     .listFlex {
-      width: 50%;
+      width: 60%;
       display: flex;
-      gap: 10rem;
+      gap: 8rem;
+      margin-left: clamp(6rem, 12vw, 20rem);
 
       @media (max-width: 830px) {
         width: 100%;
         flex-direction: column;
         gap: 2rem;
+        margin-left: 0;
       }
     }
 
     article {
-      // width: 30%;
-      text-align: end;
+      // width: 100%;
+      text-align: left;
 
       @media (max-width: 830px) {
         text-align: start;
