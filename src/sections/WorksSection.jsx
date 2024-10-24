@@ -339,7 +339,6 @@ const WorksSection = () => {
           }`}
         >
           <img
-            loading="lazy"
             draggable="false"
             src={isMobile ? adCardMobile : adCard}
             alt="card"

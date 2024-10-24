@@ -92,44 +92,46 @@ const WorkCardElement = () => {
   }, []);
 
   useEffect(() => {
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.play();
-      }
-    });
-    if (isHovered !== null) {
-      clearInterval(animationTimeouts.current);
-      clearTimeout(animationTimeouts2.current);
+    if (!isMobile) {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          video.play();
+        }
+      });
+      if (isHovered !== null) {
+        clearInterval(animationTimeouts.current);
+        clearTimeout(animationTimeouts2.current);
 
-      animate(
-        Array.from({ length: cardsData.length }, (_, index) => index),
-        false
-      );
-      setIsAnimating((prevAnimating) =>
-        prevAnimating.map((_, index) => index === isHovered)
-      );
-    } else {
-      setIsAnimating((prevAnimating) =>
-        prevAnimating.map((_, index) => index === isHovered)
-      );
+        animate(
+          Array.from({ length: cardsData.length }, (_, index) => index),
+          false
+        );
+        setIsAnimating((prevAnimating) =>
+          prevAnimating.map((_, index) => index === isHovered)
+        );
+      } else {
+        setIsAnimating((prevAnimating) =>
+          prevAnimating.map((_, index) => index === isHovered)
+        );
 
-      animationTimeouts.current = setInterval(() => {
-        const firstSetIndices = Array.from(
-          { length: Math.ceil(cardsData.length / 2) },
-          (_, i) => i * 2
-        ).filter((index) => index < cardsData.length);
+        animationTimeouts.current = setInterval(() => {
+          const firstSetIndices = Array.from(
+            { length: Math.ceil(cardsData.length / 2) },
+            (_, i) => i * 2
+          ).filter((index) => index < cardsData.length);
 
-        const secondSetIndices = Array.from(
-          { length: Math.floor(cardsData.length / 2) },
-          (_, i) => i * 2 + 1
-        ).filter((index) => index < cardsData.length);
+          const secondSetIndices = Array.from(
+            { length: Math.floor(cardsData.length / 2) },
+            (_, i) => i * 2 + 1
+          ).filter((index) => index < cardsData.length);
 
-        animate(firstSetIndices, true);
-        animationTimeouts2.current = setTimeout(() => {
-          animate(secondSetIndices, true);
+          animate(firstSetIndices, true);
+          animationTimeouts2.current = setTimeout(() => {
+            animate(secondSetIndices, true);
+          }, 3000);
         }, 3000);
-      }, 3000);
-    }
+      }
+    } else return;
   }, [isHovered, isMobile, cardsData]);
 
   const displayedCards = isShort ? cardsData.slice(0, 6) : cardsData;
@@ -156,24 +158,26 @@ const WorkCardElement = () => {
                 backgroundPosition: "center",
               }}
             >
-              <video
-                id="gif"
-                ref={(el) => (videoRefs.current[id] = el)}
-                loop
-                muted
-                alt={`project-${id}`}
-                className={`${
-                  isMobile
-                    ? appStyles.fadeIn
-                    : isAnimating[id]
-                    ? appStyles.fadeIn
-                    : appStyles.fadeOut
-                }`}
-                {...videoAttributes}
-              >
-                <source src={card.gif} type="video/webm" />
-                Your browser does not support the video tag.
-              </video>
+              {!isMobile && (
+                <video
+                  id="gif"
+                  ref={(el) => (videoRefs.current[id] = el)}
+                  loop
+                  muted
+                  alt={`project-${id}`}
+                  className={`${
+                    isMobile
+                      ? appStyles.fadeIn
+                      : isAnimating[id]
+                      ? appStyles.fadeIn
+                      : appStyles.fadeOut
+                  }`}
+                  {...videoAttributes}
+                >
+                  <source src={card.gif} type="video/webm" />
+                  Your browser does not support the video tag.
+                </video>
+              )}
               {card && (
                 <div className={appStyles.textContent}>
                   <div>
