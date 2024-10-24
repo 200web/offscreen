@@ -8,34 +8,11 @@ import arrowLeft from "../assets/img/arrow Left.png";
 import { Link } from "react-router-dom";
 
 const ContactMail = ({ isClicked, setIsClicked }) => {
-  const fileInputRef = React.useRef(null);
-  const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
 
   const cards = useSelector((state) => state.contactCard.cards);
   const otherValues = useSelector((state) => state.contactCard.otherValues);
-
-  const handleFileChange = (event) => {
-    const files = Array.from(event.target.files);
-    setSelectedFiles((prevFiles) => {
-      const remainingSlots = 5 - prevFiles.length;
-      const newFiles = files.slice(0, remainingSlots);
-      return [...prevFiles, ...newFiles];
-    });
-  };
-
-  const deleteFiles = (index) => {
-    setSelectedFiles((prevFiles) =>
-      prevFiles.filter((file, idx) => idx !== index)
-    );
-  };
-
-  const handleImageClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
-    }
-  };
 
   const handlePrevClick = () => {
     setIsClicked(false);
@@ -84,6 +61,49 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     });
   };
 
+  // Функция отправки сообщения
+  const sendMessage = () => {
+    const name = document.getElementById("name").value;
+    const emailOrPhone = document.getElementById("emailOrPhone").value;
+    const projectDetails = document.getElementById("projectDetails").value;
+
+    let email = "";
+    let phone = "";
+    if (emailOrPhone.includes("@")) {
+      email = emailOrPhone;
+    } else {
+      phone = emailOrPhone;
+    }
+
+    const formData = {
+      name,
+      email,
+      phone,
+      details: projectDetails,
+    };
+
+    console.log("Form Data to send:", formData);
+
+    fetch(process.env.GOOGLE_SCRIPT_API, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "no-cors",
+      body: JSON.stringify(formData),
+    })
+      .then(() => {
+        console.log("Message sent successfully");
+        document.getElementById("name").value = "";
+        document.getElementById("Phone").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("projectDetails").value = "";
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
   return (
     <div
       className={`${contactStyles.sideMail} ${
@@ -122,69 +142,37 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
             </div>
             <div className={contactStyles.fieldBox}>
               <div className={contactStyles.fieldElem}>
-                <Search
-                  placeholder="Name"
-                  onChange={(value) => handleInputChange(value, 0)}
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Name*"
+                  className={contactStyles.inputField}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
-                <Search
-                  placeholder="Email address"
-                  onChange={(value) => handleInputChange(value, 1)}
-                />
-              </div>
-              <div className={contactStyles.fieldElem}>
-                <Search
+                <input
+                  type="text"
+                  id="Phone"
                   placeholder="Phone number"
-                  onChange={(value) => handleInputChange(value, 2)}
+                  className={contactStyles.inputField}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
-                <Search
-                  placeholder="Website link"
-                  onChange={(value) => handleInputChange(value, 3)}
+                <input
+                  type="text"
+                  id="email"
+                  placeholder="Email address*"
+                  className={contactStyles.inputField}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
                 <textarea
+                  id="projectDetails"
                   placeholder="Project details"
                   className={contactStyles.textArea}
-                  value={inputValues[4]}
-                  onChange={(e) => handleInputChange(e.target.value, 4)}
                 />
-                <div className={contactStyles.image} onClick={handleImageClick}>
-                  <img
-                    loading="lazy"
-                    draggable="false"
-                    src={picture}
-                    alt="data"
-                  />
-                </div>
-                <input
-                  type="file"
-                  ref={fileInputRef}
-                  style={{ display: "none" }}
-                  accept=".png,.jpg,.jpeg,.mp4,.mov"
-                  onChange={handleFileChange}
-                />
-                {selectedFiles.length > 0 && (
-                  <div className={contactStyles.selectedFiles}>
-                    {selectedFiles.map((file, index) => (
-                      <div className={contactStyles.fileName}>
-                        <label key={index}>{file.name}</label>
-                        <div
-                          className={contactStyles.cancelButton}
-                          onClick={() => deleteFiles(index)}
-                        >
-                          <span className={contactStyles.cancel}></span>
-                          <span className={contactStyles.cancel}></span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                )}
               </div>
-              <div className={contactStyles.button} onClick={sentMessage}>
+              <div className={contactStyles.button} onClick={sendMessage}>
                 <p>Send Message</p>
               </div>
             </div>

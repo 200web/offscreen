@@ -128,6 +128,7 @@ const ProjectPage = () => {
               onClick={() => {
                 navigate("/");
                 window.scrollTo(0, 0);
+                dispatch(setIsLoaded(true));
               }}
             >
               OffScreen
@@ -178,8 +179,8 @@ const ProjectPage = () => {
       </div>
       <div className={project.descriptionSection}>
         {/* <div> */}
-          {/* <label>{projectData.headerText_2_bigger}</label> */}
-          {/* <span>{projectData.headerText_2_smaller}</span> */}
+        {/* <label>{projectData.headerText_2_bigger}</label> */}
+        {/* <span>{projectData.headerText_2_smaller}</span> */}
         {/* </div> */}
         <div className={project.details}>
           <article>{projectData.articleOfList}</article>

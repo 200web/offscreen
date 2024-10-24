@@ -5,21 +5,25 @@ import videoStyles from "../scss/components/video.module.scss";
 import arrowRight from "../assets/img/arrow Right.png";
 import muteIcon from "../assets/img/VolumeOff.webp";
 import unmuteIcon from "../assets/img/volumeOn.webp";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsLoaded } from "../Redux/introSlice";
 
 const VideoPlayer = () => {
-  const [isMuted, setIsMuted] = useState(true);
+  const { isLoaded } = useSelector((state) => state.intro);
+  const [isMuted, setIsMuted] = useState(!isLoaded && true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isGifPlaying, setIsGifPlaying] = useState(true);
+  const [isGifPlaying, setIsGifPlaying] = useState(!isLoaded && true);
   const videoRef = useRef(null);
   const progressContainerRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const video = videoRef.current;
     const progressBar = document.getElementById("progress-bar");
 
-    if (videoRef.current) {
+    if (videoRef.current && !isLoaded) {
       videoRef.current.play();
+      dispatch(setIsLoaded(true));
     }
 
     const updateProgressBar = () => {

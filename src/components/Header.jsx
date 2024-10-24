@@ -1,11 +1,14 @@
 import React from "react";
 import headerStyle from "../scss/components/header.module.scss";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setIsLoaded } from "../Redux/introSlice";
 
 const Header = () => {
   const navigate = useNavigate();
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 800);
   const [menuVisible, setMenuVisible] = React.useState(false);
+  const dispatch = useDispatch();
 
   const sections = {
     0: "About us",
@@ -41,6 +44,7 @@ const Header = () => {
           onClick={() => {
             navigate("/");
             window.scrollTo(0, 0);
+            dispatch(setIsLoaded(true));
           }}
         >
           OffScreen
