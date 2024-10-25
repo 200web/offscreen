@@ -21,9 +21,8 @@ const VideoPlayer = () => {
     const video = videoRef.current;
     const progressBar = document.getElementById("progress-bar");
 
-    if (videoRef.current && !isLoaded) {
+    if (videoRef.current) {
       videoRef.current.play();
-      dispatch(setIsLoaded(true));
     }
 
     const updateProgressBar = () => {
