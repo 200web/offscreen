@@ -149,6 +149,7 @@ const VideoPlayer = () => {
         } ${!isFullscreen && videoStyles.notFullScreened}`}
         ref={videoRef}
         onClick={togglePlay}
+        playsInline
         {...videoAttributes}
       >
         <source src={HVideo} type="video/webm" />
