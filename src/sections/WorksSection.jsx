@@ -15,7 +15,7 @@ const photos = [dollarEmoji, party, dance, strawberry];
 const WorksSection = () => {
   const [currentPhoto, setCurrentPhoto] = React.useState(party);
   const [isAnimating, setIsAnimating] = React.useState(false);
-  const [scrollTop, setScrollTop] = React.useState(0);
+  // const [scrollTop, setScrollTop] = React.useState(0);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 860);
   const [isWorkChanged, setIsWorkChanged] = React.useState(
     window.innerWidth <= 1200
@@ -47,25 +47,25 @@ const WorksSection = () => {
       setIsMobile(window.innerWidth <= 860);
       setIsWorkChanged(window.innerWidth <= 1200);
     };
-    const handleScroll = () => {
-      setScrollTop(window.scrollY);
-      document.body.style.setProperty("--scrollTop", `${window.scrollY}px`);
-      document.body.style.setProperty(
-        "--TempscrollTop",
-        `${3068 - window.scrollY}px`
-      );
-    };
+    // const handleScroll = () => {
+    //   setScrollTop(window.scrollY);
+    //   document.body.style.setProperty("--scrollTop", `${window.scrollY}px`);
+    //   document.body.style.setProperty(
+    //     "--TempscrollTop",
+    //     `${3068 - window.scrollY}px`
+    //   );
+    // };
 
     window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
+    // window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
+      // window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const isScrolling = window.scrollY < 2550;
-  const fixedWord = window.scrollY > 3400;
+  // const isScrolling = window.scrollY < 2550;
+  // const fixedWord = window.scrollY > 3400;
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import appStyles from "../scss/app.module.scss";
 import paul from "../scss/../assets/img/paul.webm";
 import dmitrop from "../scss/../assets/img/dmitrop.webm";
@@ -15,11 +15,13 @@ import Andrei from "../scss/../assets/img/Andrei.webp";
 import Paul from "../scss/../assets/img/Paul.webp";
 import valin from "../scss/../assets/img/valin.webp";
 import Jonhy from "../scss/../assets/img/Jonhy.webp";
+import Liquid from "../assets/img/Liquid Splitting.gif";
 
 const TeamCardPresentation_2 = ({ images }) => {
   const cardContainerRef = useRef(null);
   const videoRefs = useRef([]);
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
+  const [isShort, setIsShort] = React.useState(true);
 
   React.useEffect(() => {
     const handleResize = () => {
@@ -95,6 +97,9 @@ const TeamCardPresentation_2 = ({ images }) => {
     },
   ];
 
+  const displayedTeamMembers =
+    isShort && isMobile ? teamMembers.slice(0, 3) : teamMembers;
+
   React.useEffect(() => {
     const options = {
       root: null,
@@ -140,7 +145,7 @@ const TeamCardPresentation_2 = ({ images }) => {
       </button>
 
       <div className={appStyles.card_container} ref={cardContainerRef}>
-        {teamMembers.map((member, index) => (
+        {displayedTeamMembers.map((member, index) => (
           <div className={appStyles.team_card} key={member.id}>
             {isMobile ? (
               <img
@@ -166,6 +171,22 @@ const TeamCardPresentation_2 = ({ images }) => {
             <span className={appStyles.name}>{member.name}</span>
           </div>
         ))}
+        {isShort && isMobile && (
+          <div
+            className={`${appStyles.team_card} ${appStyles.last}`}
+            onClick={() => setIsShort(false)}
+          >
+            <img loading="lazy" draggable="false" src={Liquid} alt="logo" />
+            <div className={appStyles.textContentLast}>
+              <div>
+                <label>MORE</label>
+              </div>
+            </div>
+            {/* <div className={appStyles.button}>
+            <img loading="lazy" draggable="false" src={moreArrow} alt="arrow" />
+          </div> */}
+          </div>
+        )}
       </div>
 
       <button
