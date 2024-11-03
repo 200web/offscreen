@@ -722,10 +722,10 @@
   padding-top: 3.5rem;
 
   .row {
-    width: 100%;
+    width: 95%;
 
     label {
-      font-size: clamp(80px, 12vw, 200px);
+      font-size: clamp(70px, 12vw, 180px);
       font-family: "Inter";
       color: #f0f0f0;
     }
@@ -798,7 +798,8 @@
 
 .descriptionSection {
   width: 95%;
-  margin: 6rem 1rem 2rem 1rem;
+  margin: 6rem 0 0 0;
+  padding-left: 1rem;
   color: #f0f0f0;
 
   // label {
