@@ -88,7 +88,10 @@ const VideoPlayer = () => {
 
   const showFullVideo = () => {
     setIsFullscreen(true);
+    
     const video = videoRef.current;
+
+    video.muted = false; 
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.mozRequestFullScreen) {
@@ -127,18 +130,21 @@ const VideoPlayer = () => {
 
   return (
     <div className={videoStyles.headerVideo}>
-      <div
+      {/* <div
         className={
           !isGifPlaying && !isFullscreen
             ? videoStyles.playButton
             : `${videoStyles.playButton} ${videoStyles.hidden}`
         }
-        onClick={togglePlay}
+        onClick={() => {
+          // showFullVideo();
+          // togglePlay();
+        }}
       >
         <span className={videoStyles.buttonNext}>
           <img loading="lazy" draggable="false" src={arrowRight} />
         </span>
-      </div>
+      </div> */}
       <video
         id="video"
         muted
@@ -147,10 +153,7 @@ const VideoPlayer = () => {
           !isGifPlaying && !isFullscreen && videoStyles.paused
         } ${!isFullscreen && videoStyles.notFullScreened}`}
         ref={videoRef}
-        onClick={() => {
-          showFullVideo();
-          toggleMute();
-        }}
+        onClick={showFullVideo}
         playsInline
         {...videoAttributes}
       >

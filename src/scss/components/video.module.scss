@@ -48,6 +48,11 @@
     backdrop-filter: blur(15px);
     opacity: 1;
 
+    @media (max-width: 800px) {
+      opacity: 0;
+    }
+
+    
     .buttonNext {
       img {
         top: 50%;
@@ -73,6 +78,22 @@
       opacity: 0;
       transform: translate(-50%, -30%);
     }
+
+       &:hover.hidden {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+
+
+        @media (max-width: 800px) {
+          opacity: 0;
+        }
+      
+      }
+
+      @media (max-width: 800px) {
+        opacity: 0;
+      }
+
   }
 
   .hidden {
