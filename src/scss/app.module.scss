@@ -791,8 +791,7 @@ section {
       z-index: 10;
       transform: translate(-13.5rem, 0);
       object-fit: contain;
-      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%)
-        contrast(101%);
+      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%) contrast(101%);
 
       @media (max-width: 1260px) {
         transform: translate(-10rem, 0);
@@ -908,10 +907,13 @@ section {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
+
   video::-webkit-media-controls-panel {
     display: none !important;
     -webkit-appearance: none;
   }
+
+
 
   video::-webkit-media-controls-play-button {
     display: none !important;
@@ -933,6 +935,18 @@ section {
     overflow: hidden;
     cursor: pointer;
     height: 500px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      pointer-events: none;
+      z-index: 1;
+    }
 
     svg {
       width: 100%;
@@ -1005,6 +1019,7 @@ section {
       left: 5%;
       color: white;
       font-family: "Inter";
+      z-index: 2;
 
       @media (max-width: 900px) {
         bottom: 5%;
@@ -1046,6 +1061,8 @@ section {
       object-fit: cover;
     }
   }
+
+
 }
 
 .infoBlock {
@@ -1358,11 +1375,15 @@ section {
         background-color: #c0d100;
       }
 
+
       img {
         position: relative;
         width: 100%;
         height: 100%;
         object-fit: cover;
+
+
+
       }
 
       .textContentLast {
@@ -1377,17 +1398,59 @@ section {
           display: block;
           font-size: clamp(18px, 3vw, 35px);
         }
+
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 50%;
+          background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+          pointer-events: none;
+          z-index: 5;
+        }
+
       }
     }
 
-    .name {
+
+    .name_block {
       width: 100%;
-      position: absolute;
+      height: 2.5rem;
       left: 50%;
-      bottom: 23%;
+      bottom: 12%;
       transform: translate(-50%, -50%);
-      letter-spacing: 0.02rem;
-      font-size: 20px;
+      position: absolute;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)); 
+        pointer-events: none;
+        z-index: -1;
+      }
+
+
+        .name {
+
+          letter-spacing: 0.02rem;
+          font-size: 20px;
+
+
+        }
+
+        @media (max-width: 768px) {
+           width: 100%;
+      height: 2.5rem;
+      left: 50%;
+      bottom: 16%;
+        }
+
     }
 
     .team_image {
@@ -1395,6 +1458,20 @@ section {
       height: 330px;
       border-radius: 10px;
       object-fit: cover;
+
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+        pointer-events: none;
+        z-index: 5;
+      }
+
     }
 
     .card_info {
@@ -1480,6 +1557,23 @@ section {
         padding: 0.5rem 1.5rem 0.5rem 1rem;
         font-size: 45px;
         font-weight: 500;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 50%;
+          /* Задайте необходимую высоту виньетки */
+          background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+          /* Темный сверху, прозрачный снизу */
+          pointer-events: none;
+          /* Чтобы клик не перекрывался виньеткой */
+          z-index: -1;
+          /* Убедитесь, что этот слой не перекрывает текст */
+        }
+
       }
 
       .addInf {
@@ -1540,6 +1634,7 @@ section {
     grid-row-gap: 10px;
     margin-right: 2rem;
 
+
     @media (max-width: 1200px) {
       width: 100%;
       margin-right: 0;
@@ -1549,6 +1644,10 @@ section {
     @media (max-width: 600px) {
       grid-template-columns: repeat(1, 1fr);
     }
+
+
+
+
   }
 
   .portrait {
@@ -1558,6 +1657,19 @@ section {
     height: 216px;
     overflow: hidden;
 
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 50%;
+      background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+      pointer-events: none;
+      z-index: 1;
+    }
+
+
     @media (max-width: 1200px) {
       width: 100%;
       height: 450px;
@@ -1565,6 +1677,7 @@ section {
       .image {
         height: 100%;
         width: 100%;
+
       }
 
       .descriptionBox {
@@ -2178,7 +2291,8 @@ section {
       &:hover {
         opacity: 1;
         color: black;
-        background-color: #d6dcdc;
+        background-color: #C0D100;
+
 
         // .name {
         //   border-color: black;
@@ -2190,10 +2304,13 @@ section {
         // }
 
         .position {
-          color: #000000; /* Цвет текста при hover */
-          border-bottom-color: #000000; /* Цвет нижней границы при hover */
+          color: #000000;
+          /* Цвет текста при hover */
+          border-bottom-color: #000000;
+          /* Цвет нижней границы при hover */
           transition: all 0.6s ease;
         }
+
         .reviewDescriptionText {
           color: black;
         }
@@ -2229,8 +2346,7 @@ section {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg)
-          brightness(112%) contrast(100%);
+        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg) brightness(112%) contrast(100%);
       }
 
       &:nth-child(1) img {
@@ -2245,8 +2361,7 @@ section {
         background-color: #ddd;
 
         img {
-          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%)
-            contrast(104%);
+          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
         }
       }
     }
@@ -2284,11 +2399,9 @@ section {
     left: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.4),
-      rgba(0, 0, 0, 0.2)
-    );
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(0, 0, 0, 0.2));
   }
 
   &::before {
@@ -2297,11 +2410,9 @@ section {
     right: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.4),
-      rgba(0, 0, 0, 0.2)
-    );
+    background: linear-gradient(to bottom,
+        rgba(255, 255, 255, 0.4),
+        rgba(0, 0, 0, 0.2));
   }
 
   .container {
@@ -2353,11 +2464,9 @@ section {
       left: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2)
-      );
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.2),
+          rgba(0, 0, 0, 0.2));
     }
 
     &::before {
@@ -2366,11 +2475,9 @@ section {
       right: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.2),
-        rgba(0, 0, 0, 0.2)
-      );
+      background: linear-gradient(to bottom,
+          rgba(255, 255, 255, 0.2),
+          rgba(0, 0, 0, 0.2));
     }
 
     .socialContainerMobile {
@@ -2426,8 +2533,7 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
-              brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
           }
 
           .title {
@@ -2499,8 +2605,7 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
-              brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
           }
         }
 
@@ -2845,6 +2950,7 @@ section {
 }
 
 @keyframes shake-top {
+
   0%,
   100% {
     transform: rotate(0deg);

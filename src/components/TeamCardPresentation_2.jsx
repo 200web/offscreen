@@ -146,7 +146,9 @@ const TeamCardPresentation_2 = ({ images }) => {
 
       <div className={appStyles.card_container} ref={cardContainerRef}>
         {displayedTeamMembers.map((member, index) => (
+          
           <div className={appStyles.team_card} key={member.id}>
+           <div className={appStyles.team_card_background}>
             {isMobile ? (
               <img
                 src={member.image}
@@ -164,13 +166,18 @@ const TeamCardPresentation_2 = ({ images }) => {
                 ref={(el) => (videoRefs.current[index] = el)}
               />
             )}
+            </div>
             <div className={appStyles.card_info}>
               <p className={appStyles.role}>{member.role}</p>
               <p className={appStyles.profession}>{member.profession}</p>
             </div>
+             <div className={appStyles.name_block}>
             <span className={appStyles.name}>{member.name}</span>
+            </div>
           </div>
+          
         ))}
+        
         {isShort && isMobile && (
           <div
             className={`${appStyles.team_card} ${appStyles.last}`}
