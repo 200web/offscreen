@@ -147,7 +147,10 @@ const VideoPlayer = () => {
           !isGifPlaying && !isFullscreen && videoStyles.paused
         } ${!isFullscreen && videoStyles.notFullScreened}`}
         ref={videoRef}
-        onClick={togglePlay}
+        onClick={() => {
+          showFullVideo();
+          toggleMute();
+        }}
         playsInline
         {...videoAttributes}
       >
