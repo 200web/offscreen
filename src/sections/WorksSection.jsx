@@ -10,6 +10,9 @@ import adCardMobile from "../assets/img/addCardMobile.webp";
 import WorkCardElement from "../components/WorkCardElement";
 import { Link } from "react-router-dom";
 
+import AdvantageSection from "../sections/AdvantageSection";
+
+
 const photos = [dollarEmoji, party, dance, strawberry];
 
 const WorksSection = () => {
@@ -83,6 +86,8 @@ const WorksSection = () => {
 
   return (
     <section className={appStyles.section}>
+
+
       <div className={appStyles.Row}>
         <div className={appStyles.centralTitleWorks}>
           <span>OUR WORKS</span>
@@ -101,6 +106,15 @@ const WorksSection = () => {
         </div>
       </div> */}
       <WorkCardElement />
+
+
+      <AdvantageSection />
+      
+
+
+
+
+
       <div className={appStyles.Row} id="Services">
         <div className={appStyles.scrolling_text}>
           <div className={appStyles.text}>

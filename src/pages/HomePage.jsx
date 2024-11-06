@@ -6,6 +6,7 @@ import FooterSection from "../sections/FooterSection";
 import Header from "../components/Header";
 import Intro from "../components/Intro";
 import Footer from "../components/Footer";
+import AboutUs from "../sections/AboutUs";
 import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { clearScrollToElement } from "../Redux/scrollSlice";
@@ -41,7 +42,8 @@ const HomePage = () => {
       {/* <Intro /> */}
       <Header />
       <HeaderSection />
-      <AdvantageSection />
+      <AboutUs />
+      {/* <AdvantageSection /> */}
       <WorksSection />
       <FooterSection />
     </>

@@ -94,13 +94,13 @@ section {
   }
 }
 
-.content {
-  margin-top: 6rem !important;
+// .content {
+//   margin-top: 6rem !important;
 
-  @media (max-width: 1100px) {
-    margin-top: 0 !important;
-  }
-}
+//   @media (max-width: 1100px) {
+//     margin-top: 0 !important;
+//   }
+// }
 
 .content,
 .advantageContent {
@@ -108,7 +108,6 @@ section {
   margin: 0 auto 0 auto;
   display: flex;
   gap: 10px;
-  margin-top: 2rem;
 
   .introCard,
   .activeCard {
@@ -488,7 +487,7 @@ section {
 }
 
 .Row {
-  width: 100%;
+  margin: 2rem auto 2rem auto;
 
   .workTitle {
     display: flex;
@@ -497,9 +496,9 @@ section {
     text-align: center;
     font-family: "Inter";
     color: white;
-    margin-top: 6rem;
-    margin-bottom: 0.5rem;
-    gap: 3rem;
+    // margin-top: 10rem;
+    // margin-bottom: 0.5rem;
+    // gap: 3rem;
 
     label {
       font-size: 25px;
@@ -582,8 +581,8 @@ section {
 
     .advTitle {
       font-size: clamp(31px, 3vw, 55px);
-      margin-bottom: 10rem;
-      margin-top: 6rem;
+      margin-bottom: 1rem;
+      margin-top: -2rem;
     }
 
     @media (max-width: 1100px) {
@@ -901,7 +900,6 @@ section {
 
 .workBlock {
   width: 98%;
-  margin: 3rem auto 6rem auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(1, 1fr);
@@ -928,7 +926,6 @@ section {
 
   @media (max-width: 900px) {
     grid-template-columns: repeat(1, 1fr);
-    margin: 3rem auto 7rem auto;
   }
 
   .workCard {
@@ -1163,14 +1160,17 @@ section {
   justify-content: center;
   align-items: center;
   width: 95%;
-  margin: 0 auto 2rem auto;
+  height: auto;
+  margin: 0 auto 10rem auto;
   color: black;
   animation: shake-top 5s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite both;
   animation-delay: 1s;
   transition: 0.5s;
 
   @media (max-width: 1245px) {
+    margin: 0;
     scale: 0.9;
+    height: 400px;
   }
 
   @media (max-width: 1130px) {
@@ -1195,19 +1195,21 @@ section {
 
   @media (max-width: 400px) {
     scale: 0.9;
+    height: 350px;
   }
 
   @media (max-width: 380px) {
     scale: 0.8;
+    height: 300px;
   }
 
   .adCardContent {
     transition: 1s;
-    transform: translateX(-90rem);
+    // transform: translateX(-90rem);
 
-    @media (max-width: 860px) {
-      transform: translate(-90rem, -6rem);
-    }
+    // @media (max-width: 860px) {
+    //   transform: translate(-90rem, -6rem);
+    // }
 
     .adCardDescription {
       width: 91.5%;
@@ -2582,9 +2584,9 @@ section {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
-      max-width: 75%;
+      max-width: 95%;
       margin: 0 auto;
-      gap: 10px;
+      gap: 40px;
       margin-bottom: 10rem;
 
       .socialCard {
