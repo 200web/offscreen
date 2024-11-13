@@ -1,7 +1,6 @@
 import React from "react";
-import { useSelector } from "react-redux"; // Добавить импорт хука useSelector
+import { useSelector } from "react-redux";
 import contactStyles from "../scss/contactPage.module.scss";
-import Search from "../components/Search/Search";
 import picture from "../assets/img/picture.webp";
 import loaded from "../assets/img/accessLoaded.png";
 import arrowLeft from "../assets/img/arrow Left.png";
@@ -18,68 +17,21 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     setIsClicked(false);
   };
 
-  const sentMessage = () => {
+  const sendMessage = () => {
     setIsLoaded(true);
 
-    // Собираем данные формы в объект
+    // Gather form data from inputValues directly
+    console.log("API Endpoint:", process.env.REACT_APP_GOOGLE_SCRIPT_API); 
     const formData = {
-      name: inputValues[0], // Имя
-      email: inputValues[1], // Email
-      phone: inputValues[2], // Телефон
-      website: inputValues[3], // Вебсайт
-      details: inputValues[4], // Детали проекта
-      type: cards[0], // Тип видео
-      goals: cards[1], // Цели
-      budget: cards[2], // Бюджет
-      deadline: cards[3], // Дедлайн
-    };
-
-    console.log("Form Data to send:", formData); // Логируем данные перед отправкой
-
-    // Отправляем данные через fetch
-    fetch(process.env.GOOGLE_SCRIPT_API, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      mode: "no-cors", // Отключение CORS
-      body: JSON.stringify(formData),
-    })
-      .then(() => {
-        console.log("Message sent successfully");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
-
-  const handleInputChange = (value, index) => {
-    setInputValues((prevValues) => {
-      const updatedValues = [...prevValues];
-      updatedValues[index] = value;
-      return updatedValues;
-    });
-  };
-
-  // Функция отправки сообщения
-  const sendMessage = () => {
-    const name = document.getElementById("name").value;
-    const emailOrPhone = document.getElementById("emailOrPhone").value;
-    const projectDetails = document.getElementById("projectDetails").value;
-
-    let email = "";
-    let phone = "";
-    if (emailOrPhone.includes("@")) {
-      email = emailOrPhone;
-    } else {
-      phone = emailOrPhone;
-    }
-
-    const formData = {
-      name,
-      email,
-      phone,
-      details: projectDetails,
+      name: inputValues[0],
+      email: inputValues[1].includes("@") ? inputValues[1] : "",
+      phone: inputValues[1].includes("@") ? "" : inputValues[1],
+      website: inputValues[2],
+      details: inputValues[3],
+      type: cards[0],
+      goals: cards[1],
+      budget: cards[2],
+      deadline: cards[3],
     };
 
     console.log("Form Data to send:", formData);
@@ -94,14 +46,19 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     })
       .then(() => {
         console.log("Message sent successfully");
-        document.getElementById("name").value = "";
-        document.getElementById("Phone").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("projectDetails").value = "";
+        setInputValues(["", "", "", "", ""]); // Clear the form
       })
       .catch((error) => {
         console.error("Error:", error);
       });
+  };
+
+  const handleInputChange = (value, index) => {
+    setInputValues((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[index] = value;
+      return updatedValues;
+    });
   };
 
   return (
@@ -144,32 +101,36 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
               <div className={contactStyles.fieldElem}>
                 <input
                   type="text"
-                  id="name"
                   placeholder="Name*"
                   className={contactStyles.inputField}
+                  value={inputValues[0]}
+                  onChange={(e) => handleInputChange(e.target.value, 0)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
                 <input
                   type="text"
-                  id="Phone"
-                  placeholder="Phone number"
+                  placeholder="Phone number or Email*"
                   className={contactStyles.inputField}
+                  value={inputValues[1]}
+                  onChange={(e) => handleInputChange(e.target.value, 1)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
                 <input
                   type="text"
-                  id="email"
-                  placeholder="Email address*"
+                  placeholder="Website"
                   className={contactStyles.inputField}
+                  value={inputValues[2]}
+                  onChange={(e) => handleInputChange(e.target.value, 2)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
                 <textarea
-                  id="projectDetails"
                   placeholder="Project details"
                   className={contactStyles.textArea}
+                  value={inputValues[3]}
+                  onChange={(e) => handleInputChange(e.target.value, 3)}
                 />
               </div>
               <div className={contactStyles.button} onClick={sendMessage}>

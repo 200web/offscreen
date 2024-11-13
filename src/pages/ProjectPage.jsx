@@ -3,12 +3,6 @@ import project from "../scss/projectPage.module.scss";
 import footer from "../scss/components/footer.module.scss";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Search from "../components/Search/Search";
-import picture from "../assets/img/picture.webp";
-import telegram from "../assets/img/telega.webp";
-import facebook from "../assets/img/Face.webp";
-import instagram from "../assets/img/inst.webp";
-import whatsapp from "../assets/img/whatsapp.webp";
-import mail from "../assets/img/mail.webp";
 import { Cloudinary } from "@cloudinary/url-gen";
 import { AdvancedVideo } from "@cloudinary/react";
 import { setIsLoaded } from "../Redux/introSlice";
@@ -17,6 +11,7 @@ import cloudinary from "cloudinary-video-player";
 import "cloudinary-video-player/cld-video-player.min.css";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import Header from "../components/Header";
 import FooterContact from "../components/FooterContact";
 import { setScrollToElement } from "../Redux/scrollSlice";
 
@@ -122,37 +117,7 @@ const ProjectPage = () => {
             : `${project.Headerlayout}`
         }
       >
-        <div className={project.headerContent}>
-          <div className={project.titleSide}>
-            <span
-              onClick={() => {
-                navigate("/");
-                window.scrollTo(0, 0);
-                dispatch(setIsLoaded(true));
-              }}
-            >
-              OffScreen
-            </span>
-          </div>
-          <div
-            className={`${project.buttonSide} ${
-              isMobile ? project.mobile : ""
-            } ${menuVisible && isMobile ? project.active : ""}`}
-          >
-            <ul>
-              {!isMobile && (
-                <Link to={`/Contact`} className={project.h_but_s}>
-                  <span>get in touch</span>
-                </Link>
-              )}
-            </ul>
-          </div>
-          {isMobile && (
-            <Link to={`/Contact`} className={project.h_but_s_Mobile}>
-              <span>get in touch</span>
-            </Link>
-          )}
-        </div>
+        <Header />
       </div>
       <div
         className={project.backBut}

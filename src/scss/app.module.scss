@@ -1394,7 +1394,7 @@ section {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: white;
+        color: black;
         font-family: "Inter";
 
         label {
@@ -1409,7 +1409,7 @@ section {
           left: 0;
           right: 0;
           height: 50%;
-          background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
+          // background: linear-gradient(to top, rgba(0, 0, 0, 1), rgba(0, 0, 0, 1));
           pointer-events: none;
           z-index: 5;
         }
