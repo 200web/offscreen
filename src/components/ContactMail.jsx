@@ -1,33 +1,38 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import contactStyles from "../scss/contactPage.module.scss";
-import picture from "../assets/img/picture.webp";
+import Search from "../components/Search/Search";
 import loaded from "../assets/img/accessLoaded.png";
 import arrowLeft from "../assets/img/arrow Left.png";
 import { Link } from "react-router-dom";
 
 const ContactMail = ({ isClicked, setIsClicked }) => {
+  const fileInputRef = React.useRef(null);
+  const [selectedFiles, setSelectedFiles] = React.useState([]);
   const [isLoaded, setIsLoaded] = React.useState(false);
   const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
+  const [showBanner, setShowBanner] = React.useState(false); // State for banner
 
   const cards = useSelector((state) => state.contactCard.cards);
-  const otherValues = useSelector((state) => state.contactCard.otherValues);
 
-  const handlePrevClick = () => {
-    setIsClicked(false);
-  };
+  const sentMessage = () => {
+    const [name, email, phone, website, details] = inputValues;
 
-  const sendMessage = () => {
+    // Validation check
+    if (!email.trim() && !phone.trim()) {
+      setShowBanner(true);
+      return;
+    }
+
+    setShowBanner(false);
     setIsLoaded(true);
 
-    // Gather form data from inputValues directly
-    console.log("API Endpoint:", process.env.REACT_APP_GOOGLE_SCRIPT_API); 
     const formData = {
-      name: inputValues[0],
-      email: inputValues[1].includes("@") ? inputValues[1] : "",
-      phone: inputValues[1].includes("@") ? "" : inputValues[1],
-      website: inputValues[2],
-      details: inputValues[3],
+      name,
+      email,
+      phone,
+      website,
+      details,
       type: cards[0],
       goals: cards[1],
       budget: cards[2],
@@ -37,16 +42,15 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
     console.log("Form Data to send:", formData);
 
     fetch(process.env.GOOGLE_SCRIPT_API, {
-      method: "POST",
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      mode: "no-cors",
+      mode: 'no-cors',
       body: JSON.stringify(formData),
     })
       .then(() => {
         console.log("Message sent successfully");
-        setInputValues(["", "", "", "", ""]); // Clear the form
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -62,11 +66,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
   };
 
   return (
-    <div
-      className={`${contactStyles.sideMail} ${
-        isClicked ? contactStyles.active : ""
-      }`}
-    >
+    <div className={`${contactStyles.sideMail} ${isClicked ? contactStyles.active : ""}`}>
       <div className={contactStyles.socialCard}>
         {isLoaded ? (
           <div className={contactStyles.loaded}>
@@ -78,11 +78,8 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
                 </div>
               </Link>
             </div>
-            <img loading="lazy" draggable="false" src={loaded} alt="access" />
-            <p>
-              Your message has been sent, we will contact you as soon as
-              possible
-            </p>
+            <img draggable="false" src={loaded} alt="access" className={contactStyles.loaded}/>
+            <p>Your message has been sent, we will contact you as soon as possible</p>
           </div>
         ) : (
           <>
@@ -99,48 +96,50 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
             </div>
             <div className={contactStyles.fieldBox}>
               <div className={contactStyles.fieldElem}>
-                <input
-                  type="text"
-                  placeholder="Name*"
-                  className={contactStyles.inputField}
-                  value={inputValues[0]}
-                  onChange={(e) => handleInputChange(e.target.value, 0)}
+                <Search
+                  placeholder="Name"
+                  onChange={(value) => handleInputChange(value, 0)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
-                <input
-                  type="text"
-                  placeholder="Phone number or Email*"
-                  className={contactStyles.inputField}
-                  value={inputValues[1]}
-                  onChange={(e) => handleInputChange(e.target.value, 1)}
+                <Search
+                  placeholder="Email address"
+                  onChange={(value) => handleInputChange(value, 1)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
-                <input
-                  type="text"
-                  placeholder="Website"
-                  className={contactStyles.inputField}
-                  value={inputValues[2]}
-                  onChange={(e) => handleInputChange(e.target.value, 2)}
+                <Search
+                  placeholder="Phone number"
+                  onChange={(value) => handleInputChange(value, 2)}
+                />
+              </div>
+              <div className={contactStyles.fieldElem}>
+                <Search
+                  placeholder="Website link"
+                  onChange={(value) => handleInputChange(value, 3)}
                 />
               </div>
               <div className={contactStyles.fieldElem}>
                 <textarea
                   placeholder="Project details"
                   className={contactStyles.textArea}
-                  value={inputValues[3]}
-                  onChange={(e) => handleInputChange(e.target.value, 3)}
+                  value={inputValues[4]}
+                  onChange={(e) => handleInputChange(e.target.value, 4)}
                 />
               </div>
-              <div className={contactStyles.button} onClick={sendMessage}>
+              {showBanner && (
+                <div className={contactStyles.banner}>
+                  <p>Please enter your number or email</p>
+                </div>
+              )}
+              <div className={contactStyles.button} onClick={sentMessage}>
                 <p>Send Message</p>
               </div>
             </div>
-            <div className={contactStyles.pagination} onClick={handlePrevClick}>
+            <div className={contactStyles.pagination} onClick={() => setIsClicked(false)}>
               <div className={contactStyles.prevLayout}>
                 <button className={contactStyles.buttonPrev}>
-                  <img loading="lazy" draggable="false" src={arrowLeft} />
+                  <img draggable="false" src={arrowLeft} alt="Back" />
                 </button>
                 <label>Back</label>
               </div>

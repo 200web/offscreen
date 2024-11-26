@@ -26,7 +26,6 @@
   .contentBox {
     background-color: #1e1e1e;
     border-radius: 5px;
-    transition: 1s;
 
     .cancelRow {
       display: flex;
@@ -347,31 +346,26 @@
       margin: 2rem auto 6rem auto;
       display: flex;
       flex-wrap: wrap;
+      gap: 0.6rem;
+      
 
-      :nth-child(4),
-      :nth-child(3) {
+      // :nth-child(4),
+      // :nth-child(3),
+      :nth-child(5) {
         width: 100% !important;
       }
 
-      .fieldElem:nth-child(1) {
-        margin-right: 2%;
-      }
+      // .fieldElem:nth-child(1) {
+      //   margin-right: 2%;
+      // }
 
       .fieldElem {
         width: 49%;
-        margin-bottom: 0.5rem;
+        // margin-bottom: 0.2rem;
+        // margin-left: 0.4rem;
 
-        .image {
-          position: absolute;
-          top: 7%;
-          right: 2%;
-          padding: 0.2rem;
-          border-radius: 8px;
-          cursor: pointer;
-          transform: translate(-50%, -50);
-          width: 33px;
-          height: 30px;
-          background-color: #313131;
+        @media (max-width: 1000px) {
+          width: 100%;
         }
 
         .inputField {
@@ -391,13 +385,13 @@
         .textArea {
           min-width: 100%;
           max-width: 100%;
-          min-height: 2.6rem;
+          min-height: 4.6rem;
           max-height: 120px;
           padding: 10px 2.4rem 0 10px;
           color: rgba(255, 255, 255, 0.7);
           background-color: #1e1e1e;
           border: 1px solid rgba(255, 255, 255, 0.3);
-          border-radius: 15px;
+          border-radius: 18px;
           padding-left: 15px;
           font-size: 15px;
           margin-bottom: 3rem;
@@ -612,4 +606,22 @@
   &.active {
     transform: translate(-50%, -50%);
   }
+}
+
+.banner {
+color: #ffffff;
+padding-bottom: 0.5rem;
+font-size: 16px;
+}
+
+.loaded {
+  height: auto;
+  opacity: 1;
+  // overflow: hidden;
+  transition: height 0.3s ease, opacity 0.3s ease;
+}
+
+.loaded.active {
+  height: auto; /* или фиксированное значение */
+  opacity: 1;
 }
