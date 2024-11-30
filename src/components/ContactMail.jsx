@@ -41,7 +41,7 @@ const ContactMail = ({ isClicked, setIsClicked }) => {
 
     console.log("Form Data to send:", formData);
 
-    fetch(process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_API, {
+    fetch('https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
