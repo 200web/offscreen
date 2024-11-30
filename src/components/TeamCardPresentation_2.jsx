@@ -83,17 +83,17 @@ const TeamCardPresentation_2 = ({ images }) => {
     },
     {
       id: 6,
-      name: "Andrei Iofe Mdivani",
-      role: "gaffer",
-      profession: "Lighting Technician & Camera Operator",
-      image: isMobile ? Andrei : drew,
-    },
-    {
-      id: 7,
       name: "Valiantsin Hlushko",
       role: "cinematographer",
       profession: "Director of Photography & Camera Operator",
       image: isMobile ? valin : valik,
+    },
+    {
+      id: 7,
+      name: "Andrei Iofe Mdivani",
+      role: "gaffer",
+      profession: "Lighting Technician & Camera Operator",
+      image: isMobile ? Andrei : drew,
     },
   ];
 

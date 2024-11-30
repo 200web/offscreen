@@ -112,88 +112,83 @@ const FooterContact = () => {
         </div>
 
         {!isMobileContact ? (
-          <div className={appStyles.cardGrid}>
-            {/* Карточки для десктопной версии */}
-            <div className={appStyles.socialContainer}>
-              <div>
-                <div className={appStyles.socialCard}>
-                  <div className={appStyles.image}>
-                    <img
-                      loading="lazy"
-                      src={facebook}
-                      width={50}
-                      height={50}
-                      alt="facebook"
-                    />
-                  </div>
-                </div>
-                <div className={appStyles.title}>Facebook</div>
-              </div>
-              <div>
-                <div className={appStyles.socialCard}>
-                  <div className={appStyles.image}>
-                    <img
-                      loading="lazy"
-                      src={telegram}
-                      width={70}
-                      height={70}
-                      alt="telegram"
-                    />
-                  </div>
-                </div>
-                <div className={appStyles.title}>Telegram</div>
-              </div>
-              <div>
-                <div className={appStyles.socialCard}>
-                  <div className={appStyles.image}>
-                    <img
-                      loading="lazy"
-                      src={instagram}
-                      width={70}
-                      height={70}
-                      alt="instagram"
-                    />
-                  </div>
-                </div>
-                <div className={appStyles.title}>Instagram</div>
-              </div>
-              <div>
-                <div className={appStyles.socialCard}>
-                  <div className={appStyles.image}>
-                    <img
-                      loading="lazy"
-                      src={whatsapp}
-                      width={70}
-                      height={70}
-                      alt="whatsapp"
-                    />
-                  </div>
-                </div>
-                <div className={appStyles.title}>WhatsApp</div>
-              </div>
-            </div>
+   <div className={appStyles.cardGrid}>
+   <div className={appStyles.socialContainer}>
+     {/* Facebook */}
+     <a href="https://www.facebook.com/offscreen.pro/" target="_blank" rel="noopener noreferrer">
+       <div className={appStyles.socialCard}>
+         <div className={appStyles.image}>
+           <img loading="lazy" src={facebook} width={50} height={50} alt="facebook" />
+         </div>
+       </div>
+       <div className={appStyles.title}>Facebook</div>
+     </a>
 
-            {/* Форма для отправки сообщения */}
-            <div className={appStyles.sideMail}>
-              <div className={appStyles.socialCard}>
-                <div className={appStyles.mailBlank}>
-                  <div className={appStyles.mailTile}>Mail</div>
-                  <div className={appStyles.mailInf}>
-                    prod.offscreen@gmail.com
-                  </div>
-                  <div className={appStyles.title}>
-                    If you have a general or project enquiry, please drop me an
-                    email or <br />
-                    <Link to="/contact" className={appStyles.link}>
-                      fill the form
-                    </Link>{" "}
-                    — available now.
-                  </div>
-                </div>
-                <FooterForm sendMessage={sendMessage} />
-              </div>
-            </div>
-          </div>
+     {/* Telegram */}
+     <a href="https://t.me/Offscreen_pro" target="_blank" rel="noopener noreferrer">
+       <div className={appStyles.socialCard}>
+         <div className={appStyles.image}>
+           <img loading="lazy" src={telegram} width={70} height={70} alt="telegram" />
+         </div>
+       </div>
+       <div className={appStyles.title}>Telegram</div>
+     </a>
+
+     {/* Instagram */}
+     <a href="https://www.instagram.com/offscreen.pro/" target="_blank" rel="noopener noreferrer">
+       <div className={appStyles.socialCard}>
+         <div className={appStyles.image}>
+           <img loading="lazy" src={instagram} width={70} height={70} alt="instagram" />
+         </div>
+       </div>
+       <div className={appStyles.title}>Instagram</div>
+     </a>
+
+     {/* WhatsApp */}
+     <a href="https://wa.me/+48451117515" target="_blank" rel="noopener noreferrer">
+       <div className={appStyles.socialCard}>
+         <div className={appStyles.image}>
+           <img loading="lazy" src={whatsapp} width={70} height={70} alt="whatsapp" />
+         </div>
+       </div>
+       <div className={appStyles.title}>WhatsApp</div>
+     </a>
+   </div>
+
+   <div className={appStyles.sideMail}>
+     <div className={appStyles.socialCard}>
+       <div className={appStyles.mailBlank}>
+
+<div className={appStyles.mailContainer}>
+
+         <div className={appStyles.mailTile}>Mail</div>
+         <div className={appStyles.mailInf}>
+         <a href="mailto:prod.offscreen@gmail.com">
+          prod.offscreen@gmail.com
+        </a>
+      </div>
+      
+      {/* Добавляем блок с номером телефона сразу под Mail */}
+
+      <div className={appStyles.mailTile}>Phone</div>
+      <div className={appStyles.mailInf}>
+        <a href="tel:+48451117515" className={appStyles.link}>
+          +48451117515
+        </a>
+      </div>
+      
+      </div>
+
+         <div className={appStyles.title}>
+           If you have a general or project enquiry, please drop me an email or
+           <br />
+           <Link to="/contact" className={appStyles.link}>fill the form</Link> — available now.
+         </div>
+       </div>
+       <FooterForm sendMessage={sendMessage} />
+     </div>
+   </div>
+ </div>
         ) : (
           // Мобильная версия
           <div className={appStyles.cardGridMobile}>
@@ -267,9 +262,12 @@ const FooterContact = () => {
             <div className={appStyles.sideMail}>
               <div className={appStyles.socialCard}>
                 <div className={appStyles.mailBlank}>
+
+                <div className={appStyles.mailContainer}>
                   <div className={appStyles.mailTile}>Mail </div>
                   <div className={appStyles.mailInf}>
                     prod.offscreen@gmail.com
+                  </div>
                   </div>
                   <div className={appStyles.title}>
                     If you have a general or project enquiry, please drop me an
