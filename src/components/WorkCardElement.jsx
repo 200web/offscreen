@@ -74,11 +74,21 @@ const WorkCardElement = () => {
 
   const handleMouseEnter = (id) => {
     setIsHovered(id);
-  };
+    const video = videoRefs.current[id];
+    if (video) {
+        video.currentTime = 0; // Перематываем на начало
+        video.play(); // Запускаем видео
+    }
+};
 
-  const handleMouseLeave = () => {
+const handleMouseLeave = (id) => {
     setIsHovered(null);
-  };
+    const video = videoRefs.current[id];
+    if (video) {
+        video.pause(); // Ставим видео на паузу
+    }
+};
+
 
   useEffect(() => {
     const handleResize = () => {

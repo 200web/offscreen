@@ -40,18 +40,20 @@ const VideoPlayer = () => {
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      if (
-        !document.fullscreenElement &&
-        !document.webkitFullscreenElement &&
-        !document.mozFullScreenElement &&
-        !document.msFullscreenElement
-      ) {
-        setIsFullscreen(false);
-        const video = videoRef.current;
-        if (video.play()) {
-          setIsGifPlaying(true);
+      const video = videoRef.current;
+      const isFullscreenActive =
+        document.fullscreenElement ||
+        document.webkitFullscreenElement ||
+        document.mozFullScreenElement ||
+        document.msFullscreenElement;
+
+      setIsFullscreen(!!isFullscreenActive);
+
+      if (!isFullscreenActive && video) {
+        // Если пользователь выходит из полноэкранного режима, сохраняем статус воспроизведения
+        if (!video.paused) {
+          video.play();
         }
-        setIsMuted(video.muted);
       }
     };
 
@@ -88,22 +90,18 @@ const VideoPlayer = () => {
   };
 
   const showFullVideo = () => {
-
     setIsFullscreen(true);
-    
+
     const video = videoRef.current;
 
-    video.muted = false; 
+    video.muted = false;
     if (video.requestFullscreen) {
       video.requestFullscreen();
     } else if (video.mozRequestFullScreen) {
-      // Firefox
       video.mozRequestFullScreen();
     } else if (video.webkitRequestFullscreen) {
-      // Chrome, Safari and Opera
       video.webkitRequestFullscreen();
     } else if (video.msRequestFullscreen) {
-      // IE/Edge
       video.msRequestFullscreen();
     }
   };
@@ -132,21 +130,6 @@ const VideoPlayer = () => {
 
   return (
     <div className={videoStyles.headerVideo}>
-      {/* <div
-        className={
-          !isGifPlaying && !isFullscreen
-            ? videoStyles.playButton
-            : `${videoStyles.playButton} ${videoStyles.hidden}`
-        }
-        onClick={() => {
-          // showFullVideo();
-          // togglePlay();
-        }}
-      >
-        <span className={videoStyles.buttonNext}>
-          <img loading="lazy" draggable="false" src={arrowRight} />
-        </span>
-      </div> */}
       <video
         id="video"
         muted
@@ -169,7 +152,6 @@ const VideoPlayer = () => {
       >
         <div className={videoStyles.video_header}>
           <div className={videoStyles.video_title}>
-            {/* Watch the showreel */}
             <div className={videoStyles.video_fullscreen}>
               <img
                 loading="lazy"
