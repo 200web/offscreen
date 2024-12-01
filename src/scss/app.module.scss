@@ -2128,7 +2128,7 @@ section {
     text-align: center;
     color: white;
 
-    @media (max-width: 600px) {
+    @media (max-width: 768px) {
       margin: 9rem auto 0 auto;
     }
 
@@ -2136,13 +2136,14 @@ section {
       font-size: clamp(32px, 5.5vw, 50px);
       font-family: "Inter";
       font-weight: 500;
-      margin-bottom: 0.3rem;
+      margin-bottom: 1rem;
     }
 
     .headerSpan {
       font-size: clamp(18px, 4vw, 30px);
       color: rgba(255, 255, 255, 0.7);
       font-family: "Inter";
+      // margin-bottom: 1rem;
     }
 
     .description {
@@ -2171,7 +2172,7 @@ section {
     margin: 6rem 0 40rem 0.5rem;
 
     @media (max-width: 768px) {
-      margin: 2rem 0 22rem 0.5rem;
+      margin: 2rem 0 27rem 0.5rem;
     }
 
     .cardsContainer {
@@ -2331,13 +2332,14 @@ section {
 
   .reviewNav {
     position: absolute;
-    top: 25rem;
+    top: 30rem;
+    // margin-top: 1rem;
     width: 100%;
     display: flex;
     justify-content: center;
 
     @media (max-width: 1100px) {
-      top: 20rem;
+      top: 22rem;
     }
 
     button {
@@ -2671,7 +2673,7 @@ section {
 
         .mailTile {
           text-transform: uppercase;
-          font-size: 25px;
+          font-size: 22px;
           margin: 0rem 0 1rem 0;
           font-family: "Inter";
           font-weight: 500;
