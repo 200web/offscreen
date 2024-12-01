@@ -2661,9 +2661,9 @@ section {
       background-color: #1e1e1e;
 
       .mailBlank {
-        color: white;
+        
         width: 60%;
-        margin-left: 6rem;
+        margin-left: 4rem;
 
         .mailContainer{
         margin: 4rem 0rem 3rem 0rem;
@@ -2675,13 +2675,24 @@ section {
           margin: 0rem 0 1rem 0;
           font-family: "Inter";
           font-weight: 500;
+          color: #c0d100;
+
+
+          @media (max-width: 768px) {
+              font-size: 18px;
+          }
           
         }
 
         .mailInf {
+        
           font-size: 16px;
           font-family: "Inter";
           margin-bottom: 2rem;
+           
+          a {
+            
+           }
         }
         }
         .title {
@@ -2690,6 +2701,7 @@ section {
           font-size: 21px;
           margin: 0 0 5rem 0;
           font-family: "Inter";
+          color: white;
 
           @media (max-width: 768px) {
             width: 80%;
@@ -2757,7 +2769,7 @@ section {
             max-height: 120px;
             color: rgba(255, 255, 255, 0.7);
             background-color: #1e1e1e;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 15px;
             padding-left: 15px;
             font-size: 15px;
@@ -2772,7 +2784,7 @@ section {
             padding: 10px 2.4rem 0 10px;
             color: rgba(255, 255, 255, 0.7);
             background-color: #1e1e1e;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             border-radius: 15px;
             padding-left: 15px;
             font-size: 15px;
@@ -2790,17 +2802,19 @@ section {
           width: 100%;
           display: flex;
           justify-content: center;
-          color: white;
+          color: rgb(255, 255, 255);
+          // background-color: rgba(#ffffff, 0.8);
           padding: 0.5rem;
           border-radius: 12px;
-          box-shadow: 0 0 0 1px white;
+          box-shadow: 0 0 0 1px rgb(255, 255, 255);
           font-family: "Inter";
           cursor: pointer;
           margin-bottom: 2rem;
 
           &:hover {
-            background-color: rgba(#ffffff, 0.1);
-            box-shadow: 0 0 0 2px white;
+            background-color: rgba(#c0d100, 0.9);
+            color: black;
+            box-shadow: 0 0 0 1px #c0d100;
           }
         }
 
