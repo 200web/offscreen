@@ -22,8 +22,7 @@ const Header = () => {
 
   const handleActiveButton = (id) => {
     if (isMobile) setMenuVisible(false);
-    const element = document.getElementById(sections[id]);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+    navigate("/", { state: { scrollTo: sections[id] } });
   };
 
   React.useEffect(() => {

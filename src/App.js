@@ -1,7 +1,7 @@
 import React from "react";
 import appStyles from "./scss/app.module.scss";
 import HomePage from "./pages/HomePage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import ContactPage from "./pages/ContactPage";
 import ProjectPage from "./pages/ProjectPage";
 import PersonPage from "./pages/PersonPage";

@@ -35,6 +35,32 @@ const HomePage = () => {
         dispatch(clearScrollToElement());
       }
     }
+    if (location.state?.scrollTo === "About us") {
+      const element = document.getElementById("About us");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.state?.scrollTo === "Services") {
+      const element = document.getElementById("Services");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.state?.scrollTo === "Our works") {
+      const element = document.getElementById("Our works");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.state?.scrollTo === "Our team") {
+      const element = document.getElementById("Our team");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else if (location.state?.scrollTo === "Contacts") {
+      const element = document.getElementById("Contacts");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
   }, [location, scrollToElement, dispatch]);
 
   return (

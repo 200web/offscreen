@@ -52,7 +52,6 @@
       opacity: 0;
     }
 
-    
     .buttonNext {
       img {
         top: 50%;
@@ -79,21 +78,18 @@
       transform: translate(-50%, -30%);
     }
 
-       &:hover.hidden {
-        opacity: 1;
-        transform: translate(-50%, -50%);
-
-
-        @media (max-width: 800px) {
-          opacity: 0;
-        }
-      
-      }
+    &:hover.hidden {
+      opacity: 1;
+      transform: translate(-50%, -50%);
 
       @media (max-width: 800px) {
         opacity: 0;
       }
+    }
 
+    @media (max-width: 800px) {
+      opacity: 0;
+    }
   }
 
   .hidden {
@@ -105,6 +101,8 @@
     position: relative;
     transition: 0.5s;
     opacity: 1;
+    object-fit: contain;
+
     &.paused {
       filter: blur(3px);
     }

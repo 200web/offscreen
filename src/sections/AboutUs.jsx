@@ -48,7 +48,7 @@ const AboutUs = () => {
   }, [isVisible]);
 
   return (
-    <section className={appStyles.section}>
+    <section className={appStyles.section} id="About us">
       {/* <div className={appStyles.Row}>
         <div className={appStyles.title}>
           <h1 className={appStyles.labelTitle}>OFFSCREEN</h1>
