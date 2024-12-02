@@ -84,7 +84,7 @@ const WorksSection = () => {
   }, []);
 
   return (
-    <section className={appStyles.section} id="Our works">
+    <section className={appStyles.section}>
       <div className={appStyles.Row}>
         <div className={appStyles.centralTitleWorks}>
           <span>OUR WORKS</span>
