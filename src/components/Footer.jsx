@@ -11,11 +11,12 @@ const Footer = () => {
           <main className={footer.leftFooter}>
             <div>
               <span>OFFSCREEN PROD.</span> <br />
-              <span>Copyright, 2024</span><br />
+              <span>Copyright, 2024</span>
+              <br />
             </div>
             <span className={footer.web}>
-            <br />
-              web: <a href="https://t.me/tsyhankovah">@tsyhankovah</a>
+              <br />
+              web: <a href="https://t.me/Dmitry_Astap">@Dmitry_Astap</a>
             </span>
           </main>
           <main className={footer.rightFooter}>
