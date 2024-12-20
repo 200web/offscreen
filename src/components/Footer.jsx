@@ -16,7 +16,7 @@ const Footer = () => {
             </div>
             <span className={footer.web}>
               <br />
-              web: <a href="https://t.me/Dmitry_Astap">@Dmitry_Astap</a>
+              {/* web: <a href="https://t.me/Dmitry_Astap">@Dmitry_Astap</a> */}
             </span>
           </main>
           <main className={footer.rightFooter}>
