@@ -55,7 +55,6 @@ const FooterForm = ({ sendMessage }) => {
   };
 
   const handleInputChange = (value, index) => {
-    console.log("value ", value);
     setInputValues((prevValues) => {
       const updatedValues = [...prevValues];
       updatedValues[index] = value;
