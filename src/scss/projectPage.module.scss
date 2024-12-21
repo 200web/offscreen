@@ -1025,4 +1025,33 @@
       filter: blur(3px);
     }
   }
+
+  .originLink {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    left: 50%;
+    top: 85%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: max-content;
+
+    .button {
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1rem 3rem;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.25);
+      }
+
+      .text {
+        font-family: "Inter";
+        font-size: clamp(14px, 1.5vw, 16px);
+      }
+    }
+  }
 }

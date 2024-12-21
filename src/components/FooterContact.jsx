@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import appStyles from "../scss/app.module.scss";
+import contactStyles from "../scss/contactPage.module.scss";
 import telegram from "../assets/img/telega.webp";
 import facebook from "../assets/img/Face.webp";
 import instagram from "../assets/img/inst.webp";
@@ -9,14 +10,77 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer";
 
 const FooterForm = ({ sendMessage }) => {
+  const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
+  const [showBanner, setShowBanner] = React.useState(false); // State for banner
+
+  const sentMessage = () => {
+    const [name, email, phone, website, details] = inputValues;
+
+    // Validation check
+    if (!email.trim() && !phone.trim()) {
+      console.log("banner");
+      setShowBanner(true);
+      return;
+    }
+
+    setShowBanner(false);
+
+    const formData = {
+      name,
+      email,
+      phone,
+      website,
+      details,
+    };
+
+    console.log("Form Data to send:", formData);
+
+    fetch(
+      "https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        mode: "no-cors",
+        body: JSON.stringify(formData),
+      }
+    )
+      .then(() => {
+        console.log("Message sent successfully");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+
+  const handleInputChange = (value, index) => {
+    console.log("value ", value);
+    setInputValues((prevValues) => {
+      const updatedValues = [...prevValues];
+      updatedValues[index] = value;
+      return updatedValues;
+    });
+  };
+
   return (
     <div className={appStyles.fieldBox}>
       <div className={appStyles.fieldElem}>
         <input
           type="text"
           id="name"
-          placeholder="Name*"
+          placeholder="Name"
           className={appStyles.inputField}
+          onChange={(e) => handleInputChange(e.target.value, 0)}
+        />
+      </div>
+      <div className={appStyles.fieldElem}>
+        <input
+          type="text"
+          id="name"
+          placeholder="Email address"
+          className={appStyles.inputField}
+          onChange={(e) => handleInputChange(e.target.value, 1)}
         />
       </div>
       <div className={appStyles.fieldElem}>
@@ -25,24 +89,33 @@ const FooterForm = ({ sendMessage }) => {
           id="Phone"
           placeholder="Phone number"
           className={appStyles.inputField}
+          onChange={(e) => handleInputChange(e.target.value, 2)}
         />
       </div>
       <div className={appStyles.fieldElem}>
         <input
           type="text"
           id="email"
-          placeholder="Email address*"
+          placeholder="Website link"
           className={appStyles.inputField}
+          onChange={(e) => handleInputChange(e.target.value, 3)}
         />
       </div>
       <div className={appStyles.fieldElem}>
         <textarea
           id="projectDetails"
           placeholder="Project details"
+          value={inputValues[4]}
           className={appStyles.textArea}
+          onChange={(e) => handleInputChange(e.target.value, 4)}
         />
       </div>
-      <div className={appStyles.button} onClick={sendMessage}>
+      {showBanner && (
+        <div className={contactStyles.banner}>
+          <p>Please enter your number or email</p>
+        </div>
+      )}
+      <div className={appStyles.button} onClick={sentMessage}>
         <p>Send Message</p>
       </div>
     </div>
@@ -115,40 +188,80 @@ const FooterContact = () => {
           <div className={appStyles.cardGrid}>
             <div className={appStyles.socialContainer}>
               {/* Facebook */}
-              <a href="https://www.facebook.com/offscreen.pro/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.facebook.com/offscreen.pro/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img loading="lazy" src={facebook} width={50} height={50} alt="facebook" />
+                    <img
+                      loading="lazy"
+                      src={facebook}
+                      width={50}
+                      height={50}
+                      alt="facebook"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>Facebook</div>
               </a>
 
               {/* Telegram */}
-              <a href="https://t.me/Offscreen_pro" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://t.me/Offscreen_pro"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img loading="lazy" src={telegram} width={70} height={70} alt="telegram" />
+                    <img
+                      loading="lazy"
+                      src={telegram}
+                      width={70}
+                      height={70}
+                      alt="telegram"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>Telegram</div>
               </a>
 
               {/* Instagram */}
-              <a href="https://www.instagram.com/offscreen.pro/" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://www.instagram.com/offscreen.pro/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img loading="lazy" src={instagram} width={70} height={70} alt="instagram" />
+                    <img
+                      loading="lazy"
+                      src={instagram}
+                      width={70}
+                      height={70}
+                      alt="instagram"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>Instagram</div>
               </a>
 
               {/* WhatsApp */}
-              <a href="https://wa.me/+48451117515" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://wa.me/+48451117515"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <div className={appStyles.socialCard}>
                   <div className={appStyles.image}>
-                    <img loading="lazy" src={whatsapp} width={70} height={70} alt="whatsapp" />
+                    <img
+                      loading="lazy"
+                      src={whatsapp}
+                      width={70}
+                      height={70}
+                      alt="whatsapp"
+                    />
                   </div>
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
@@ -158,9 +271,7 @@ const FooterContact = () => {
             <div className={appStyles.sideMail}>
               <div className={appStyles.socialCard}>
                 <div className={appStyles.mailBlank}>
-
                   <div className={appStyles.mailContainer}>
-
                     <div className={appStyles.mailTile}>Mail</div>
                     <div className={appStyles.mailInf}>
                       <a href="mailto:prod.offscreen@gmail.com">
@@ -168,20 +279,22 @@ const FooterContact = () => {
                       </a>
                     </div>
 
-
                     <div className={appStyles.mailTile}>Phone</div>
                     <div className={appStyles.mailInf}>
                       <a href="tel:+48451117515" className={appStyles.link}>
                         +48451117515
                       </a>
                     </div>
-
                   </div>
 
                   <div className={appStyles.title}>
-                    If you have a general or project enquiry, please drop me an email or
+                    If you have a general or project enquiry, please drop me an
+                    email or
                     <br />
-                    <Link to="/contact" className={appStyles.link}>fill the form</Link> — available now.
+                    <Link to="/contact" className={appStyles.link}>
+                      fill the form
+                    </Link>{" "}
+                    — available now.
                   </div>
                 </div>
                 <FooterForm sendMessage={sendMessage} />
@@ -192,17 +305,15 @@ const FooterContact = () => {
           // Мобильная версия
           <div className={appStyles.cardGridMobile}>
             <div className={appStyles.socialContainerMobile}>
-
-              
-            <Link
+              <Link
                 to="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = "https://www.facebook.com/offscreen.pro/";
+                  window.location.href =
+                    "https://www.facebook.com/offscreen.pro/";
                 }}
                 className={`${appStyles.socialCard} ${appStyles.active}`}
               >
-
                 <div className={appStyles.image}>
                   <img
                     loading="lazy"
@@ -213,9 +324,9 @@ const FooterContact = () => {
                   />
                 </div>
                 <div className={appStyles.title}>Facebook</div>
-                </Link>
-              
-                <Link
+              </Link>
+
+              <Link
                 to="#"
                 onClick={(e) => {
                   e.preventDefault();
@@ -233,13 +344,14 @@ const FooterContact = () => {
                   />
                 </div>
                 <div className={appStyles.title}>Telegram</div>
-                </Link>
-              
+              </Link>
+
               <Link
                 to="#"
                 onClick={(e) => {
                   e.preventDefault();
-                  window.location.href = "https://www.instagram.com/offscreen.pro/";
+                  window.location.href =
+                    "https://www.instagram.com/offscreen.pro/";
                 }}
                 className={`${appStyles.socialCard} ${appStyles.active}`}
               >
@@ -253,7 +365,7 @@ const FooterContact = () => {
                   />
                 </div>
                 <div className={appStyles.title}>Instagram</div>
-                </Link>
+              </Link>
 
               <Link
                 to="#"
@@ -263,7 +375,6 @@ const FooterContact = () => {
                 }}
                 className={`${appStyles.socialCard} ${appStyles.active}`}
               >
-
                 <div className={appStyles.image}>
                   <img
                     loading="lazy"
@@ -274,8 +385,7 @@ const FooterContact = () => {
                   />
                 </div>
                 <div className={appStyles.title}>WhatsApp</div>
-             
-</Link>
+              </Link>
 
               <Link
                 to="#"
@@ -301,9 +411,7 @@ const FooterContact = () => {
             <div className={appStyles.sideMail}>
               <div className={appStyles.socialCard}>
                 <div className={appStyles.mailBlank}>
-
                   <div className={appStyles.mailContainer}>
-
                     <div className={appStyles.mailTile}>Mail</div>
                     <div className={appStyles.mailInf}>
                       <a href="mailto:prod.offscreen@gmail.com">
@@ -317,8 +425,6 @@ const FooterContact = () => {
                         +48451117515
                       </a>
                     </div>
-
-
                   </div>
                   <div className={appStyles.title}>
                     If you have a general or project enquiry, please drop me an

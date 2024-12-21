@@ -19,9 +19,6 @@ a {
   color: white;
 }
 
-
-
-
 section {
   z-index: 10;
   background-color: #121212;
@@ -799,7 +796,8 @@ section {
       z-index: 10;
       transform: translate(-13.5rem, 0);
       object-fit: contain;
-      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%) contrast(101%);
+      filter: sepia(86%) saturate(584%) hue-rotate(8deg) brightness(95%)
+        contrast(101%);
 
       @media (max-width: 1260px) {
         transform: translate(-10rem, 0);
@@ -914,13 +912,10 @@ section {
   grid-column-gap: 10px;
   grid-row-gap: 10px;
 
-
   video::-webkit-media-controls-panel {
     display: none !important;
     -webkit-appearance: none;
   }
-
-
 
   video::-webkit-media-controls-play-button {
     display: none !important;
@@ -1067,8 +1062,6 @@ section {
       object-fit: cover;
     }
   }
-
-
 }
 
 .infoBlock {
@@ -1386,15 +1379,11 @@ section {
         background-color: #c0d100;
       }
 
-
       img {
         position: relative;
         width: 100%;
         height: 100%;
         object-fit: cover;
-
-
-
       }
 
       .textContentLast {
@@ -1421,10 +1410,8 @@ section {
           pointer-events: none;
           z-index: 5;
         }
-
       }
     }
-
 
     .name_block {
       width: 100%;
@@ -1441,27 +1428,26 @@ section {
         left: 0;
         right: 0;
         height: 100%;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.8)); 
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0),
+          rgba(0, 0, 0, 0.8)
+        );
         pointer-events: none;
         z-index: -1;
       }
 
+      .name {
+        letter-spacing: 0.02rem;
+        font-size: 20px;
+      }
 
-        .name {
-
-          letter-spacing: 0.02rem;
-          font-size: 20px;
-
-
-        }
-
-        @media (max-width: 768px) {
-           width: 100%;
-      height: 2.5rem;
-      left: 50%;
-      bottom: 16%;
-        }
-
+      @media (max-width: 768px) {
+        width: 100%;
+        height: 2.5rem;
+        left: 50%;
+        bottom: 16%;
+      }
     }
 
     .team_image {
@@ -1469,7 +1455,6 @@ section {
       height: 330px;
       border-radius: 10px;
       object-fit: cover;
-
 
       &::before {
         content: "";
@@ -1482,7 +1467,6 @@ section {
         pointer-events: none;
         z-index: 5;
       }
-
     }
 
     .card_info {
@@ -1577,14 +1561,17 @@ section {
           right: 0;
           height: 50%;
           /* Задайте необходимую высоту виньетки */
-          background: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+          background: linear-gradient(
+            to bottom,
+            rgba(0, 0, 0, 1),
+            rgba(0, 0, 0, 0)
+          );
           /* Темный сверху, прозрачный снизу */
           pointer-events: none;
           /* Чтобы клик не перекрывался виньеткой */
           z-index: -1;
           /* Убедитесь, что этот слой не перекрывает текст */
         }
-
       }
 
       .addInf {
@@ -1645,7 +1632,6 @@ section {
     grid-row-gap: 10px;
     margin-right: 2rem;
 
-
     @media (max-width: 1200px) {
       width: 100%;
       margin-right: 0;
@@ -1655,10 +1641,6 @@ section {
     @media (max-width: 600px) {
       grid-template-columns: repeat(1, 1fr);
     }
-
-
-
-
   }
 
   .portrait {
@@ -1680,7 +1662,6 @@ section {
       z-index: 1;
     }
 
-
     @media (max-width: 1200px) {
       width: 100%;
       height: 450px;
@@ -1688,7 +1669,6 @@ section {
       .image {
         height: 100%;
         width: 100%;
-
       }
 
       .descriptionBox {
@@ -2303,8 +2283,7 @@ section {
       &:hover {
         opacity: 1;
         color: black;
-        background-color: #C0D100;
-
+        background-color: #c0d100;
 
         // .name {
         //   border-color: black;
@@ -2359,7 +2338,8 @@ section {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg) brightness(112%) contrast(100%);
+        filter: invert(100%) sepia(0%) saturate(196%) hue-rotate(125deg)
+          brightness(112%) contrast(100%);
       }
 
       &:nth-child(1) img {
@@ -2374,7 +2354,8 @@ section {
         background-color: #ddd;
 
         img {
-          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
+          filter: sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%)
+            contrast(104%);
         }
       }
     }
@@ -2412,9 +2393,11 @@ section {
     left: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0.4),
-        rgba(0, 0, 0, 0.2));
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4),
+      rgba(0, 0, 0, 0.2)
+    );
   }
 
   &::before {
@@ -2423,9 +2406,11 @@ section {
     right: 0;
     width: 1px;
     height: 95%;
-    background: linear-gradient(to bottom,
-        rgba(255, 255, 255, 0.4),
-        rgba(0, 0, 0, 0.2));
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 255, 255, 0.4),
+      rgba(0, 0, 0, 0.2)
+    );
   }
 
   .container {
@@ -2477,9 +2462,11 @@ section {
       left: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.2),
-          rgba(0, 0, 0, 0.2));
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2)
+      );
     }
 
     &::before {
@@ -2488,9 +2475,11 @@ section {
       right: 0;
       width: 1px;
       height: 95%;
-      background: linear-gradient(to bottom,
-          rgba(255, 255, 255, 0.2),
-          rgba(0, 0, 0, 0.2));
+      background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.2),
+        rgba(0, 0, 0, 0.2)
+      );
     }
 
     .socialContainerMobile {
@@ -2546,7 +2535,8 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
+              brightness(100%) contrast(104%);
           }
 
           .title {
@@ -2618,7 +2608,8 @@ section {
 
           img {
             transform: scale(1);
-            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg) brightness(100%) contrast(104%);
+            filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(255deg)
+              brightness(100%) contrast(104%);
           }
         }
 
@@ -2663,39 +2654,33 @@ section {
       background-color: #1e1e1e;
 
       .mailBlank {
-        
         width: 60%;
         margin-left: 4rem;
 
-        .mailContainer{
-        margin: 4rem 0rem 3rem 0rem;
-  
+        .mailContainer {
+          margin: 4rem 0rem 3rem 0rem;
 
-        .mailTile {
-          text-transform: uppercase;
-          font-size: 22px;
-          margin: 0rem 0 1rem 0;
-          font-family: "Inter";
-          font-weight: 500;
-          color: #c0d100;
+          .mailTile {
+            text-transform: uppercase;
+            font-size: 22px;
+            margin: 0rem 0 1rem 0;
+            font-family: "Inter";
+            font-weight: 500;
+            color: #c0d100;
 
-
-          @media (max-width: 768px) {
+            @media (max-width: 768px) {
               font-size: 18px;
+            }
           }
-          
-        }
 
-        .mailInf {
-        
-          font-size: 16px;
-          font-family: "Inter";
-          margin-bottom: 2rem;
-           
-          a {
-            
-           }
-        }
+          .mailInf {
+            font-size: 16px;
+            font-family: "Inter";
+            margin-bottom: 2rem;
+
+            a {
+            }
+          }
         }
         .title {
           width: 60%;
@@ -2719,7 +2704,6 @@ section {
           /* Убираем подчеркивание */
         }
 
-             
         @media (max-width: 768px) {
           margin-left: 1.5rem;
         }
@@ -2738,12 +2722,12 @@ section {
         display: flex;
         flex-wrap: wrap;
 
-        :nth-child(4),
-        :nth-child(3) {
+        :nth-child(5) {
           width: 100% !important;
         }
 
-        .fieldElem:nth-child(1) {
+        .fieldElem:nth-child(1),
+        .fieldElem:nth-child(3) {
           margin-right: 2%;
         }
 
@@ -2987,7 +2971,6 @@ section {
 }
 
 @keyframes shake-top {
-
   0%,
   100% {
     transform: rotate(0deg);

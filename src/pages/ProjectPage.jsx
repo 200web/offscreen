@@ -189,6 +189,13 @@ const ProjectPage = () => {
               className={project.Video}
               innerRef={videoRef}
             />
+            <div className={project.originLink}>
+              <div className={project.button}>
+                <div className={project.text}>
+                  <span>SEE ORIGINAL</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
