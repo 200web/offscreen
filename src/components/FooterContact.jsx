@@ -12,11 +12,19 @@ import Footer from "./Footer";
 const FooterForm = ({ sendMessage }) => {
   const [inputValues, setInputValues] = React.useState(["", "", "", "", ""]);
   const [showBanner, setShowBanner] = React.useState(false); // State for banner
+  const [isSended, setIsSended] = React.useState(false);
+  const [isSending, setIsSending] = React.useState(false);
+  const [isError, setIsError] = React.useState(false);
 
   const sentMessage = () => {
     const [name, email, phone, website, details] = inputValues;
 
     // Validation check
+
+    if (isSended) {
+      return;
+    }
+
     if (!email.trim() && !phone.trim()) {
       console.log("banner");
       setShowBanner(true);
@@ -35,6 +43,7 @@ const FooterForm = ({ sendMessage }) => {
 
     console.log("Form Data to send:", formData);
 
+    setIsSending(true);
     fetch(
       "https://script.google.com/macros/s/AKfycbx-1E8RAP0fopITonzq3FBYKHtKx9InDjpyC0SYq7ymXkRH4AaxJbZj6hoYg1rTtdktNA/exec",
       {
@@ -47,9 +56,13 @@ const FooterForm = ({ sendMessage }) => {
       }
     )
       .then(() => {
+        setIsSending(false);
+        setIsSended(true);
         console.log("Message sent successfully");
       })
       .catch((error) => {
+        setIsSending(false);
+        setIsError(true);
         console.error("Error:", error);
       });
   };
@@ -115,7 +128,15 @@ const FooterForm = ({ sendMessage }) => {
         </div>
       )}
       <div className={appStyles.button} onClick={sentMessage}>
-        <p>Send Message</p>
+        <p>
+          {isSended
+            ? "Sended"
+            : isSending
+            ? "Sending..."
+            : isError
+            ? "Error, try again"``
+            : "Send Message"}
+        </p>
       </div>
     </div>
   );
