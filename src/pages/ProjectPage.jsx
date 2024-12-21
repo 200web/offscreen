@@ -43,7 +43,7 @@ const ProjectPage = () => {
         );
 
         const cloudinaryVideo = cld.video(data[0].video);
-        setLink(data[0].link);
+        if (data[0].link) setLink(data[0].link);
         setVideo(cloudinaryVideo);
 
         setProjectData(data[0]);
@@ -190,15 +190,15 @@ const ProjectPage = () => {
               className={project.Video}
               innerRef={videoRef}
             />
-            <div className={project.originLink}>
-              {link !== "" && (
+            {link !== "" && (
+              <div className={project.originLink}>
                 <a className={project.button} href={link}>
                   <div className={project.text}>
                     <span>SEE ORIGINAL</span>
                   </div>
                 </a>
-              )}
-            </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
