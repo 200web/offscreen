@@ -21,7 +21,7 @@ const ProjectPage = () => {
   const [isGifPlaying, setIsGifPlaying] = React.useState(false);
   const [video, setVideo] = React.useState("");
   const [projectData, setProjectData] = React.useState([]);
-  const [menuVisible, setMenuVisible] = React.useState(false);
+  const [link, setLink] = React.useState("");
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 690);
   const [isMobileContact, setIsMobileContact] = React.useState(
     window.innerWidth <= 900
@@ -43,6 +43,7 @@ const ProjectPage = () => {
         );
 
         const cloudinaryVideo = cld.video(data[0].video);
+        setLink(data[0].link);
         setVideo(cloudinaryVideo);
 
         setProjectData(data[0]);
@@ -190,11 +191,13 @@ const ProjectPage = () => {
               innerRef={videoRef}
             />
             <div className={project.originLink}>
-              <div className={project.button}>
-                <div className={project.text}>
-                  <span>SEE ORIGINAL</span>
-                </div>
-              </div>
+              {link !== "" && (
+                <a className={project.button} href={link}>
+                  <div className={project.text}>
+                    <span>SEE ORIGINAL</span>
+                  </div>
+                </a>
+              )}
             </div>
           </div>
         </div>
